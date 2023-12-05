@@ -5,24 +5,26 @@ const esModules = ['@folio', 'ky'].join('|');
 
 module.exports = {
   collectCoverageFrom: [
-    '**/(lib|src)/**/*.{js,jsx}',
+    '**/(lib|src)/**/*.{ts,tsx}',
     '!**/node_modules/**',
     '!**/test/jest/**',
   ],
   coverageDirectory: './artifacts/coverage-jest/',
   coverageReporters: ['lcov'],
   reporters: ['jest-junit', 'default'],
-  transform: { '^.+\\.(js|jsx)$': path.join(__dirname, './test/jest/jest-transformer.js') },
-  transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
-  moduleNameMapper: {
-    '^.+\\.(css)$': 'identity-obj-proxy',
-    '^.+\\.(svg)$': 'identity-obj-proxy',
+  transform: {
+    '^.+\\.(t|j)sx?$': ['ts-jest', { tsconfig: 'tsconfig.json' }],
   },
-  testMatch: ['**/(lib|src)/**/?(*.)test.{js,jsx}'],
-  testPathIgnorePatterns: ['/node_modules/', '/test/bigtest/', '/test/ui-testing/'],
+  transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json'],
+  moduleNameMapper: {
+    '^.+\\.(css|svg)$': 'identity-obj-proxy',
+  },
+  moduleDirectories: ['node_modules', '<rootDir>'],
+  testMatch: ['**/(lib|src)/**/?(*.)test.{ts,tsx}'],
+  testPathIgnorePatterns: ['/node_modules/'],
   setupFiles: [
-    path.join(__dirname, './test/jest/setupTests.js'),
-    'jest-canvas-mock'
+    path.join(__dirname, './test/jest/setupTests.ts')
   ],
-  setupFilesAfterEnv: [path.join(__dirname, './test/jest/jest.setup.js')],
+  setupFilesAfterEnv: [path.join(__dirname, './test/jest/jest.setup.ts')],
 };

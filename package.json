@@ -1,8 +1,8 @@
 {
   "name": "@folio/workflow",
-  "version": "1.1.0",
-  "description": "A GUI for building Workflows for mod-workflow.",
-  "main": "src/index.js",
+  "version": "1.0.0",
+  "description": "A GUI for building workflows.",
+  "main": "src/index.tsx",
   "repository": "",
   "license": "Apache-2.0",
   "engines": {
@@ -12,9 +12,11 @@
     "start": "stripes serve",
     "build": "stripes build --output ./output",
     "build-mod-descriptor": "stripes mod descriptor --full --strict | jq '.[]' > module-descriptor.json ",
+    "coverage": "jest --coverage --passWithNoTests",
     "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-workflow ./translations/ui-workflow/compiled",
-    "lint": "eslint .",
-    "test": "jest"
+    "lint": "eslint \"./src/**/*.{js,jsx,ts,tsx}\"",
+    "test": "jest --passWithNoTests",
+    "tsc:check-app": "tsc --noEmit --project \"./tsconfig.json\""
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -24,10 +26,10 @@
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.9.0",
-    "@folio/eslint-config-stripes": "^6.0.0",
-    "@folio/stripes": "^7.0.0",
-    "@folio/stripes-cli": "^3.0.0 || ^2.4.0",
-    "@folio/stripes-core": "^8.0.0",
+    "@folio/calendar": "^8.0.0",
+    "@folio/eslint-config-stripes": "^7.0.0",
+    "@folio/stripes": "^9.0.0",
+    "@folio/stripes-cli": "^3.0.0",
     "@formatjs/cli": "^4.2.29",
     "@jest/globals": "^26.6.2",
     "@testing-library/dom": "^7.26.3",
@@ -40,27 +42,35 @@
     "core-js": "^3.6.4",
     "eslint": "^7.32.0",
     "inflected": "^2.0.4",
-    "jest": "^26.6.3",
+    "jest": "^29.2.4",
     "jest-canvas-mock": "^2.3.0",
     "jest-junit": "^12.0.0",
     "mocha": "^5.2.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-intl": "^5.8.0",
-    "react-redux": "^7.2.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-intl": "^6.0.0",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
-    "regenerator-runtime": "^0.13.3"
+    "redux-observable": "^1.2.0",
+    "regenerator-runtime": "^0.13.3",
+    "rxjs": "^6.6.3",
+    "ts-jest": "^28.0.7",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
   },
   "dependencies": {
     "prop-types": "^15.6.0"
   },
   "peerDependencies": {
-    "@folio/stripes": "^7.0.0",
-    "react": "*",
-    "react-intl": "^5.8.0",
+    "@folio/stripes": "^9.0.0",
+    "react": "^18.2.0",
+    "react-intl": "^6.0.0",
+    "react-redux": "^8.0.5",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0"
+  },
+  "optionalDependencies": {
   },
   "stripes": {
     "actsAs": [
@@ -69,12 +79,22 @@
     ],
     "displayName": "ui-workflow.meta.title",
     "route": "/workflow",
-    "okapiInterfaces": {},
+    "home": "/workflow",
+    "hasSettings": false,
+    "okapiInterfaces": {
+      "workflow-actions": "1.0",
+      "workflow-events": "1.0",
+      "workflow-triggers": "1.0",
+      "workflow-tasks": "1.0",
+      "workflow-workflows": "1.0"
+    },
+    "stripesDeps": [
+    ],
     "permissionSets": [
       {
         "permissionName": "module.workflow.enabled",
-        "displayName": "UI: UI Workflow module is enabled",
-        "visible": true
+        "displayName": "UI: ui-workflow module is enabled",
+        "visible": false
       },
       {
         "permissionName": "settings.workflow.enabled",
@@ -82,7 +102,14 @@
         "subPermissions": [
           "settings.enabled"
         ],
-        "visible": true
+        "visible": false
+      }
+    ],
+    "icons": [
+      {
+        "name": "app",
+        "alt": "Create, view and manage workflows.",
+        "title": "Workflow"
       }
     ]
   }
