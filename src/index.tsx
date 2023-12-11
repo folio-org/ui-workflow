@@ -5,10 +5,9 @@ interface WorkflowAppProps {
   match: {
     path: string
   };
-};
+}
 
 const WorkflowApp: FunctionComponent<WorkflowAppProps> = (props) => {
-  const { match: { path } } = props;
 
   return (
     <div>
