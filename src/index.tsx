@@ -1,13 +1,12 @@
 import type { FunctionComponent } from 'react';
+import { Settings, SettingsProps } from '@folio/stripes/smart-components';
 import React from 'react';
+import WorkflowSettings from './settings';
 
-interface WorkflowAppProps {
-  match: {
-    path: string
-  };
-}
-
-const WorkflowApp: FunctionComponent<WorkflowAppProps> = (props) => {
+const WorkflowApp: FunctionComponent<SettingsProps> = (props) => {
+  if (props.showSettings) {
+    return <WorkflowSettings {...props} />;
+  }
 
   return (
     <div>
