@@ -12,7 +12,7 @@ const WorkflowSettings: FunctionComponent<WorkflowSettingsProps> = (props) => {
   return (
     <div>
       <h2>Hello World</h2>
-      <p>This is the Workflow Builder settings interface.</p>
+      <p>This is the Workflow settings interface.</p>
     </div>
   );
 };

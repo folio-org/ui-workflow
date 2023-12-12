@@ -12,7 +12,7 @@ const WorkflowApp: FunctionComponent<WorkflowAppProps> = (props) => {
   return (
     <div>
       <h2>Hello World</h2>
-      <p>This is the Workflow Builder App interface.</p>
+      <p>This is the Workflow App interface.</p>
     </div>
   );
 };
