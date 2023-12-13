@@ -1,0 +1,14 @@
+.DS_Store
+.env
+.idea
+*.swo
+*.swp
+junit.xml
+node_modules
+npm-debug.log
+output
+package-lock.json
+yarn-error.log
+yarn.lock
+artifacts/
+.nyc_output/
