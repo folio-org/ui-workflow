@@ -23,28 +23,35 @@
     "@babel/eslint-parser": "^7.15.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.9.0",
-    "@folio/calendar": "^8.0.0",
     "@folio/eslint-config-stripes": "^7.0.0",
-    "@folio/stripes": "^9.0.0",
-    "@folio/stripes-cli": "^3.0.0",
+    "@folio/stripes": "^9.0.4",
+    "@folio/stripes-cli": "^3.0.1",
+    "@folio/stripes-components": "^12.0.4",
+    "@folio/stripes-smart-components": "^9.0.1",
     "@formatjs/cli": "^4.2.29",
     "@jest/globals": "^26.6.2",
-    "@testing-library/dom": "^7.26.3",
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^12.1.10",
+    "@testing-library/jest-dom": "^6.2.0",
+    "@testing-library/react": "^14.1.2",
+    "@types/jest": "^29.5.11",
+    "@types/lodash": "^4.14.202",
+    "@types/node": "^20.11.5",
+    "@types/react": "^18.2.48",
+    "@types/react-router-dom": "^5.3.3",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.6.3",
     "chai": "^4.2.0",
     "core-js": "^3.6.4",
     "eslint": "^7.32.0",
     "inflected": "^2.0.4",
-    "jest": "^29.2.4",
+    "jest": "^29.7.0",
     "jest-canvas-mock": "^2.3.0",
+    "jest-environment-jsdom": "^29.7.0",
     "jest-junit": "^12.0.0",
+    "miragejs": "^0.1.48",
     "mocha": "^5.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -55,11 +62,13 @@
     "redux-observable": "^1.2.0",
     "regenerator-runtime": "^0.13.3",
     "rxjs": "^6.6.3",
-    "ts-jest": "^28.0.7",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.9.4"
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.0.4"
   },
   "dependencies": {
+    "@folio/stripes-acq-components": "^5.0.100000791",
+    "lodash": "^4.17.21",
     "prop-types": "^15.6.0"
   },
   "peerDependencies": {
@@ -71,13 +80,14 @@
     "react-router-dom": "^5.2.0"
   },
   "optionalDependencies": {
+    "@folio/plugin-query-builder": ">=1.0.0"
   },
   "stripes": {
     "actsAs": [
       "app",
       "settings"
     ],
-    "displayName": "ui-workflow.meta.title",
+    "displayName": "ui-workflow.title",
     "route": "/workflow",
     "home": "/workflow",
     "hasSettings": false,
@@ -89,6 +99,7 @@
       "workflow-workflows": "1.0"
     },
     "stripesDeps": [
+      "@folio/stripes-acq-components"
     ],
     "permissionSets": [
       {
@@ -103,6 +114,18 @@
           "settings.enabled"
         ],
         "visible": false
+      },
+      {
+        "permissionName": "ui-workflow.all",
+        "displayName": "Full access to all UI-Workflow functionality.",
+        "subPermissions": [
+          "workflow.actions.all",
+          "workflow.events.all",
+          "workflow.triggers.all",
+          "workflow.tsks.all",
+          "workflow.workflows.all"
+        ],
+        "visible": true
       }
     ],
     "icons": [
@@ -112,5 +135,8 @@
         "title": "Workflow"
       }
     ]
+  },
+  "resolutions": {
+    "@folio/stripes-types": "^2.1.0"
   }
 }
