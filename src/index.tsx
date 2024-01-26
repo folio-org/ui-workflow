@@ -1,18 +1,30 @@
 import type { FunctionComponent } from 'react';
-import { Settings, SettingsProps } from '@folio/stripes/smart-components';
 import React from 'react';
-import WorkflowSettings from './settings';
+import { Switch, Route } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { Settings, SettingsProps } from '@folio/stripes/smart-components';
 
-const WorkflowApp: FunctionComponent<SettingsProps> = (props) => {
+import { IWorkflowApp } from './interfaces';
+import { BrowseView, CreateView, SettingsView } from './views';
+
+export const queryClient = new QueryClient();
+
+const WorkflowApp: FunctionComponent<IWorkflowApp> | FunctionComponent<SettingsProps> = (props: any) => {
   if (props.showSettings) {
-    return <WorkflowSettings {...props} />;
+    return <SettingsView {...props} />;
   }
 
+  const { match: { path } } = props;
+
   return (
-    <div>
-      <h2>Hello World</h2>
-      <p>This is the Workflow App interface.</p>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Switch>
+        <Route path={path} render={() => <BrowseView />} />
+      </Switch>
+      <Switch>
+        <Route path={`${path}/create`} exact render={() => <CreateView />} />
+      </Switch>
+    </QueryClientProvider>
   );
 };
 

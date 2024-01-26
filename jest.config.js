@@ -4,6 +4,8 @@ const path = require('path');
 const esModules = ['@folio', 'ky'].join('|');
 
 module.exports = {
+  testEnvironment: 'jsdom',
+  preset: 'ts-jest',
   collectCoverageFrom: [
     '**/(lib|src)/**/*.{ts,tsx}',
     '!**/node_modules/**',
@@ -13,7 +15,7 @@ module.exports = {
   coverageReporters: ['lcov'],
   reporters: ['jest-junit', 'default'],
   transform: {
-    '^.+\\.(t|j)sx?$': ['ts-jest', { tsconfig: 'tsconfig.json' }],
+    '^.+\\.(t|j)sx?$': 'ts-jest',
   },
   transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json'],
