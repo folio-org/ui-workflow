@@ -1,4 +1,20 @@
 {
-    "meta.title": "Workflow",
-    "meta.titleSettings": "Workflow Settings"
+    "button.actions": "Akcje",
+    "button.browse": "Przeglądaj",
+    "button.create": "Create",
+    "button.search": "Szukaj",
+    "filter.label-active": "Active",
+    "filter.label-search": "Szukaj",
+    "title": "Workflow",
+    "title.create": "Create",
+    "title.filterPane": "Search",
+    "title.settings": "Workflow Settings",
+    "title.workflowList": "Workflows",
+    "workflows.item.active": "Aktywne",
+    "workflows.item.description": "Description",
+    "workflows.item.id": "ID",
+    "workflows.item.inactive": "Nieaktywne",
+    "workflows.item.item": "Egzemplarz",
+    "workflows.item.name": "Name",
+    "workflows.item.version": "version"
 }

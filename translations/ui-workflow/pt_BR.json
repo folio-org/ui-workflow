@@ -1,4 +1,20 @@
 {
-    "meta.title": "Fluxo de trabalho",
-    "meta.titleSettings": "Configurações de fluxo de trabalho"
+    "button.actions": "Ações",
+    "button.browse": "Navegar",
+    "button.create": "Criar",
+    "button.search": "Busca",
+    "filter.label-active": "Ativo",
+    "filter.label-search": "Busca",
+    "title": "Fluxo de trabalho",
+    "title.create": "Criar",
+    "title.filterPane": "Busca",
+    "title.settings": "Configurações de fluxo de trabalho",
+    "title.workflowList": "Fluxos de trabalho",
+    "workflows.item.active": "Ativo",
+    "workflows.item.description": "Descrição",
+    "workflows.item.id": "ID",
+    "workflows.item.inactive": "Inativo",
+    "workflows.item.item": "Item",
+    "workflows.item.name": "Nome",
+    "workflows.item.version": "versão"
 }
