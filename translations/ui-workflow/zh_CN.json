@@ -1,4 +1,20 @@
 {
-    "meta.title": "Workflow",
-    "meta.titleSettings": "Workflow Settings"
+    "button.actions": "操作",
+    "button.browse": "浏览",
+    "button.create": "创建",
+    "button.search": "搜索",
+    "filter.label-active": "激活",
+    "filter.label-search": "搜索",
+    "title": "工作流程",
+    "title.create": "创建",
+    "title.filterPane": "搜索",
+    "title.settings": "工作流程设置",
+    "title.workflowList": "工作流程",
+    "workflows.item.active": "激活",
+    "workflows.item.description": "描述",
+    "workflows.item.id": "ID",
+    "workflows.item.inactive": "未激活",
+    "workflows.item.item": "单件",
+    "workflows.item.name": "名称",
+    "workflows.item.version": "版本"
 }
