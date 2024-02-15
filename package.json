@@ -67,7 +67,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "^5.0.100000791",
+    "@folio/stripes-acq-components": "^5.0.100000817",
     "lodash": "^4.17.21",
     "prop-types": "^15.6.0"
   },
