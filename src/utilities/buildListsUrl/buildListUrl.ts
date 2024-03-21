@@ -1,7 +1,7 @@
 import { STATUS_ACTIVE, STATUS_INACTIVE } from '../../constants';
 
 export const buildListUrl = (url: string, request?: any) => {
-  const { filters, offset, size, idsToTrack } = request || {};
+  const { query, filters, offset, size, idsToTrack } = request || {};
   const params = new URLSearchParams();
   const entityTypeIdsArray = [];
 
@@ -20,6 +20,8 @@ export const buildListUrl = (url: string, request?: any) => {
   const entityTypeIdsString = entityTypeIdsArray.join(',');
 
   if (entityTypeIdsString) params.append('entityTypeIds', entityTypeIdsString);
+
+  if (typeof query == 'string') params.append('query', query);
 
   // If tracking IDs, don't use offset
   if (offset && !idsToTrack?.length) params.append('offset', offset.toString());

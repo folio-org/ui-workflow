@@ -9,7 +9,7 @@ import { ITEMS_VISIBLE_COLUMNS, CURRENT_PAGE_OFFSET_KEY, PAGINATION_AMOUNT } fro
 import { IListProperties } from '../../interfaces';
 import { useLists, usePrevious } from '../../hooks';
 
-export const ListTable: FC<IListProperties> = ({ activeFilters, setTotalRecords = noop }) => {
+export const ListTable: FC<IListProperties> = ({ path, activeFilters, setTotalRecords = noop }) => {
   const [storedCurrentPageOffset] = useLocalStorage<number>(CURRENT_PAGE_OFFSET_KEY, 0);
   const [recordIds, setRecordIds] = useState<string[]>([]);
 
@@ -37,7 +37,7 @@ export const ListTable: FC<IListProperties> = ({ activeFilters, setTotalRecords 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeFilters]);
 
-  const { listsData, isLoading } = useLists({ filters: activeFilters, size: pagination?.limit, offset: pagination?.offset });
+  const { listsData, isLoading } = useLists(path, { query: "", filters: activeFilters, size: pagination?.limit, offset: pagination?.offset });
 
   useEffect(() => {
     if (listsData?.content?.length) {

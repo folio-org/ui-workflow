@@ -23,3 +23,8 @@ export const DEFAULT_FILTERS: stringMap = {
   'create': {
   },
 };
+
+export const PATH: stringMap = {
+  'browse': 'workflow/search',
+  'create': 'workflow/create'
+};

@@ -7,7 +7,7 @@ import { noop } from 'lodash';
 
 import { FilterMenu, FilterPane, ListTable, WorkflowIcon } from '../../components';
 import { getFilters } from '../../hooks';
-import { DEFAULT_FILTERS, FILTER_APPLIED_KEY, VIEW } from '../../constants';
+import { DEFAULT_FILTERS, FILTER_APPLIED_KEY, PATH, VIEW } from '../../constants';
 import { IView } from '../../interfaces';
 import { t } from '../../utilities';
 
@@ -23,7 +23,7 @@ export const BrowseView: FunctionComponent<IView> = (props: any) => {
       <Paneset>
         <FilterPane view={VIEW.BROWSE} />
         <Pane defaultWidth="fill" paneTitle={ t('title.workflowList') } appIcon={<WorkflowIcon />} firstMenu={<FilterMenu />} lastMenu={actionMenu}>
-          <ListTable activeFilters={activeFilters} setTotalRecords={setTotalRecords} />
+          <ListTable path={PATH[VIEW.BROWSE]} activeFilters={activeFilters} setTotalRecords={setTotalRecords} />
         </Pane>
       </Paneset>
     </ErrorBoundary>
