@@ -6,6 +6,6 @@ export const listTableResultFormatter: Record<string, (item: IItemRecord) => any
   [ITEM_COLUMNS_NAME.ID]: (item) => { item.id },
   [ITEM_COLUMNS_NAME.NAME]: (item) => { item.name },
   [ITEM_COLUMNS_NAME.DESCRIPTION]: (item) => { item.description },
-  [ITEM_COLUMNS_NAME.VERSION]: (item) => { item.version },
+  [ITEM_COLUMNS_NAME.VERSIONTAG]: (item) => { item.versionTag },
   [ITEM_COLUMNS_NAME.ACTIVE]: (item) => { t(item.active ? 'workflows.item.active' : 'workflows.item.inactive') }
 };

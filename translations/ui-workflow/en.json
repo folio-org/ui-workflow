@@ -16,5 +16,5 @@
   "workflows.item.inactive": "Inactive",
   "workflows.item.item": "Item",
   "workflows.item.name": "Name",
-  "workflows.item.version": "version"
+  "workflows.item.versionTag": "Version"
 }

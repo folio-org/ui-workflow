@@ -8,7 +8,7 @@ export const ITEM_COLUMNS_NAME = {
   ID: 'id',
   NAME: 'name',
   DESCRIPTION: 'description',
-  VERSION: 'version',
+  VERSIONTAG: 'versionTag',
   ACTIVE: 'active',
 };
 
