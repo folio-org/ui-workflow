@@ -37,7 +37,7 @@ export const ListTable: FC<IListProperties> = ({ path, activeFilters, setTotalRe
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeFilters]);
 
-  const { listsData, isLoading } = useLists(path, { query: "", filters: activeFilters, size: pagination?.limit, offset: pagination?.offset });
+  const { listsData, isLoading } = useLists(path, { query: "", limit: pagination?.limit, offset: pagination?.offset });
 
   useEffect(() => {
     if (listsData?.content?.length) {
