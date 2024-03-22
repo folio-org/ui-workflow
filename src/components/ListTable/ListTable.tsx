@@ -9,7 +9,7 @@ import { ITEMS_VISIBLE_COLUMNS, CURRENT_PAGE_OFFSET_KEY, PAGINATION_AMOUNT } fro
 import { IListProperties } from '../../interfaces';
 import { useLists, usePrevious } from '../../hooks';
 
-export const ListTable: FC<IListProperties> = ({ activeFilters, setTotalRecords = noop }) => {
+export const ListTable: FC<IListProperties> = ({ path, activeFilters, setTotalRecords = noop }) => {
   const [storedCurrentPageOffset] = useLocalStorage<number>(CURRENT_PAGE_OFFSET_KEY, 0);
   const [recordIds, setRecordIds] = useState<string[]>([]);
 
@@ -37,11 +37,11 @@ export const ListTable: FC<IListProperties> = ({ activeFilters, setTotalRecords 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeFilters]);
 
-  const { listsData, isLoading } = useLists({ filters: activeFilters, size: pagination?.limit, offset: pagination?.offset });
+  const { listsData, isLoading } = useLists(path, { query: "", limit: pagination?.limit, offset: pagination?.offset });
 
   useEffect(() => {
-    if (listsData?.content?.length) {
-      setRecordIds(listsData?.content.map(({ id }) => id));
+    if (listsData?.workflows) {
+      setRecordIds(listsData?.workflows.map(({ id }) => id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [listsData]);
@@ -54,8 +54,9 @@ export const ListTable: FC<IListProperties> = ({ activeFilters, setTotalRecords 
     );
   }
 
-  const { totalRecords = 0, totalPages } = listsData ?? {};
-  let { content } = listsData ?? {};
+  const { totalRecords = 0 } = listsData ?? {};
+  const { workflows } = listsData ?? {};
+  const totalPages = 1;
 
   setTotalRecords(totalRecords);
 
@@ -63,7 +64,7 @@ export const ListTable: FC<IListProperties> = ({ activeFilters, setTotalRecords 
     <>
       <MultiColumnList
         interactive
-        contentData={content}
+        contentData={workflows}
         visibleColumns={ITEMS_VISIBLE_COLUMNS}
         formatter={listTableResultFormatter}
         pagingType={null}
