@@ -40,8 +40,8 @@ export const ListTable: FC<IListProperties> = ({ path, activeFilters, setTotalRe
   const { listsData, isLoading } = useLists(path, { query: "", limit: pagination?.limit, offset: pagination?.offset });
 
   useEffect(() => {
-    if (listsData?.content?.length) {
-      setRecordIds(listsData?.content.map(({ id }) => id));
+    if (listsData?.workflows) {
+      setRecordIds(listsData?.workflows.map(({ id }) => id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [listsData]);
@@ -54,8 +54,9 @@ export const ListTable: FC<IListProperties> = ({ path, activeFilters, setTotalRe
     );
   }
 
-  const { totalRecords = 0, totalPages } = listsData ?? {};
-  let { content } = listsData ?? {};
+  const { totalRecords = 0 } = listsData ?? {};
+  const { workflows } = listsData ?? {};
+  const totalPages = 1;
 
   setTotalRecords(totalRecords);
 
@@ -63,7 +64,7 @@ export const ListTable: FC<IListProperties> = ({ path, activeFilters, setTotalRe
     <>
       <MultiColumnList
         interactive
-        contentData={content}
+        contentData={workflows}
         visibleColumns={ITEMS_VISIBLE_COLUMNS}
         formatter={listTableResultFormatter}
         pagingType={null}
