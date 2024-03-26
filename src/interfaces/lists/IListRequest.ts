@@ -1,6 +1,5 @@
 export interface IListRequest {
-  filters?: Array<string>,
-  idsToTrack?: Array<string>,
-  size?: number,
+  query?: string,
+  limit?: number,
   offset?: number
 }

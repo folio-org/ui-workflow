@@ -2,6 +2,6 @@ export interface IItemRecord {
   id: string;
   name: string;
   description: string;
-  version: number;
+  versionTag: string;
   active: boolean;
 }
