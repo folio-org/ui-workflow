@@ -16,5 +16,5 @@
     "workflows.item.inactive": "Neaktivní",
     "workflows.item.item": "Jednotka",
     "workflows.item.name": "Jméno",
-    "workflows.item.version": "verze"
+    "workflows.item.versionTag": "Verze"
 }
