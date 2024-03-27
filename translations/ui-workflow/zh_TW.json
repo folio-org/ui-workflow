@@ -16,5 +16,5 @@
     "workflows.item.inactive": "未啟用",
     "workflows.item.item": "館藏",
     "workflows.item.name": "名稱",
-    "workflows.item.version": "版本"
+    "workflows.item.versionTag": "Version"
 }
