@@ -1,14 +1,16 @@
-import { STATUS_ACTIVE, STATUS_INACTIVE } from '../../constants';
+import { buildBrowseQuery } from '../buildBrowseQuery';
+import { SEARCH_WORKFLOWS_DEFAULT_KEY } from '../../constants';
+import { IListRequest, ISearchState } from '../../interfaces';
 
-export const buildListUrl = (url: string, request?: any) => {
-  const { query, limit, offset } = request || {};
-  const params = new URLSearchParams();
+export const buildListUrl = (url: any, request: IListRequest) => {
+  if (!url || url == "" || !request.filtersConfig) return "";
 
-  if (typeof query == 'string') params.append('query', query);
-  if (offset) params.append('offset', offset.toString());
-  if (limit) params.append('limit', limit.toString());
+  const { filters = [], search = { key: SEARCH_WORKFLOWS_DEFAULT_KEY, value: "" }, limit = 10, offset = 0 } = request || {};
 
-  const paramString = params.toString();
+  const params: string[] = [];
+  params.push('query=' + buildBrowseQuery(filters, request.filtersConfig, search));
+  params.push('offset=' + offset.toString());
+  params.push('limit=' + limit.toString());
 
-  return paramString ? url + `?${paramString}` : url;
+  return params.length > 0 ? url + '?' + params.join('&') : url;
 }

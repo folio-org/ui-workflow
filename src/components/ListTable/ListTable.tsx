@@ -1,76 +1,63 @@
-import React, { FC, useEffect, useState } from 'react';
 import { isEqual, noop } from 'lodash';
+import React from 'react';
 import { useLocalStorage, writeStorage } from '@rehooks/local-storage';
-import { Loading, MultiColumnList, Row } from '@folio/stripes/components';
+import { Loading, LoadingPane, MultiColumnList, Row } from '@folio/stripes/components';
 import { PrevNextPagination, usePagination } from '@folio/stripes-acq-components';
 
 import { listTableMapping, listTableResultFormatter } from './helpers';
-import { ITEMS_VISIBLE_COLUMNS, CURRENT_PAGE_OFFSET_KEY, PAGINATION_AMOUNT } from '../../constants';
-import { IListProperties } from '../../interfaces';
-import { useLists, usePrevious } from '../../hooks';
+import { ITEMS_VISIBLE_COLUMNS, ITEMS_COLUMN_WIDTHS, CURRENT_PAGE_OFFSET_KEY, PATH, VIEW } from '../../constants';
+import { usePrevious } from '../../hooks';
+import { IListProperties, IItemRecord } from '../../interfaces';
 
-export const ListTable: FC<IListProperties> = ({ path, activeFilters, setTotalRecords = noop }) => {
-  const [storedCurrentPageOffset] = useLocalStorage<number>(CURRENT_PAGE_OFFSET_KEY, 0);
-  const [recordIds, setRecordIds] = useState<string[]>([]);
-
-  const { changePage, pagination } = usePagination({
-    limit: PAGINATION_AMOUNT,
-    offset: storedCurrentPageOffset,
-  });
+export const ListTable: React.FC<IListProperties> = ({ view, data, isLoading, limit, offset, readFilters }) => {
+  const { changePage, pagination } = usePagination({ limit, offset });
 
   const onNeedMoreData = (thePagination: any) => {
     writeStorage(CURRENT_PAGE_OFFSET_KEY, thePagination.offset);
-    // @ts-ignore:next-line
     changePage(thePagination);
-    setRecordIds([]);
   };
 
-  const prevActiveFilters = usePrevious(activeFilters);
+  const prevFilters = usePrevious(readFilters);
 
-  useEffect(() => {
-    if (prevActiveFilters && !isEqual(prevActiveFilters, activeFilters)) {
+  React.useEffect(() => {
+    if (prevFilters && !isEqual(prevFilters, readFilters)) {
       writeStorage(CURRENT_PAGE_OFFSET_KEY, 0);
-      // @ts-ignore:next-line
-      changePage({ offset: 0, limit: PAGINATION_AMOUNT });
-      setRecordIds([]);
+      changePage({ offset: 0, limit });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeFilters]);
+  }, [ prevFilters, readFilters ]);
 
-  const { listsData, isLoading } = useLists(path, { query: "", limit: pagination?.limit, offset: pagination?.offset });
+  const [ page, setPage ] = React.useState(0);
+  const [ totalPages, setTotalPages ] = React.useState(0);
+  const [ totalRecords, setTotalRecords ] = React.useState(0);
+  const [ contentData, setContentData ] = React.useState(data);
 
-  useEffect(() => {
-    if (listsData?.workflows) {
-      setRecordIds(listsData?.workflows.map(({ id }) => id));
+  React.useEffect(() => {
+    if (isLoading) return;
+
+    if (data?.workflows) {
+      setTotalRecords(data?.totalRecords ?? 0);
+      setPage((totalRecords > limit && offset > 0 && limit > 0) ? Math.floor(offset / limit) : 0);
+      setTotalPages(totalRecords > limit && limit > 0
+        ? Math.floor(totalRecords / limit) + (totalRecords % limit ? 1 : 0)
+        : 1
+      );
+
+      setContentData(data.workflows);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [listsData]);
+  }, [ data ]);
 
-  if (isLoading) {
-    return (
-      <Row center="xs">
-        <Loading size="large" />
-      </Row>
-    );
-  }
-
-  const { totalRecords = 0 } = listsData ?? {};
-  const { workflows } = listsData ?? {};
-  const totalPages = 1;
-
-  setTotalRecords(totalRecords);
+  if (isLoading) return <LoadingPane />;
 
   return (
     <>
       <MultiColumnList
         interactive
-        contentData={workflows}
+        contentData={contentData}
+        columnWidths={ITEMS_COLUMN_WIDTHS}
         visibleColumns={ITEMS_VISIBLE_COLUMNS}
-        formatter={listTableResultFormatter}
-        pagingType={null}
         pageAmount={totalPages}
         totalCount={totalRecords}
-        onNeedMoreData={onNeedMoreData}
+        formatter={listTableResultFormatter}
         columnMapping={listTableMapping}
       />
       <PrevNextPagination

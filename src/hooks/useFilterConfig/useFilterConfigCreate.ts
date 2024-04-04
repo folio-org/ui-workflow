@@ -1,14 +1,18 @@
-import { useLists } from '../useLists';
-import { t } from '../../utilities';
+import { IFilterConfig } from '../../interfaces';
 
-export const useFilterConfigCreate = () => {
-  const { listsData = [], isLoading }: any = useLists("");
-
-  const filterConfig: any[] = [
+export const useFilterConfigCreate = (): IFilterConfig => {
+  const filters: any[] = [
   ];
 
+  const searchIndexes: any[] = [
+  ];
+
+  const searchSettings = {
+  };
+
   return {
-    filterConfig,
-    isLoadingConfigData: isLoading
+    filters,
+    searchIndexes,
+    searchSettings,
   };
 };

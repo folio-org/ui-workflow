@@ -1,5 +1,8 @@
 export interface IListProperties {
-  path: string,
-  activeFilters: string[],
-  setTotalRecords: (totalRecords: number) => void
+  view?: any;
+  data?: any;
+  isLoading?: boolean;
+  limit?: number;
+  offset?: number;
+  readFilters?: string[];
 }

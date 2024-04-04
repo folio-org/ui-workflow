@@ -35,7 +35,8 @@
     "@formatjs/cli": "^4.2.29",
     "@jest/globals": "^26.6.2",
     "@testing-library/jest-dom": "^6.2.0",
-    "@testing-library/react": "^14.1.2",
+    "@testing-library/react": "^14.2.2",
+    "@testing-library/react-hooks": "^8.0.1",
     "@types/jest": "^29.5.11",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.11.5",
@@ -114,6 +115,14 @@
           "settings.enabled"
         ],
         "visible": false
+      },
+      {
+        "permissionName": "settings.workflow.configure",
+        "displayName": "Settings (workflow): Make changes to the workflow settings.",
+        "subPermissions": [
+          "settings.enabled"
+        ],
+        "visible": true
       },
       {
         "permissionName": "ui-workflow.all",
