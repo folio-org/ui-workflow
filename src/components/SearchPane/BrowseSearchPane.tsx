@@ -17,6 +17,11 @@ export const BrowseSearchPane: React.FC<IListProperties> = ({ data, isLoading, l
     return filters.isDefaultState() && search.isDefaultState();
   };
 
+  const onSearchSubmit = (e: any) => {
+    e?.preventDefault();
+    search.onSubmit();
+  };
+
   const [ isDefaultState, setIsDefaultState ] = React.useState(getDefaultState());
 
   const onResetAll = () => {
@@ -46,7 +51,7 @@ export const BrowseSearchPane: React.FC<IListProperties> = ({ data, isLoading, l
           />
         )}
       </FormattedMessage>
-      <Button buttonStyle="primary" fullWidth id="clickable-search-workflow" type="button" onClick={search.onSubmit}>
+      <Button buttonStyle="primary" fullWidth id="clickable-search-workflow" type="submit" onClick={onSearchSubmit}>
         <FormattedMessage id="stripes-smart-components.search" />
       </Button>
       <div className={css.resetButtonWrap}>
