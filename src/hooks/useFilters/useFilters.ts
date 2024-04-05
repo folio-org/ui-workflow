@@ -6,13 +6,16 @@ import { FilterGroupsConfig, FilterGroupsState } from '@folio/stripes/components
 import { getFilters } from './helpers';
 import { DEFAULT_FILTERS, FILTER_APPLIED_KEY } from '../../constants';
 
-export const useFilters = (filterConfig: FilterGroupsConfig, view: string) => {
+export const useFilters = (view: string) => {
   const defaultFilterConfig = DEFAULT_FILTERS[view];
-
   const [storedAppliedFilters] = useLocalStorage<FilterGroupsState>(FILTER_APPLIED_KEY[view], DEFAULT_FILTERS[view]);
   const [appliedFilters, setAppliedFilters] = useState<FilterGroupsState>(storedAppliedFilters);
   const activeFilters = getFilters(appliedFilters);
   const filterCount = activeFilters?.length;
+
+  const isDefaultState = (): boolean => {
+    return isEqual(defaultFilterConfig, appliedFilters);
+  };
 
   const saveFilters = (filters: FilterGroupsState) => {
     setAppliedFilters(filters);
@@ -48,8 +51,6 @@ export const useFilters = (filterConfig: FilterGroupsConfig, view: string) => {
     saveFilters(filters);
   };
 
-  const isDefaultState = isEqual(defaultFilterConfig, appliedFilters);
-
   return {
     onChangeFilter,
     onClearGroup,
@@ -57,6 +58,6 @@ export const useFilters = (filterConfig: FilterGroupsConfig, view: string) => {
     filterCount,
     activeFilters,
     appliedFilters,
-    isDefaultState
+    isDefaultState,
   };
 };
