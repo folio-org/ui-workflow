@@ -9,7 +9,7 @@ import { Button, Layout, Pane, TextField } from '@folio/stripes/components';
 export const WorkflowsSettingsForm = (props: any) => {
   const stripes = useStripes();
   const handleSubmit: any = props?.handleSubmit;
-  const label: string = props?.label ? props.label : "Workflows??";
+  const label: string = props?.label;
   const pristine: boolean = props?.pristine ? props.pristine : true;
   const submitting: boolean = props?.submitting ? props.submitting : false;
 
