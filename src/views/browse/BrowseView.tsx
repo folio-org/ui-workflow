@@ -4,7 +4,7 @@ import { useLocalStorage } from '@rehooks/local-storage';
 import { Button, ErrorBoundary, Pane, Paneset, FilterPaneSearch } from '@folio/stripes/components';
 import { noop } from 'lodash';
 
-import { DetailsPane, FilterMenu, FilterPane, ListTable, WorkflowIcon } from '../../components';
+import { FilterMenu, FilterPane, ListTable, WorkflowIcon } from '../../components';
 import { getFilters, useFilterConfig, useLists } from '../../hooks';
 import { CURRENT_PAGE_OFFSET_KEY, DEFAULT_FILTERS, FILTER_APPLIED_KEY, PAGINATION_AMOUNT, PATH, SEARCH_WORKFLOWS_DEFAULT_KEY, SEARCH_WORKFLOWS_VALUE_KEY, VIEW } from '../../constants';
 import { ISearchState, IView } from '../../interfaces';

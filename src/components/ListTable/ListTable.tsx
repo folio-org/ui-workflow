@@ -8,7 +8,7 @@ import { listTableMapping, listTableResultFormatter } from './helpers';
 import { ITEMS_VISIBLE_COLUMNS, ITEMS_COLUMN_WIDTHS, CURRENT_PAGE_OFFSET_KEY, PATH, VIEW } from '../../constants';
 import { usePrevious } from '../../hooks';
 import { IListProperties, IItemRecord } from '../../interfaces';
-import { DetailsPane } from '../DetailsPane';
+import { ItemRecordDetailPane } from '../ItemRecordDetailPane';
 
 export const ListTable: React.FC<IListProperties> = ({ view, data, isLoading, limit, offset, readFilters }) => {
   const { changePage, pagination } = usePagination({ limit, offset });
@@ -17,10 +17,11 @@ export const ListTable: React.FC<IListProperties> = ({ view, data, isLoading, li
     writeStorage(CURRENT_PAGE_OFFSET_KEY, thePagination.offset);
     changePage(thePagination);
   };
-
+  const [selectedItem, setSelectedItem] = React.useState<IItemRecord>(null);
   const onRowClick = (e: any , itemRecord: IItemRecord ) => {
     e?.preventDefault();
     console.log('ROW CLICKED', itemRecord);
+    setSelectedItem(itemRecord);
   };
 
   const prevFilters = usePrevious(readFilters);
@@ -36,14 +37,6 @@ export const ListTable: React.FC<IListProperties> = ({ view, data, isLoading, li
   const [ totalPages, setTotalPages ] = React.useState(0);
   const [ totalRecords, setTotalRecords ] = React.useState(0);
   const [ contentData, setContentData ] = React.useState(data);
-
-
-  const [closePane, setClosePane] = React.useState(false);
-
-  const togglePane = () => {
-    setClosePane(curShowFilter => !curShowFilter);
-    console.log('HERE in toggle', closePane);
-  };
 
 
   React.useEffect(() => {
@@ -81,8 +74,7 @@ export const ListTable: React.FC<IListProperties> = ({ view, data, isLoading, li
         totalCount={totalRecords}
         onChange={onNeedMoreData}
       />
-      <DetailsPane
-      />
+      <ItemRecordDetailPane selectedItem={selectedItem} />
     </>
   );
 };
