@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { IItemRecordDetail } from '../../interfaces';
 export const useDetailPaneSelect = (path: any) => {
   const [selectedItem, setSelectedItem] = React.useState();
   const [showDetail, setShowDetail] = React.useState(true);

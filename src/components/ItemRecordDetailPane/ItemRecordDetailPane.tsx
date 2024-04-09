@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Card, ErrorBoundary, Pane } from '@folio/stripes/components';
 import { IItemRecordDetailPane } from '../../interfaces';
+import { IWorkflowNodes } from '../../interfaces';
 import { noop } from 'lodash';
 
 import { t } from '../../utilities';
@@ -13,6 +14,7 @@ export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ detailPa
   if (!selectedItem) {
     return <div>No item selected</div>;
   }
+  const workflowNodes = selectedItem?.nodes;
 
   if (!showDetail) {
     return null;
@@ -32,21 +34,17 @@ export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ detailPa
       >
         <p>ID: {selectedItem?.id}</p>
         <p>Name: {selectedItem?.name}</p>
-        <p>description: {selectedItem?.description}</p>
+        <p>Description: {selectedItem?.description}</p>
         <p>Active: {selectedItem?.active ? 'Yes' : 'No'}</p>
         <p>History Time To Live: {selectedItem?.historyTimeToLive}</p>
         <p>Deployment ID: {selectedItem?.deploymentId}</p>
-        {/* <ul>
-          {selectedItem?.nodes && selectedItem?.nodes.length > 0 ? (
-            selectedItem?.nodes.map(node => (
-              <li key={node.id}>
-                <strong>{node.name}</strong> - {node.description}
-              </li>
-            ))
-          )}
-        </ul> */}
         <p>Version Tag: {selectedItem?.versionTag}</p>
         <p>Set up:</p>
+      </Card>
+      <Card>
+        {selectedItem?.nodes.map((item: IWorkflowNodes) => (
+          <><p>ID: {item?.id}</p><p>Async Before: {item?.asyncBefore}</p><p>Description: {item?.description}</p><p>DeserializeAs: {item?.deserializeAs}</p><p>Id: {item?.id}</p><p>Identifier: {item?.identifier}</p><p>Name: {item?.name}</p><p>Type: {item?.type}</p></>
+        ))}
       </Card>
     </Pane>
   );
