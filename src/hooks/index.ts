@@ -1,3 +1,4 @@
+export * from './useDetailPaneSelect';
 export * from './useFilterConfig';
 export * from './useFilters';
 export * from './useLocalStorageToggle';

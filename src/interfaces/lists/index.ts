@@ -1,3 +1,5 @@
+export * from './IItemRecordDetail';
+export * from './IItemRecordDetailPane';
 export * from './IListProperties'
 export * from './IListRequest'
 export * from './IListResponse'
