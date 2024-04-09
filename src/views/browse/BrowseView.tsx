@@ -27,18 +27,6 @@ export const BrowseView: FunctionComponent<IView> = (props: any) => {
 
   const actionMenu = <Button bottomMargin0 buttonStyle="primary" onClick={noop}>{ t('button.actions') }</Button>;
 
-
-  // const [showChildComponent, setShowChildComponent] = useState(false);
-
-  // const handleOnRowClick = () => {
-  //   setShowDetailPane(true); // Set showChildComponent state to true when row is clicked
-  // };
-
-
-  // React.useEffect(() => {
-  //   setShowDetailPane(!!selectedItem);
-  // }, [selectedItem]);
-
   return (
     <ErrorBoundary>
       <Paneset>

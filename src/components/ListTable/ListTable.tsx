@@ -31,15 +31,6 @@ export const ListTable: React.FC<IListProperties> = ({ view, data, isLoading, li
   const [ totalRecords, setTotalRecords ] = React.useState(0);
   const [ contentData, setContentData ] = React.useState(data);
   const [showDetailPane, setShowDetailPane] = React.useState(true);
-  // const [showChildComponent, setShowChildComponent] = useState(false);
-
-  // const handleOnRowClick = () => {
-  //   setShowDetailPane(true); // Set showChildComponent state to true when row is clicked
-  // };
-
-
-
-
 
   React.useEffect(() => {
     if (isLoading) return;
