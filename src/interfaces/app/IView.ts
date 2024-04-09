@@ -1,3 +1,4 @@
 export interface IView {
-  view?: string
+  view?: string;
+  onRowClick?: (e: any, obj: any) => void;
 }
