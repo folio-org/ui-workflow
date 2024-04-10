@@ -13,7 +13,6 @@ export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ detailPa
   if (!selectedItem) {
     return <div>No item selected</div>;
   }
-  const workflowNodes = selectedItem?.nodes;
 
   if (!showDetail) {
     return null;
@@ -21,46 +20,46 @@ export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ detailPa
 
   return (
     <Pane
-      defaultWidth="fill"
+      defaultWidth='fill'
       dismissible
       lastMenu={actionMenu}
       onClose={onClose}
       paneTitle={selectedItem?.name}
     >
-      <Card
-        headerClass="my-card-header"
-        headerStart={<span className="my-card-header">{selectedItem?.name}</span>}
-      >
-        <AccordionSet>
-          <Accordion label="Details" id={selectedItem?.id}>
-            <section>
-              <p>ID: {selectedItem?.id}</p>
-              <p>Name: {selectedItem?.name}</p>
-              <p>Description: {selectedItem?.description}</p>
-              <p>Active: {selectedItem?.active ? 'Yes' : 'No'}</p>
-              <p>History Time To Live: {selectedItem?.historyTimeToLive}</p>
-              <p>Deployment ID: {selectedItem?.deploymentId}</p>
-              <p>Version Tag: {selectedItem?.versionTag}</p>
-              <p>Set up:</p>
-            </section>
-          </Accordion>
-          <Accordion label="Nodes" id="nodes">
-            {selectedItem?.nodes.map((item: IWorkflowNodes) => (
-              <div key={item.id}>
-                <p>ID: {item?.id}</p>
-                <p>Async Before: {item?.asyncBefore}</p>
-                <p>Description: {item?.description}</p>
-                <p>DeserializeAs: {item?.deserializeAs}</p>
-                <p>Id: {item?.id}</p>
-                <p>Identifier: {item?.identifier}</p>
-                <p>Name: {item?.name}</p>
-                <p>Type: {item?.type}</p>
-                <br />
-              </div>
+      <AccordionSet>
+        <Accordion label='Details' id={selectedItem?.id}>
+          <Card headerClass='wf-detail' headerStart=''>
+            <p>ID: {selectedItem?.id}</p>
+            <p>Name: {selectedItem?.name}</p>
+            <p>Description: {selectedItem?.description}</p>
+            <p>Active: {selectedItem?.active ? 'Yes' : 'No'}</p>
+            <p>History Time To Live: {selectedItem?.historyTimeToLive}</p>
+            <p>Deployment ID: {selectedItem?.deploymentId}</p>
+            <p>Version Tag: {selectedItem?.versionTag}</p>
+            <p>Set up:
+            {Object.entries(selectedItem?.setup).map(([key, value]) => (
+                <div key={key}>
+                <span>{key}: </span>
+                <span> {value ? 'true' : 'false'}</span>
+                </div>
             ))}
-          </Accordion>
-        </AccordionSet>
-      </Card>
+            </p>
+          </Card>
+        </Accordion>
+        <Accordion  id='nodes' label='Nodes'>
+          {selectedItem?.nodes.map((item: IWorkflowNodes) => (
+          <Card headerClass='node-detail' headerStart={item?.name} key={item.id}>
+            <p>ID: {item?.id}</p>
+            <p>Async Before: {item?.asyncBefore}</p>
+            <p>Description: {item?.description}</p>
+            <p>DeserializeAs: {item?.deserializeAs}</p>
+            <p>Identifier: {item?.identifier}</p>
+            <p>Name: {item?.name}</p>
+            <p>Type: {item?.type}</p>
+          </Card>
+          ))}
+        </Accordion>
+      </AccordionSet>
     </Pane>
   );
 };
