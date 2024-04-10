@@ -1,1 +1,1 @@
-export * from './useDetailPaneSelect';
+export * from './useDetailPaneSelect'
