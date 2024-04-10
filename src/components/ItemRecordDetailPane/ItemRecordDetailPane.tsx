@@ -38,10 +38,10 @@ export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ detailPa
             <p>Version Tag: {selectedItem?.versionTag}</p>
             <p>Set up:
             {Object.entries(selectedItem?.setup).map(([key, value]) => (
-                <div key={key}>
-                <span>{key}: </span>
-                <span> {value ? 'true' : 'false'}</span>
-                </div>
+                <p key={key}>
+                  <span>{key}: </span>
+                  <span> {value ? 'true' : 'false'}</span>
+                </p>
             ))}
             </p>
           </Card>
