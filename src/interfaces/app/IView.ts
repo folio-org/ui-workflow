@@ -1,3 +1,3 @@
 export interface IView {
-  view?: string
+  view?: string;
 }

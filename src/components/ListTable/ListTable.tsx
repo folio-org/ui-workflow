@@ -6,10 +6,10 @@ import { PrevNextPagination, usePagination } from '@folio/stripes-acq-components
 
 import { listTableMapping, listTableResultFormatter } from './helpers';
 import { ITEMS_VISIBLE_COLUMNS, ITEMS_COLUMN_WIDTHS, CURRENT_PAGE_OFFSET_KEY, PATH, VIEW } from '../../constants';
-import { usePrevious } from '../../hooks';
-import { IListProperties, IItemRecord } from '../../interfaces';
+import { useDetailPaneSelect, usePrevious } from '../../hooks';
+import { IItemRecord,  IListProperties } from '../../interfaces';
 
-export const ListTable: React.FC<IListProperties> = ({ view, data, isLoading, limit, offset, readFilters }) => {
+export const ListTable: React.FC<IListProperties> = ({ view, data, isLoading, limit, offset, readFilters, detailPaneSelect }) => {
   const { changePage, pagination } = usePagination({ limit, offset });
 
   const onNeedMoreData = (thePagination: any) => {
@@ -30,6 +30,7 @@ export const ListTable: React.FC<IListProperties> = ({ view, data, isLoading, li
   const [ totalPages, setTotalPages ] = React.useState(0);
   const [ totalRecords, setTotalRecords ] = React.useState(0);
   const [ contentData, setContentData ] = React.useState(data);
+  const [showDetailPane, setShowDetailPane] = React.useState(true);
 
   React.useEffect(() => {
     if (isLoading) return;
@@ -59,6 +60,7 @@ export const ListTable: React.FC<IListProperties> = ({ view, data, isLoading, li
         totalCount={totalRecords}
         formatter={listTableResultFormatter}
         columnMapping={listTableMapping}
+        onRowClick={detailPaneSelect?.onRowClick}
       />
       <PrevNextPagination
         {...pagination}
