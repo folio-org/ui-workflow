@@ -3,8 +3,8 @@ import { FormattedMessage } from 'react-intl';
 import { Accordion, AccordionSet, Button, Card, Col, ErrorBoundary, KeyValue, Layout, MultiColumnList, Pane, Row } from '@folio/stripes/components';
 import { noop } from 'lodash';
 import { node } from 'prop-types';
-import { IItemRecordDetailPane, IWorkflowNodes } from '../../interfaces';
 
+import { IItemRecordDetailPane, IWorkflowNodes } from '../../interfaces';
 import { t } from '../../utilities';
 
 export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ detailPaneSelect }) => {
@@ -137,9 +137,9 @@ export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ detailPa
                 let value = item[key as keyof IWorkflowNodes];
                 value = typeof value === 'object' ? JSON.stringify(value) : value;
                 return (
-                  <Row >
+                  <Row>
                     <Col xs={12}>
-                      <KeyValue label={<FormattedMessage id={keyValueLabelId} />} >
+                      <KeyValue label={<FormattedMessage id={keyValueLabelId} />}>
                       {
                       Boolean(value) && (
                       <>

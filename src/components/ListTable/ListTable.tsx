@@ -7,7 +7,7 @@ import { PrevNextPagination, usePagination } from '@folio/stripes-acq-components
 import { listTableMapping, listTableResultFormatter } from './helpers';
 import { ITEMS_VISIBLE_COLUMNS, ITEMS_COLUMN_WIDTHS, CURRENT_PAGE_OFFSET_KEY, PATH, VIEW } from '../../constants';
 import { useDetailPaneSelect, usePrevious } from '../../hooks';
-import { IItemRecord,  IListProperties } from '../../interfaces';
+import { IItemRecord, IListProperties } from '../../interfaces';
 
 export const ListTable: React.FC<IListProperties> = ({ view, data, isLoading, limit, offset, readFilters, detailPaneSelect }) => {
   const { changePage, pagination } = usePagination({ limit, offset });

@@ -56,7 +56,6 @@ export const BrowseView: FunctionComponent<IView> = (props: any) => {
           />
         </Pane>
         <ItemRecordDetailPane detailPaneSelect={detailPaneSelect} />
-          
       </Paneset>
     </ErrorBoundary>
   );
