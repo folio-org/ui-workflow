@@ -9,6 +9,7 @@ import { t } from '../../utilities';
 
 export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ detailPaneSelect }) => {
   const { selectedItem, showDetail, onRowClick, onClose } = detailPaneSelect;
+
   const actionMenu = <Button bottomMargin0 buttonStyle="primary" onClick={noop}>{ t('button.actions') }</Button>;
 
   if (!selectedItem) {
@@ -37,12 +38,12 @@ export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ detailPa
               <Col xs={12}>
                 <KeyValue label={<FormattedMessage id="ui-workflow.workflows.detail.item.name" />}>
                   {
-                Boolean(selectedItem?.name) && (
-                  <>
-                    {selectedItem?.name}
-                  </>
-                )
-              }
+                    Boolean(selectedItem?.name) && (
+                    <>
+                      {selectedItem?.name}
+                    </>
+                    )
+                  }
                 </KeyValue>
               </Col>
             </Row>
@@ -50,55 +51,63 @@ export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ detailPa
               <Col xs={12}>
                 <KeyValue label={<FormattedMessage id="ui-workflow.workflows.detail.item.description" />}>
                   {
-                Boolean(selectedItem?.description) && (
-                  <>
-                    {selectedItem?.description}
-                  </>
-                )
-              }
+                    Boolean(selectedItem?.description) && (
+                    <>
+                      {selectedItem?.description}
+                    </>
+                    )
+                  }
                 </KeyValue>
               </Col>
             </Row>
             <Row>
               <Col xs={6}>
                 <KeyValue label={<FormattedMessage id="ui-workflow.workflows.detail.item.id" />}>
-                  { Boolean(selectedItem?.id) && (
-                  <>
-                    {selectedItem?.id}
-                  </>
-                  )}
+                  {
+                    Boolean(selectedItem?.id) && (
+                    <>
+                      {selectedItem?.id}
+                    </>
+                    )
+                  }
                 </KeyValue>
               </Col>
               <Col xs={6}>
                 <KeyValue label={<FormattedMessage id="ui-workflow.workflows.detail.item.active" />}>
-                  { Boolean(selectedItem?.active) && (
-                  <>
-                    { selectedItem?.active ?
-                      <FormattedMessage id="ui-workflow.workflows.detail.item.active.true" /> :
-                      <FormattedMessage id="ui-workflow.workflows.detail.item.active.false" />
-                    }
-                  </>
-                  )}
+                  {
+                    Boolean(selectedItem?.active) && (
+                    <>
+                      { selectedItem?.active ?
+                        <FormattedMessage id="ui-workflow.workflows.detail.item.active.true" /> :
+                        <FormattedMessage id="ui-workflow.workflows.detail.item.active.false" />
+                      }
+                    </>
+                    )
+                  }
                 </KeyValue>
               </Col>
             </Row>
             <Row>
               <Col xs={6}>
                 <KeyValue label={<FormattedMessage id="ui-workflow.workflows.detail.item.deployment-id" />}>
-                  { Boolean(selectedItem?.deploymentId) && (
-                  <>
-                    { selectedItem?.deploymentId }
-                  </>
-                  )}
+                  {
+                    Boolean(selectedItem?.deploymentId) && (
+                    <>
+                      { selectedItem?.deploymentId }
+                    </>
+                    )
+                  }
                 </KeyValue>
               </Col>
               <Col xs={6}>
                 <KeyValue label={<FormattedMessage id="ui-workflow.workflows.detail.item.history-time-to-live" />}>
-                  { Boolean(selectedItem?.historyTimeToLive) && (
-                  <>
-                    { selectedItem?.historyTimeToLive }
-                  </>
-                  )}
+                  {
+                    Boolean(selectedItem?.historyTimeToLive) && (
+                    <>
+                      { selectedItem?.historyTimeToLive }
+                    </>
+                    )
+                  }
                 </KeyValue>
               </Col>
             </Row>
@@ -107,21 +116,23 @@ export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ detailPa
                 <KeyValue label={<FormattedMessage id="ui-workflow.workflows.detail.item.set-up" />}>
                   {
                     Object.entries(selectedItem?.setup).map(([k, v]) => (
-                    <p key={k}>
-                      <span>{k}: </span>
-                      <span> {v ? 'true' : 'false'}</span>
-                    </p>
-                  ))
-                }
+                      <p key={k}>
+                        <span>{k}: </span>
+                        <span> {v ? 'true' : 'false'}</span>
+                      </p>
+                    ))
+                  }
                 </KeyValue>
               </Col>
               <Col xs={3}>
                 <KeyValue label={<FormattedMessage id="ui-workflow.workflows.detail.item.version-tag" />}>
-                  { Boolean(selectedItem?.versionTag) && (
-                  <>
-                    { selectedItem?.versionTag }
-                  </>
-                  )}
+                  {
+                    Boolean(selectedItem?.versionTag) && (
+                    <>
+                      { selectedItem?.versionTag }
+                    </>
+                    )
+                  }
                 </KeyValue>
               </Col>
             </Row>
@@ -130,30 +141,11 @@ export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ detailPa
             id="nodes"
             label={<FormattedMessage id="ui-workflow.workflows.detail.item.nodes.label-name" />}
           >
-          {selectedItem?.nodes.map((item: IWorkflowNodes) => (
-            <Card headerClass="node-detail" headerStart={item?.name} key={item.id}>
-              {Object.keys(item).map((key: string) => {
-                let keyValueLabelId = "ui-workflow.workflows.detail.item.nodes."+key;
-                let value = item[key as keyof IWorkflowNodes];
-                value = typeof value === 'object' ? JSON.stringify(value) : value;
-                return (
-                  <Row>
-                    <Col xs={12}>
-                      <KeyValue label={<FormattedMessage id={keyValueLabelId} />}>
-                      {
-                      Boolean(value) && (
-                      <>
-                        {value}
-                      </>
-                      )
-                      }
-                      </KeyValue>
-                    </Col>
-                  </Row>
-                )
-              })}
-            </Card>
-          ))}
+            {selectedItem?.nodes.map((item: any) => (
+              <Card headerClass="node-detail" headerStart={item?.name} key={item.id}>
+                <></>
+              </Card>
+            ))}
           </Accordion>
         </AccordionSet>
       </Pane>

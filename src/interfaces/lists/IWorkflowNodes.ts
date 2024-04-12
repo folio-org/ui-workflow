@@ -9,5 +9,5 @@ export interface IWorkflowNodes {
   type?: string;
   interrupting?: boolean;
   _links?: Object;
-  page: Object;
+  page?: Object;
 }
