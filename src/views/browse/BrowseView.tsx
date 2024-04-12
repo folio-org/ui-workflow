@@ -1,14 +1,16 @@
-import type { FunctionComponent } from 'react';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import type { FunctionComponent, useState } from 'react';
 import React from 'react';
 import { useLocalStorage } from '@rehooks/local-storage';
-import { Button, ErrorBoundary, Pane, Paneset, FilterPaneSearch } from '@folio/stripes/components';
+import { Button, ErrorBoundary, Pane, Paneset, FilterPaneSearch, PaneHeader } from '@folio/stripes/components';
 import { noop } from 'lodash';
 
 import { FilterMenu, FilterPane, ListTable, WorkflowIcon } from '../../components';
-import { getFilters, useFilterConfig, useLists } from '../../hooks';
+import { getFilters, useDetailPaneSelect, useFilterConfig, useLists } from '../../hooks';
 import { CURRENT_PAGE_OFFSET_KEY, DEFAULT_FILTERS, FILTER_APPLIED_KEY, PAGINATION_AMOUNT, PATH, SEARCH_WORKFLOWS_DEFAULT_KEY, SEARCH_WORKFLOWS_VALUE_KEY, VIEW } from '../../constants';
-import { ISearchState, IView } from '../../interfaces';
+import { ISearchState, IItemRecord, IView, IItemRecordDetail } from '../../interfaces';
 import { t } from '../../utilities';
+import { ItemRecordDetailPane } from '../../components/ItemRecordDetailPane';
 
 export const BrowseView: FunctionComponent<IView> = (props: any) => {
   const [ storedCurrentPageOffset ] = useLocalStorage<number>(CURRENT_PAGE_OFFSET_KEY, 0);
@@ -21,6 +23,7 @@ export const BrowseView: FunctionComponent<IView> = (props: any) => {
   const search = (typeof readSearch == "object") ? readSearch : { key: SEARCH_WORKFLOWS_DEFAULT_KEY, value: "" };
 
   const { data, isLoading } = useLists(PATH[VIEW.BROWSE], { filters, filtersConfig, search, limit, offset });
+  const detailPaneSelect: IItemRecordDetail = useDetailPaneSelect(PATH[VIEW.BROWSE]);
 
   const actionMenu = <Button bottomMargin0 buttonStyle="primary" onClick={noop}>{ t('button.actions') }</Button>;
 
@@ -37,7 +40,7 @@ export const BrowseView: FunctionComponent<IView> = (props: any) => {
         />
         <Pane
           defaultWidth="fill"
-          paneTitle={ t('title.workflowList') }
+          paneTitle={t('title.workflowList')}
           appIcon={<WorkflowIcon />}
           firstMenu={<FilterMenu />}
           lastMenu={actionMenu}
@@ -49,8 +52,10 @@ export const BrowseView: FunctionComponent<IView> = (props: any) => {
             limit={limit}
             offset={offset}
             readFilters={filters}
+            detailPaneSelect={detailPaneSelect}
           />
         </Pane>
+        <ItemRecordDetailPane detailPaneSelect={detailPaneSelect} />
       </Paneset>
     </ErrorBoundary>
   );
