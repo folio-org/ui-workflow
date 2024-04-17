@@ -5,21 +5,21 @@ import { POLLING_STATUS_DELAY } from '../../constants';
 import { IListRequest, IListResponse, IItemRecord } from '../../interfaces';
 import { buildListUrl } from '../../utilities';
 
-export const useLists = (path: string, request?: IListRequest) => {
+export const useLists = (path: any, request?: IListRequest) => {
   const ky = useOkapiKy();
   const url = buildListUrl(path, request);
 
   const { data, isLoading, error } = useQuery<IListResponse<IItemRecord[]>, Error>(
     {
       queryKey: [ url ],
-      queryFn: async () => {
-        const response = await ky.get(url);
+      queryFn: () => {
+        if (url == "") return null;
 
-        return response.json();
+        return ky.get(url).then((res) => { return res.json(); });
       },
       refetchOnWindowFocus: false
     },
   );
 
-  return { listsData: data, isLoading, error };
+  return { data, isLoading, error };
 };

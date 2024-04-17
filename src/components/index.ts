@@ -1,4 +1,6 @@
+export * from './ItemRecordDetailPane'
 export * from './FilterMenu'
 export * from './FilterPane'
 export * from './ListTable'
+export * from './SearchPane'
 export * from './WorkflowIcon'

@@ -4,4 +4,5 @@ import { ISort } from './ISort';
 export interface IListResponse<T> {
   workflows: T;
   totalRecords: number;
+  totalPages?: any;
 }

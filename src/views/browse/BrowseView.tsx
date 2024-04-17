@@ -1,30 +1,61 @@
-import type { FunctionComponent } from 'react';
-import React, { useState } from 'react';
-import { useLocalStorage, writeStorage } from '@rehooks/local-storage';
-import { ErrorBoundary } from '@folio/stripes/components';
-import { Pane, Paneset, Button } from '@folio/stripes/components';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import type { FunctionComponent, useState } from 'react';
+import React from 'react';
+import { useLocalStorage } from '@rehooks/local-storage';
+import { Button, ErrorBoundary, Pane, Paneset, FilterPaneSearch, PaneHeader } from '@folio/stripes/components';
 import { noop } from 'lodash';
 
 import { FilterMenu, FilterPane, ListTable, WorkflowIcon } from '../../components';
-import { getFilters } from '../../hooks';
-import { DEFAULT_FILTERS, FILTER_APPLIED_KEY, PATH, VIEW } from '../../constants';
-import { IView } from '../../interfaces';
+import { getFilters, useDetailPaneSelect, useFilterConfig, useLists } from '../../hooks';
+import { CURRENT_PAGE_OFFSET_KEY, DEFAULT_FILTERS, FILTER_APPLIED_KEY, PAGINATION_AMOUNT, PATH, SEARCH_WORKFLOWS_DEFAULT_KEY, SEARCH_WORKFLOWS_VALUE_KEY, VIEW } from '../../constants';
+import { ISearchState, IItemRecord, IView, IItemRecordDetail } from '../../interfaces';
 import { t } from '../../utilities';
+import { ItemRecordDetailPane } from '../../components/ItemRecordDetailPane';
 
 export const BrowseView: FunctionComponent<IView> = (props: any) => {
-  const [totalRecords, setTotalRecords] = useState(0);
-  const [readAppliedFilter, writeAppliedFilter] = useLocalStorage(FILTER_APPLIED_KEY[VIEW.BROWSE], DEFAULT_FILTERS[VIEW.BROWSE]);
-  const activeFilters = getFilters(readAppliedFilter);
+  const [ storedCurrentPageOffset ] = useLocalStorage<number>(CURRENT_PAGE_OFFSET_KEY, 0);
+  const [ readFilter ] = useLocalStorage(FILTER_APPLIED_KEY[VIEW.BROWSE], DEFAULT_FILTERS[VIEW.BROWSE]);
+  const [ readSearch ] = useLocalStorage(SEARCH_WORKFLOWS_VALUE_KEY, SEARCH_WORKFLOWS_DEFAULT_KEY);
+  const limit = PAGINATION_AMOUNT;
+  const offset = (typeof storedCurrentPageOffset == "number") ? storedCurrentPageOffset : 0;
+  const filters = getFilters(readFilter);
+  const filtersConfig = useFilterConfig(VIEW.BROWSE);
+  const search = (typeof readSearch == "object") ? readSearch : { key: SEARCH_WORKFLOWS_DEFAULT_KEY, value: "" };
+
+  const { data, isLoading } = useLists(PATH[VIEW.BROWSE], { filters, filtersConfig, search, limit, offset });
+  const detailPaneSelect: IItemRecordDetail = useDetailPaneSelect(PATH[VIEW.BROWSE]);
 
   const actionMenu = <Button bottomMargin0 buttonStyle="primary" onClick={noop}>{ t('button.actions') }</Button>;
 
   return (
     <ErrorBoundary>
       <Paneset>
-        <FilterPane view={VIEW.BROWSE} />
-        <Pane defaultWidth="fill" paneTitle={ t('title.workflowList') } appIcon={<WorkflowIcon />} firstMenu={<FilterMenu />} lastMenu={actionMenu}>
-          <ListTable path={PATH[VIEW.BROWSE]} activeFilters={activeFilters} setTotalRecords={setTotalRecords} />
+        <FilterPane
+          view={VIEW.BROWSE}
+          data={data}
+          isLoading={isLoading}
+          limit={limit}
+          offset={offset}
+          readFilters={filters}
+        />
+        <Pane
+          defaultWidth="fill"
+          paneTitle={t('title.workflowList')}
+          appIcon={<WorkflowIcon />}
+          firstMenu={<FilterMenu />}
+          lastMenu={actionMenu}
+        >
+          <ListTable
+            view={VIEW.BROWSE}
+            data={data}
+            isLoading={isLoading}
+            limit={limit}
+            offset={offset}
+            readFilters={filters}
+            detailPaneSelect={detailPaneSelect}
+          />
         </Pane>
+        <ItemRecordDetailPane detailPaneSelect={detailPaneSelect} />
       </Paneset>
     </ErrorBoundary>
   );
