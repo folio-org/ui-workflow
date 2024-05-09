@@ -47,7 +47,7 @@
     "workflows.detail.item.nodes.interrupting": "Interrupting",
     "workflows.detail.item.nodes.asyncAfter": "Async After",
     "workflows.detail.item.nodes.asyncBefore": "Async Before",
-    "workflows.detail.item.nodes.identifier": "Identifier",
+    "workflows.detail.item.nodes.identifier": "Identyfikator",
     "workflows.detail.item.nodes.links": "Node Links",
     "workflows.detail.item.nodes.code": "Code",
     "workflows.detail.item.nodes.container": "Container",
@@ -81,7 +81,7 @@
     "workflows.detail.item.nodes.resultType": "Result Type",
     "workflows.detail.item.nodes.resultVariable": "Result Variable",
     "workflows.detail.item.nodes.scriptFormat": "Script Format",
-    "workflows.detail.item.nodes.source": "Source",
+    "workflows.detail.item.nodes.source": "Źródło",
     "workflows.detail.item.nodes.target": "Target",
     "workflows.detail.item.nodes.url": "URL",
     "workflows.detail.item.nodes.username": "Username"
