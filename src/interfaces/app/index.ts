@@ -1,2 +1,2 @@
-export * from './IView'
-export * from './IWorkflowApp'
+export * from './IView';
+export * from './IWorkflowApp';

@@ -35,7 +35,7 @@ export const BrowseSearchPane: React.FC<IListProperties> = ({ data, isLoading, l
 
   return (
     <form>
-      <FormattedMessage id="ui-workflow.title.searchWorkflowsPane">
+      <FormattedMessage id='ui-workflow.title.searchWorkflowsPane'>
         { ([ariaLabel]) => (
           <SearchField
             id={SEARCH_WORKFLOWS_VALUE_ID}
@@ -51,19 +51,19 @@ export const BrowseSearchPane: React.FC<IListProperties> = ({ data, isLoading, l
           />
         )}
       </FormattedMessage>
-      <Button buttonStyle="primary" fullWidth id="clickable-search-workflow" type="submit" onClick={onSearchSubmit}>
-        <FormattedMessage id="stripes-smart-components.search" />
+      <Button buttonStyle='primary' fullWidth id='clickable-search-workflow' type='submit' onClick={onSearchSubmit}>
+        <FormattedMessage id='stripes-smart-components.search' />
       </Button>
       <div className={css.resetButtonWrap}>
         <Button
           // @ts-ignore:next-line
-          buttonStyle="none"
-          id="clickable-reset-all"
+          buttonStyle='none'
+          id='clickable-reset-all'
           disabled={isDefaultState}
           onClick={onResetAll}
         >
-          <Icon icon="times-circle-solid">
-            <FormattedMessage id="stripes-smart-components.resetAll" />
+          <Icon icon='times-circle-solid'>
+            <FormattedMessage id='stripes-smart-components.resetAll' />
           </Icon>
         </Button>
       </div>

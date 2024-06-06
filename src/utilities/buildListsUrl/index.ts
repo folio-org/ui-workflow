@@ -1,1 +1,1 @@
-export * from './buildListUrl'
+export * from './buildListUrl';
