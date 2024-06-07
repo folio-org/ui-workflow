@@ -3,6 +3,7 @@ import type { FunctionComponent, useState } from 'react';
 import React from 'react';
 import { useLocalStorage } from '@rehooks/local-storage';
 import { Button, ErrorBoundary, Pane, Paneset, FilterPaneSearch, PaneHeader } from '@folio/stripes/components';
+import { useStripes } from '@folio/stripes/core';
 import { noop } from 'lodash';
 
 import { FilterMenu, FilterPane, ItemRecordDetailPane, ListTable, WorkflowIcon } from '../../components';
@@ -21,10 +22,9 @@ export const BrowseView: FunctionComponent<IView> = (props: any) => {
   const filtersConfig = useFilterConfig(VIEW.BROWSE);
   const search = (typeof readSearch == 'object') ? readSearch : { key: SEARCH_WORKFLOWS_DEFAULT_KEY, value: '' };
 
+  const stripes = useStripes();
   const { data, isLoading } = useLists(PATH[VIEW.BROWSE], { filters, filtersConfig, search, limit, offset });
   const itemRecordDetail: IItemRecordDetail = useItemRecordDetailPane(PATH[VIEW.BROWSE]);
-
-  const actionMenu = <Button bottomMargin0 buttonStyle='primary' onClick={noop}>{ t('button.actions') }</Button>;
 
   return (
     <ErrorBoundary>
@@ -42,7 +42,7 @@ export const BrowseView: FunctionComponent<IView> = (props: any) => {
           paneTitle={t('title.workflowList')}
           appIcon={<WorkflowIcon />}
           firstMenu={<FilterMenu />}
-          lastMenu={actionMenu}
+          lastMenu={<Button bottomMargin0 buttonStyle='primary' onClick={noop}>{ t('button.actions') }</Button>}
         >
           <ListTable
             view={VIEW.BROWSE}
@@ -54,7 +54,7 @@ export const BrowseView: FunctionComponent<IView> = (props: any) => {
             detailPaneSelect={itemRecordDetail}
           />
         </Pane>
-        <ItemRecordDetailPane itemRecordDetail={itemRecordDetail} view={VIEW.BROWSE} />
+        <ItemRecordDetailPane itemRecordDetail={itemRecordDetail} view={VIEW.BROWSE} stripes={stripes} />
       </Paneset>
     </ErrorBoundary>
   );

@@ -1,6 +1,6 @@
+import { IDetailPane } from '../panes/IDetailPane';
 import { IItemRecordDetail } from './IItemRecordDetail';
 
-export interface IItemRecordDetailPane {
+export interface IItemRecordDetailPane extends IDetailPane {
   itemRecordDetail?: IItemRecordDetail;
-  view?: any;
 }

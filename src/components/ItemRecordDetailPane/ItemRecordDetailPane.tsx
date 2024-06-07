@@ -7,7 +7,7 @@ import { node } from 'prop-types';
 import { IItemRecordDetailPane, IWorkflowNodes } from '../../interfaces';
 import { t } from '../../utilities';
 
-export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ itemRecordDetail, view }) => {
+export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ itemRecordDetail, view, stripes }) => {
   const { selectedItem, showDetail, onRowClick, onClose } = itemRecordDetail;
 
   const actionMenu = <Button bottomMargin0 buttonStyle='primary' onClick={noop}>{ t('button.actions') }</Button>;
