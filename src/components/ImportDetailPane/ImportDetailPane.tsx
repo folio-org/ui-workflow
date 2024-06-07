@@ -33,6 +33,8 @@ export const ImportDetailPane: React.FC<IImportDetailPane> = ({ importDetail, vi
             type: 'success',
             message: t('import.callout.success.import', { name: accepted[0]?.name })
           });
+
+          setBusy(false);
         } catch (error: any) {
           let reason = error.toString();
 
