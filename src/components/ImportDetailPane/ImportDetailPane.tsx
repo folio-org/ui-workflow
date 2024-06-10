@@ -5,6 +5,7 @@ import { HTTPError } from 'ky';
 import React, { useCallback, useContext, useState } from 'react';
 
 import { OKAPI_WORKFLOW_IMPORT, USER_PERMS } from '../../constants';
+import { useUploadMultipart } from '../../hooks';
 import { IImportDetailPane } from '../../interfaces';
 import { t } from '../../utilities';
 
@@ -14,45 +15,29 @@ export const ImportDetailPane: React.FC<IImportDetailPane> = ({ importDetail, vi
   const [ isDropZoneActive, setIsDropZoneActive ] = useState(false);
   const callout = useContext(CalloutContext);
   const ky = useOkapiKy();
+  const { uploadMultipart } = useUploadMultipart();
 
-  const onDrop = useCallback(async (accepted: any, rejected: any) => {
+  const onDrop = useCallback((accepted: any, rejected: any) => {
     if (!!accepted && !!accepted[0]) {
       if (!busy) {
         setBusy(true);
 
-        const formData = new FormData();
-        formData.append('file', accepted[0]);
-
-        try {
-          const response = await ky.post(OKAPI_WORKFLOW_IMPORT, {
-            body: formData,
-            timeout: false
-          });
-
-          callout.sendCallout({
-            type: 'success',
-            message: t('import.callout.success.import', { name: accepted[0]?.name })
-          });
-
-          setBusy(false);
-        } catch (error: any) {
-          let reason = error.toString();
-
-          if (error?.name === 'HTTPError') {
-            const errorJson = await error.response.json();
-            if (errorJson?.errors?.length > 0) {
-              reason = errorJson.errors[0]?.code + ' ' + errorJson.errors[0]?.message;
-            }
+        uploadMultipart(
+          OKAPI_WORKFLOW_IMPORT,
+          accepted[0],
+          (file: any, response: any) => {
+            callout.sendCallout({
+              type: 'success',
+              message: t('import.callout.success.import', { name: file?.name })
+            });
+          },
+          (file: any, error: any, reason: string) => {
+            callout.sendCallout({
+              type: 'error',
+              message: t('import.callout.failure.import', { name: file?.name, reason })
+            });
           }
-
-          callout.sendCallout({
-            type: 'error',
-            message: t('import.callout.failure.import', { name: accepted[0]?.name, reason })
-          });
-
-          setIsDropZoneActive(false);
-          setBusy(false);
-        }
+        )
       } else {
         callout.sendCallout({
           type: 'error',
@@ -69,6 +54,7 @@ export const ImportDetailPane: React.FC<IImportDetailPane> = ({ importDetail, vi
     }
 
     setIsDropZoneActive(false);
+    setBusy(false);
   }, [ busy, callout, isDropZoneActive ]);
 
   const onDragEnter = useCallback(() => {
