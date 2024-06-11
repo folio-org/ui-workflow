@@ -1,1 +1,1 @@
-export * from './FilterPane'
+export * from './FilterPane';

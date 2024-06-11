@@ -1,1 +1,1 @@
-export * from './BrowseSearchPane'
+export * from './BrowseSearchPane';

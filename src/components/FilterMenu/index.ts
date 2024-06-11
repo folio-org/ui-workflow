@@ -1,1 +1,1 @@
-export * from './FilterMenu'
+export * from './FilterMenu';

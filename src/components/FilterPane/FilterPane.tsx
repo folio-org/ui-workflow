@@ -15,6 +15,7 @@ export const FilterPane: React.FC<IListProperties> = ({ view, data, isLoading, l
   const lastMenu = <PaneMenu><CollapseFilterPaneButton onClick={ () => writeToggleFilterStorage(false) } /></PaneMenu>;
   const browseStyle = (view == VIEW.CREATE) ? 'default' : 'primary';
   const createStyle = (view == VIEW.CREATE) ? 'primary' : 'default';
+  const filterPaneTitle = (view == VIEW.CREATE) ? 'title.filterPane-create' : 'title.filterPane-search';
 
   if (!filterPaneIsVisible) return null;
 
@@ -26,7 +27,7 @@ export const FilterPane: React.FC<IListProperties> = ({ view, data, isLoading, l
   }
 
   return (
-    <Pane defaultWidth="30%" paneTitle={ t('title.filterPane') } lastMenu={lastMenu}>
+    <Pane defaultWidth='30%' paneTitle={ t(filterPaneTitle) } lastMenu={lastMenu}>
       <div>
         <Button buttonStyle={browseStyle} onClick={noop} to={HOME_PAGE_URL}>{ t('button.browse') }</Button>
         <Button buttonStyle={createStyle} onClick={noop} to={HOME_PAGE_URL + CREATE_PATH}>{ t('button.create') }</Button>

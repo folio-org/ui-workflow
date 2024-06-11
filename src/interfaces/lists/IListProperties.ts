@@ -1,5 +1,3 @@
-import { IItemRecordDetail } from "./IItemRecordDetail";
-
 export interface IListProperties {
   view?: any;
   data?: any;
@@ -7,5 +5,5 @@ export interface IListProperties {
   limit?: number;
   offset?: number;
   readFilters?: string[];
-  detailPaneSelect?: IItemRecordDetail;
+  detailPaneSelect?: any;
 }

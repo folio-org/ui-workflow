@@ -1,1 +1,1 @@
-export * from './IFilterConfig'
+export * from './IFilterConfig';
