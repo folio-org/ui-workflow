@@ -26,12 +26,18 @@ export const ImportDetailPane: React.FC<IImportDetailPane> = ({ importDetail, vi
           OKAPI_WORKFLOW_IMPORT,
           accepted[0],
           (file: any, response: any) => {
+            setIsDropZoneActive(false);
+            setBusy(false);
+
             callout.sendCallout({
               type: 'success',
               message: t('import.callout.success.import', { name: file?.name })
             });
           },
           (file: any, error: any, reason: string) => {
+            setIsDropZoneActive(false);
+            setBusy(false);
+
             callout.sendCallout({
               type: 'error',
               message: t('import.callout.failure.import', { name: file?.name, reason })
@@ -43,18 +49,21 @@ export const ImportDetailPane: React.FC<IImportDetailPane> = ({ importDetail, vi
           type: 'error',
           message: t('import.callout.failure.import', { name: accepted[0]?.name, reason: t('import.callout.failure.busy') })
         });
+
+        setIsDropZoneActive(false);
       }
     } else if (!!rejected && !!rejected[0]) {
       callout.sendCallout({
         type: 'error',
         message: t('import.callout.failure.reject', { name: accepted[0]?.name })
       });
+
+      setIsDropZoneActive(false);
     } else {
       callout.sendCallout({ type: 'error', message: t('import.callout.failure.missing') });
-    }
 
-    setIsDropZoneActive(false);
-    setBusy(false);
+      setIsDropZoneActive(false);
+    }
   }, [ busy, callout, isDropZoneActive ]);
 
   const onDragEnter = useCallback(() => {
