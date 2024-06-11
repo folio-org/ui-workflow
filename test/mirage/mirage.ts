@@ -21,7 +21,7 @@ export const startMirage = ({
       this.urlPrefix = urlPrefix;
       this.namespace = '';
 
-      this.post('workflow/workflows/import', () => new Response(201, { id: 'd8b47696-4903-47f7-aeab-76c0f48616f4' }));
+      this.post('workflows/import', () => new Response(201, { id: 'd8b47696-4903-47f7-aeab-76c0f48616f4' }));
     },
   });
 };
