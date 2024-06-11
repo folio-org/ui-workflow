@@ -72,7 +72,7 @@ export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ itemReco
             </Row>
             <Row>
               <Col xs={6}>
-                <KeyValue label={ <FormattedMessage id='ui-workflow.workflows.detail.item.set-up' /> }>
+                <KeyValue label={<FormattedMessage id='ui-workflow.workflows.detail.item.set-up' />}>
                   {
                     Object.entries(selectedItem?.setup).map(([k, v]) => (
                       <p key={k}>
@@ -84,7 +84,7 @@ export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ itemReco
                 </KeyValue>
               </Col>
               <Col xs={3}>
-                <KeyValue label={ <FormattedMessage id='ui-workflow.workflows.detail.item.version-tag' /> }>
+                <KeyValue label={<FormattedMessage id='ui-workflow.workflows.detail.item.version-tag' />}>
                   { Boolean(selectedItem?.versionTag) && (<>{ selectedItem?.versionTag }</>) }
                 </KeyValue>
               </Col>
