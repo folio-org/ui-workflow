@@ -1,7 +1,6 @@
 import { ErrorBoundary, Pane } from '@folio/stripes/components';
-import { CalloutContext, useOkapiKy } from '@folio/stripes/core';
+import { CalloutContext } from '@folio/stripes/core';
 import { FileUploader } from '@folio/stripes-data-transfer-components';
-import { HTTPError } from 'ky';
 import React, { useCallback, useContext, useState } from 'react';
 
 import { OKAPI_WORKFLOW_IMPORT, USER_PERMS } from '../../constants';
@@ -14,7 +13,6 @@ export const ImportDetailPane: React.FC<IImportDetailPane> = ({ importDetail, vi
   const [ busy, setBusy ] = useState(false);
   const [ isDropZoneActive, setIsDropZoneActive ] = useState(false);
   const callout = useContext(CalloutContext);
-  const ky = useOkapiKy();
   const { uploadMultipart } = useUploadMultipart();
 
   const onDrop = useCallback((accepted: any, rejected: any) => {
