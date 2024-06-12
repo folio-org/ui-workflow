@@ -23,9 +23,13 @@ export const useUploadMultipart = () => {
       let reason = error.toString();
 
       if (error?.name === 'HTTPError') {
-        const errorJson = await error.response.json();
-        if (errorJson?.errors?.length > 0) {
-          reason = errorJson.errors[0]?.code + ' ' + errorJson.errors[0]?.message;
+        try {
+          const errorJson = await error.response.json();
+          if (errorJson?.errors?.length > 0) {
+            reason = errorJson.errors[0]?.code + ' ' + errorJson.errors[0]?.message;
+          }
+        } catch (error: any) {
+          // If error.response.json() fails, then do nothing.
         }
       }
 
