@@ -1,1 +1,1 @@
-export * from './ItemRecordDetailPane'
+export * from './ItemRecordDetailPane';

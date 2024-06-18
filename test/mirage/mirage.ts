@@ -21,15 +21,7 @@ export const startMirage = ({
       this.urlPrefix = urlPrefix;
       this.namespace = '';
 
-      this.get('lists', (schema, request) => {
-        const updatedAsOf = request.queryParams.updatedAsOf;
-
-        if (updatedAsOf) {
-          return listsUpdate;
-        } else {
-          return lists;
-        }
-      });
+      this.post('workflows/import', () => new Response(201, { id: 'd8b47696-4903-47f7-aeab-76c0f48616f4' }));
     },
   });
 };

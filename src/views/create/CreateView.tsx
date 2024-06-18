@@ -1,27 +1,33 @@
 import type { FunctionComponent } from 'react';
 import React, { useState } from 'react';
-import { ErrorBoundary } from '@folio/stripes/components';
-import { Pane, Paneset, Button } from '@folio/stripes/components';
-import { noop } from 'lodash';
+import { ErrorBoundary, Pane, Paneset } from '@folio/stripes/components';
+import { useStripes } from '@folio/stripes/core';
 
-import { FilterMenu, FilterPane, ListTable, WorkflowIcon } from '../../components';
-import { FILTER_APPLIED_KEY, VIEW } from '../../constants';
-import { getFilters } from '../../hooks';
-import { IView } from '../../interfaces';
+import { CreateActionMenu, FilterMenu, FilterPane, ImportDetailPane, ListTable, WorkflowIcon } from '../../components';
+import { FILTER_APPLIED_KEY, PATH, VIEW } from '../../constants';
+import { getFilters, useImportDetailPane } from '../../hooks';
+import { IDetailPaneProperties, IView } from '../../interfaces';
 import { t } from '../../utilities';
 
 export const CreateView: FunctionComponent<IView> = (props: any) => {
-  const actionMenu = <Button bottomMargin0 buttonStyle="primary" onClick={noop}>{ t('button.actions') }</Button>;
-
-  const mainPane = (
-    <Pane defaultWidth="fill" paneTitle={ t('title.create') } appIcon={<WorkflowIcon />} firstMenu={<FilterMenu />} lastMenu={actionMenu}>
-      todo
-    </Pane>
-  );
+  const importDetail: IDetailPaneProperties = useImportDetailPane(PATH[VIEW.CREATE]);
+  const stripes = useStripes();
 
   return (
     <ErrorBoundary>
-      <Paneset><FilterPane view={VIEW.CREATE} readFilters={null} /> {mainPane}</Paneset>
+      <Paneset>
+        <FilterPane view={VIEW.CREATE} readFilters={null} />
+        <Pane
+          defaultWidth='fill'
+          paneTitle={ t('title.create') }
+          appIcon={<WorkflowIcon />}
+          firstMenu={<FilterMenu />}
+          lastMenu={<CreateActionMenu importDetail={importDetail} stripes={stripes} />}
+        >
+          <></>
+        </Pane>
+        <ImportDetailPane importDetail={importDetail} view={VIEW.CREATE} stripes={stripes} />
+      </Paneset>
     </ErrorBoundary>
   );
 };

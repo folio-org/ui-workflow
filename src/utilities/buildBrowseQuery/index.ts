@@ -1,1 +1,1 @@
-export * from './buildBrowseQuery'
+export * from './buildBrowseQuery';

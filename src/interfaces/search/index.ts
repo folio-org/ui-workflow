@@ -1,1 +1,1 @@
-export * from './ISearchState'
+export * from './ISearchState';
