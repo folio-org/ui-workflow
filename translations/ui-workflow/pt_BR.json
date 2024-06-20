@@ -7,7 +7,6 @@
     "filter.label-search": "Busca",
     "title": "Fluxo de trabalho",
     "title.create": "Criar",
-    "title.filterPane": "Busca",
     "title.settings": "Configurações de fluxo de trabalho",
     "title.workflowList": "Fluxos de trabalho",
     "workflows.item.active": "Ativo",
@@ -84,5 +83,18 @@
     "workflows.detail.item.nodes.source": "Fonte",
     "workflows.detail.item.nodes.target": "Alvo",
     "workflows.detail.item.nodes.url": "URL",
-    "workflows.detail.item.nodes.username": "Nome de usuário"
+    "workflows.detail.item.nodes.username": "Nome de usuário",
+    "button.create.import": "Fluxo de trabalho de importação",
+    "create.action.menu": "Criar menu de ações",
+    "import.callout.failure.busy": "Uma importação já está em andamento",
+    "import.callout.failure.import": "Falha ao importar {name}, motivo: {reason}",
+    "import.callout.failure.missing": "Falha ao importar, o arquivo está faltando",
+    "import.callout.failure.reject": "Não é possível carregar o arquivo {name} para importação",
+    "import.callout.success.import": "O fluxo de trabalho {name} foi importado",
+    "import.workflow.drop": "Arraste e solte para importar um arquivo FWZ",
+    "import.workflow.error": "Erro de importação",
+    "import.workflow.title": "Fluxo de trabalho de importação",
+    "import.workflow.upload": "ou escolha um arquivo FWZ",
+    "title.filterPane-create": "Busca",
+    "title.filterPane-search": "Busca"
 }
