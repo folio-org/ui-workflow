@@ -7,7 +7,6 @@
     "filter.label-search": "檢索",
     "title": "工作流程",
     "title.create": "建立",
-    "title.filterPane": "檢索",
     "title.settings": "工作流程設定",
     "title.workflowList": "工作流程",
     "workflows.item.active": "啟用",
@@ -84,5 +83,18 @@
     "workflows.detail.item.nodes.source": "來源",
     "workflows.detail.item.nodes.target": "目標",
     "workflows.detail.item.nodes.url": "URL",
-    "workflows.detail.item.nodes.username": "使用者名稱"
+    "workflows.detail.item.nodes.username": "使用者名稱",
+    "button.create.import": "Import Workflow",
+    "create.action.menu": "Create Actions Menu",
+    "import.callout.failure.busy": "An import is already in progress",
+    "import.callout.failure.import": "Failed to import {name}, reason: {reason}",
+    "import.callout.failure.missing": "Failed to import, file is missing",
+    "import.callout.failure.reject": "Unable to upload file {name} for import",
+    "import.callout.success.import": "The workflow {name} has been imported",
+    "import.workflow.drop": "Drag & drop to import a FWZ file",
+    "import.workflow.error": "Import Error",
+    "import.workflow.title": "Import Workflow",
+    "import.workflow.upload": "or choose a FWZ file",
+    "title.filterPane-create": "Search",
+    "title.filterPane-search": "Search"
 }
