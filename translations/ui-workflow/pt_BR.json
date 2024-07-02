@@ -30,7 +30,7 @@
     "workflows.detail.item.active.false": "Falso",
     "workflows.detail.item.history-time-to-live": "Tempo de historico ativo",
     "workflows.detail.item.deployment-id": "ID de implantação",
-    "workflows.detail.item.version-tag": "Etiqueta de versão",
+    "workflows.detail.item.version-tag": "Tag de versão",
     "workflows.detail.item.set-up": "Configurar",
     "workflows.detail.item.set-up.true": "Verdadeiro",
     "workflows.detail.item.set-up.false": "Falso",
