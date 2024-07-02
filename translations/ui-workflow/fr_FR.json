@@ -83,7 +83,7 @@
     "workflows.detail.item.nodes.source": "Source",
     "workflows.detail.item.nodes.target": "Target",
     "workflows.detail.item.nodes.url": "URL",
-    "workflows.detail.item.nodes.username": "Username",
+    "workflows.detail.item.nodes.username": "Nom d'utilisateur",
     "button.create.import": "Import Workflow",
     "create.action.menu": "Create Actions Menu",
     "import.callout.failure.busy": "An import is already in progress",
