@@ -85,7 +85,7 @@
     "workflows.detail.item.nodes.url": "URL",
     "workflows.detail.item.nodes.username": "Uživatelské jméno",
     "button.create.import": "Pracovní postup importu",
-    "create.action.menu": "Vytvořit nabídku akcí",
+    "create.action.menu": "Vytvořit menu akcí",
     "import.callout.failure.busy": "Import již probíhá",
     "import.callout.failure.import": "Nepodařilo se importovat {name}, důvod: {reason}",
     "import.callout.failure.missing": "Failed to import, file is missing",
