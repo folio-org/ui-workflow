@@ -76,7 +76,7 @@
     "workflows.detail.item.nodes.password": "Password",
     "workflows.detail.item.nodes.path": "Path",
     "workflows.detail.item.nodes.query": "Query",
-    "workflows.detail.item.nodes.request": "Request",
+    "workflows.detail.item.nodes.request": "Rezerwacja",
     "workflows.detail.item.nodes.resultType": "Result Type",
     "workflows.detail.item.nodes.resultVariable": "Result Variable",
     "workflows.detail.item.nodes.scriptFormat": "Script Format",
