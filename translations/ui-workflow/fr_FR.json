@@ -68,7 +68,7 @@
     "workflows.detail.item.nodes.mailSubject": "Mail Subject",
     "workflows.detail.item.nodes.mailText": "Mail Text",
     "workflows.detail.item.nodes.mailTo": "Mail To",
-    "workflows.detail.item.nodes.multiInstance": "Multi Instance",
+    "workflows.detail.item.nodes.multiInstance": "Multi notice",
     "workflows.detail.item.nodes.nodes": "Nodes",
     "workflows.detail.item.nodes.op": "Operation",
     "workflows.detail.item.nodes.outputPath": "Output Path",
