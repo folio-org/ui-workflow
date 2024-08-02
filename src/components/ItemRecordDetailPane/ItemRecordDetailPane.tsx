@@ -2,7 +2,6 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Accordion, AccordionSet, Button, Card, Col, ErrorBoundary, KeyValue, Layout, MultiColumnList, Pane, Row } from '@folio/stripes/components';
 import { noop } from 'lodash';
-import { node } from 'prop-types';
 
 import { IItemRecordDetailPane, IWorkflowNodes } from '../../interfaces';
 import { t } from '../../utilities';
