@@ -20,7 +20,7 @@ export const CreateActionMenu: React.FC<ICreateActionMenu> = ({ importDetail, st
 
   return (
     <Dropdown id='menu-actions-create-dropdown' label={ t('button.actions') } buttonProps={{ buttonStyle: 'primary', marginBottom0: true }}>
-      <DropdownMenu data-role='menu' aria-label={ t('create.action.menu') } onToggle={onToggle}>
+      <DropdownMenu data-role='menu' aria-label={ t('create.action.menu') } onToggle={onToggle} open={open}>
         <><Button
           data-role='menuitem'
           buttonStyle='dropdownItem'
