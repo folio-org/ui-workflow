@@ -48,7 +48,6 @@
     "miragejs": "^0.1.0",
     "moment": "^2.29.0",
     "popper.js": "^1.16.0",
-    "prop-types": "^15.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-final-form": "^6.5.0",
