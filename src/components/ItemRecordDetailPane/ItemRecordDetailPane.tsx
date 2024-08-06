@@ -11,19 +11,15 @@ export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ itemReco
 
   const actionMenu = <Button bottomMargin0 buttonStyle='primary' onClick={noop}>{ t('button.actions') }</Button>;
 
-  if (!selectedItem) {
-    return <div>No item selected</div>;
-  }
-
-  if (!showDetail) {
+  if (!showDetail || !selectedItem) {
     return null;
   }
 
   return (
     <ErrorBoundary>
-      <Pane defaultWidth='fill' dismissible lastMenu={actionMenu} onClose={onClose} paneTitle={selectedItem?.name} >
+      <Pane defaultWidth='fill' dismissible lastMenu={actionMenu} onClose={onClose} paneTitle={selectedItem?.name}>
         <AccordionSet>
-          <Accordion label={<FormattedMessage id='ui-workflow.workflows.detail.item.label-name' />} id={selectedItem?.id} >
+          <Accordion label={<FormattedMessage id='ui-workflow.workflows.detail.item.label-name' />} id={selectedItem?.id}>
             <Row>
               <Col xs={12}>
                 <KeyValue label={<FormattedMessage id='ui-workflow.workflows.detail.item.name' />}>
