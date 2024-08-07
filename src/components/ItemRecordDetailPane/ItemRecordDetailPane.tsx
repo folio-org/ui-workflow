@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accordion, AccordionSet, Button, Col, ErrorBoundary, Layer, Pane, Row } from '@folio/stripes/components';
+import { Accordion, AccordionSet, Button, Col, ErrorBoundary, Pane, Row } from '@folio/stripes/components';
 import { noop } from 'lodash';
 
 import { BooleanItemValue, BooleanMapItemValue, NodesItemValue, NumberItemValue, StringItemValue } from '../../components';
