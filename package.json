@@ -122,7 +122,7 @@
           "workflow.actions.all",
           "workflow.events.all",
           "workflow.triggers.all",
-          "workflow.tsks.all",
+          "workflow.tasks.all",
           "workflow.workflows.all"
         ],
         "visible": true
