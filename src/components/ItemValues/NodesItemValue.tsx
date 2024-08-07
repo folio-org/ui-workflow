@@ -3,8 +3,8 @@ import { Card } from '@folio/stripes/components';
 
 import { IItemValue } from '../../interfaces';
 
-export const NodesItemValue: React.FC<IItemValue> = ({ id, value }) => {
-  const values = [];
+export const NodesItemValue: React.FC<IItemValue> = ({ empty, id, value }) => {
+  const values: any[] = [];
 
   if (typeof value === 'object') {
     const objValues: Array<any> = Object.values(value);

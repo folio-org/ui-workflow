@@ -4,7 +4,7 @@ import { KeyValue } from '@folio/stripes/components';
 
 import { IItemValue } from '../../interfaces';
 
-export const BooleanMapItemValue: React.FC<IItemValue> = ({ id, value }) => {
+export const BooleanMapItemValue: React.FC<IItemValue> = ({ empty, id, value }) => {
   const label = <FormattedMessage id={id} />;
   const values = [];
 
@@ -25,11 +25,11 @@ export const BooleanMapItemValue: React.FC<IItemValue> = ({ id, value }) => {
     }
   }
 
-  if (values.length == 0) {
+  if (values.length == 0 && empty === true) {
     return null;
   }
 
   return (
-    <KeyValue label={label}>{values}</KeyValue>
+    <KeyValue label={label}>{values.length ? values : undefined}</KeyValue>
   );
 };
