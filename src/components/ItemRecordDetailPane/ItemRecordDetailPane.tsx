@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Accordion, AccordionSet, Button, Col, ErrorBoundary, Pane, Row } from '@folio/stripes/components';
+import { Accordion, AccordionSet, Button, Col, ErrorBoundary, Layer, Pane, Row } from '@folio/stripes/components';
 import { noop } from 'lodash';
 
 import { BooleanItemValue, BooleanMapItemValue, NodesItemValue, NumberItemValue, StringItemValue } from '../../components';
@@ -12,13 +12,9 @@ export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ itemReco
 
   const actionMenu = <Button bottomMargin0 buttonStyle='primary' onClick={noop}>{ t('button.actions') }</Button>;
 
-  if (!showDetail || !selectedItem) {
-    return null;
-  }
-
-  return (
-    <ErrorBoundary>
-      <Pane defaultWidth='fill' dismissible lastMenu={actionMenu} onClose={onClose} paneTitle={selectedItem?.name}>
+  return <Layer isOpen={showDetail}>
+    <Pane defaultWidth='fill' dismissible lastMenu={actionMenu} onClose={onClose} paneTitle={selectedItem?.name}>
+      <ErrorBoundary>
         <AccordionSet>
           <Accordion label={<FormattedMessage id='ui-workflow.workflows.detail.item.label' />} id={selectedItem?.id}>
             <Row>
@@ -60,7 +56,7 @@ export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ itemReco
             <NodesItemValue id='ui-workflow.workflows.label.nodes' value={selectedItem?.nodes} />
           </Accordion>
         </AccordionSet>
-      </Pane>
-    </ErrorBoundary>
-  );
+      </ErrorBoundary>
+    </Pane>
+  </Layer>;
 };

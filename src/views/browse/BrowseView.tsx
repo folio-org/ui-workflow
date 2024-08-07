@@ -2,7 +2,7 @@
 import type { FunctionComponent, useState } from 'react';
 import React from 'react';
 import { useLocalStorage } from '@rehooks/local-storage';
-import { Button, ErrorBoundary, Pane, Paneset, FilterPaneSearch, PaneHeader } from '@folio/stripes/components';
+import { Button, ErrorBoundary, Layer, Pane, Paneset, FilterPaneSearch, PaneHeader } from '@folio/stripes/components';
 import { useStripes } from '@folio/stripes/core';
 import { noop } from 'lodash';
 
@@ -29,31 +29,28 @@ export const BrowseView: FunctionComponent<IView> = (props: any) => {
   return (
     <ErrorBoundary>
       <Paneset>
-        <FilterPane
-          view={VIEW.BROWSE}
-          data={data}
-          isLoading={isLoading}
-          limit={limit}
-          offset={offset}
-          readFilters={filters}
-        />
-        <Pane
-          defaultWidth='fill'
-          paneTitle={t('title.workflowList')}
-          appIcon={<WorkflowIcon />}
-          firstMenu={<FilterMenu />}
-          lastMenu={<Button bottomMargin0 buttonStyle='primary' onClick={noop}>{ t('button.actions') }</Button>}
-        >
-          <ListTable
-            view={VIEW.BROWSE}
-            data={data}
-            isLoading={isLoading}
-            limit={limit}
-            offset={offset}
-            readFilters={filters}
-            detailPaneSelect={itemRecordDetail}
-          />
-        </Pane>
+        <Layer isOpen>
+          <Paneset isRoot>
+            <FilterPane view={VIEW.BROWSE} data={data} isLoading={isLoading} limit={limit} offset={offset} readFilters={filters} />
+            <Pane
+              defaultWidth='fill'
+              paneTitle={t('title.workflowList')}
+              appIcon={<WorkflowIcon />}
+              firstMenu={<FilterMenu />}
+              lastMenu={<Button bottomMargin0 buttonStyle='primary' onClick={noop}>{ t('button.actions') }</Button>}
+            >
+              <ListTable
+                view={VIEW.BROWSE}
+                data={data}
+                isLoading={isLoading}
+                limit={limit}
+                offset={offset}
+                readFilters={filters}
+                detailPaneSelect={itemRecordDetail}
+              />
+            </Pane>
+          </Paneset>
+        </Layer>
         <ItemRecordDetailPane itemRecordDetail={itemRecordDetail} view={VIEW.BROWSE} stripes={stripes} />
       </Paneset>
     </ErrorBoundary>
