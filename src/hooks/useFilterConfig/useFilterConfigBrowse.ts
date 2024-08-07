@@ -3,7 +3,7 @@ import { t } from '../../utilities';
 
 export const useFilterConfigBrowse = (): IFilterConfig => {
   const filters: any[] = [
-    { label: t('filter.label-active'), name: 'active', cql: 'active', values: [ 'Yes', 'No' ], restrictWhenAllSelected: true },
+    { label: t('filter.label.active'), name: 'active', cql: 'active', values: [ 'Yes', 'No' ], restrictWhenAllSelected: true },
   ];
 
   const searchIndexes: any[] = [
