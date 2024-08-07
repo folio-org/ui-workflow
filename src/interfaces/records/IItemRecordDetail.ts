@@ -1,4 +1,4 @@
-import { IDetailPaneProperties } from '../panes/IDetailPaneProperties';
+import { IDetailPaneProperties } from '../';
 
 export interface IItemRecordDetail extends IDetailPaneProperties {
   selectedItem?: any;

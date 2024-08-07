@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const useItemRecordDetailPane = (path: any) => {
+export const useItemRecordData = (path: any) => {
   const [ selectedItem, setSelectedItem ] = React.useState();
   const [ showDetail, setShowDetail ] = React.useState(false);
 
