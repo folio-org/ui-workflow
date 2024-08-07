@@ -1,11 +1,10 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import { KeyValue } from '@folio/stripes/components';
 
 import { IItemValue } from '../../interfaces';
+import { t } from '../../utilities';
 
 export const NumberItemValue: React.FC<IItemValue> = ({ empty, id, value }) => {
-  const label = <FormattedMessage id={id} />;
   const tag = typeof value === 'number'
     ? value.toString()
     : typeof value === 'string'
@@ -16,7 +15,5 @@ export const NumberItemValue: React.FC<IItemValue> = ({ empty, id, value }) => {
     return null;
   }
 
-  return (
-    <KeyValue label={label}>{tag}</KeyValue>
-  );
+  return <KeyValue label={ t(id) }>{tag}</KeyValue>;
 };

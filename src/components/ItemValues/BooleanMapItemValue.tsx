@@ -1,16 +1,15 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import { KeyValue } from '@folio/stripes/components';
 
 import { IItemValue } from '../../interfaces';
+import { t } from '../../utilities';
 
 export const BooleanMapItemValue: React.FC<IItemValue> = ({ empty, id, value }) => {
-  const label = <FormattedMessage id={id} />;
   const values = [];
 
   if (typeof value === 'object') {
-    const trueValue = <FormattedMessage id='ui-workflow.workflows.value.boolean.true' />;
-    const falseValue = <FormattedMessage id='ui-workflow.workflows.value.boolean.false' />;
+    const trueValue = t('workflows.value.boolean.true');
+    const falseValue = t('workflows.value.boolean.false');
 
     for (const [ k, v ] of Object.entries(value)) {
       const strV = typeof v === 'string' ? v.toLowerCase() : null;
@@ -29,7 +28,5 @@ export const BooleanMapItemValue: React.FC<IItemValue> = ({ empty, id, value }) 
     return null;
   }
 
-  return (
-    <KeyValue label={label}>{values.length ? values : undefined}</KeyValue>
-  );
+  return <KeyValue label={ t(id) }>{values.length ? values : undefined}</KeyValue>;
 };

@@ -2,6 +2,8 @@ export * from './CreateActionMenu';
 export * from './FilterMenu';
 export * from './FilterPane';
 export * from './ImportDetailPane';
+export * from './ItemRecordGeneralPane';
+export * from './ItemRecordGraphPane';
 export * from './ItemRecordDetailPane';
 export * from './ItemValues';
 export * from './ListTable';

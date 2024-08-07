@@ -1,62 +1,59 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import { Accordion, AccordionSet, Button, Col, ErrorBoundary, Layer, Pane, Row } from '@folio/stripes/components';
 import { noop } from 'lodash';
 
 import { BooleanItemValue, BooleanMapItemValue, NodesItemValue, NumberItemValue, StringItemValue } from '../../components';
-import { IItemRecordDetailPane, IWorkflowNodes } from '../../interfaces';
+import { IItemRecordData, IWorkflowNodes } from '../../interfaces';
 import { t } from '../../utilities';
 
-export const ItemRecordDetailPane: React.FC<IItemRecordDetailPane> = ({ itemRecordDetail, view, stripes }) => {
-  const { selectedItem, showDetail, onRowClick, onClose } = itemRecordDetail;
+export const ItemRecordDetailPane: React.FC<IItemRecordData> = ({ itemRecordDetail, view, stripes }) => {
+  const selected = !!itemRecordDetail?.selectedItem ? itemRecordDetail.selectedItem : {};
 
   const actionMenu = <Button bottomMargin0 buttonStyle='primary' onClick={noop}>{ t('button.actions') }</Button>;
 
-  return <Layer isOpen={showDetail}>
-    <Pane defaultWidth='fill' dismissible lastMenu={actionMenu} onClose={onClose} paneTitle={selectedItem?.name}>
-      <ErrorBoundary>
-        <AccordionSet>
-          <Accordion label={<FormattedMessage id='ui-workflow.workflows.detail.item.label' />} id={selectedItem?.id}>
-            <Row>
-              <Col xs={12}>
-                <StringItemValue id='ui-workflow.workflows.label.name' value={selectedItem?.name} />
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={12}>
-                <StringItemValue id='ui-workflow.workflows.label.description' value={selectedItem?.description} />
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={6}>
-                <StringItemValue id='ui-workflow.workflows.label.id' value={selectedItem?.id} />
-              </Col>
-              <Col xs={6}>
-                <BooleanItemValue id='ui-workflow.workflows.label.active' value={selectedItem?.active} />
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={6}>
-                <StringItemValue id='ui-workflow.workflows.detail.item.deploymentId' value={selectedItem?.deploymentId} />
-              </Col>
-              <Col xs={6}>
-                <NumberItemValue id='ui-workflow.workflows.detail.item.historyTimeToLive' value={selectedItem?.historyTimeToLive} />
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={6}>
-                <BooleanMapItemValue id='ui-workflow.workflows.detail.item.setup' value={selectedItem?.setup} />
-              </Col>
-              <Col xs={3}>
-                <StringItemValue id='ui-workflow.workflows.label.version' value={selectedItem?.versionTag} />
-              </Col>
-            </Row>
-          </Accordion>
-          <Accordion id='nodes' label={<FormattedMessage id='ui-workflow.workflows.detail.item.nodes.label' />} >
-            <NodesItemValue id='ui-workflow.workflows.label.nodes' value={selectedItem?.nodes} />
-          </Accordion>
-        </AccordionSet>
-      </ErrorBoundary>
-    </Pane>
-  </Layer>;
+  return <Pane defaultWidth='fill' lastMenu={actionMenu} paneTitle={ t('title.itemRecordDetailPane') }>
+    <ErrorBoundary>
+      <AccordionSet>
+        <Accordion label={ t('workflows.detail.item.label') } id={ selected?.id }>
+          <Row>
+            <Col xs={12}>
+              <StringItemValue id='workflows.label.name' value={ selected?.name } />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <StringItemValue id='workflows.label.description' value={ selected?.description } />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={6}>
+              <StringItemValue id='workflows.label.id' value={ selected?.id } />
+            </Col>
+            <Col xs={6}>
+              <BooleanItemValue id='workflows.label.active' value={ selected?.active } />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={6}>
+              <StringItemValue id='workflows.detail.item.deploymentId' value={ selected?.deploymentId } />
+            </Col>
+            <Col xs={6}>
+              <NumberItemValue id='workflows.detail.item.historyTimeToLive' value={ selected?.historyTimeToLive } />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={6}>
+              <BooleanMapItemValue id='workflows.detail.item.setup' value={ selected?.setup } />
+            </Col>
+            <Col xs={3}>
+              <StringItemValue id='workflows.label.version' value={ selected?.versionTag } />
+            </Col>
+          </Row>
+        </Accordion>
+        <Accordion id='nodes' label={ t('workflows.detail.item.nodes.label') } >
+          <NodesItemValue id='workflows.label.nodes' value={ selected?.nodes } />
+        </Accordion>
+      </AccordionSet>
+    </ErrorBoundary>
+  </Pane>;
 };
