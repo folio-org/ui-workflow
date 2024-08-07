@@ -15,17 +15,17 @@ export const CreateView: FunctionComponent<IView> = (props: any) => {
 
   return <ErrorBoundary>
     <Paneset>
-      <FilterPane view={VIEW.CREATE} readFilters={null} />
+      <FilterPane view={ VIEW.CREATE } readFilters={null} />
       <Pane
         defaultWidth='fill'
         paneTitle={ t('title.create') }
-        appIcon={<WorkflowIcon />}
-        firstMenu={<FilterMenu />}
-        lastMenu={<CreateActionMenu importDetail={importDetail} stripes={stripes} />}
+        appIcon={ <WorkflowIcon /> }
+        firstMenu={ <FilterMenu /> }
+        lastMenu={ <CreateActionMenu importDetail={importDetail} stripes={stripes} /> }
       >
         <></>
       </Pane>
-      <ImportDetailPane importDetail={importDetail} view={VIEW.CREATE} stripes={stripes} />
+      <ImportDetailPane importDetail={importDetail} view={ VIEW.CREATE } stripes={stripes} />
     </Paneset>
   </ErrorBoundary>;
 };

@@ -31,13 +31,13 @@ export const BrowseView: FunctionComponent<IView> = (props: any) => {
     <Paneset>
       <Layer isOpen>
         <Paneset isRoot>
-          <FilterPane view={VIEW.BROWSE} data={data} isLoading={isLoading} limit={limit} offset={offset} readFilters={filters} />
+          <FilterPane view={ VIEW.BROWSE } data={data} isLoading={isLoading} limit={limit} offset={offset} readFilters={filters} />
           <Pane
             defaultWidth='fill'
-            paneTitle={t('title.workflowList')}
-            appIcon={<WorkflowIcon />}
-            firstMenu={<FilterMenu />}
-            lastMenu={<Button bottomMargin0 buttonStyle='primary' onClick={noop}>{ t('button.actions') }</Button>}
+            paneTitle={ t('title.workflowList') }
+            appIcon={ <WorkflowIcon /> }
+            firstMenu={ <FilterMenu /> }
+            lastMenu={ <Button bottomMargin0 buttonStyle='primary' onClick={noop}>{ t('button.actions') }</Button> }
           >
             <ListTable
               view={VIEW.BROWSE}
@@ -51,7 +51,7 @@ export const BrowseView: FunctionComponent<IView> = (props: any) => {
           </Pane>
         </Paneset>
       </Layer>
-      <ItemRecordView itemRecordDetail={itemRecordDetail} view={VIEW.BROWSE} stripes={stripes} />
+      <ItemRecordView itemRecordDetail={itemRecordDetail} view={ VIEW.BROWSE } stripes={stripes} />
     </Paneset>
   </ErrorBoundary>;
 };

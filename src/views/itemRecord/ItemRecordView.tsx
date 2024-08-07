@@ -7,7 +7,7 @@ import { ItemRecordDetailPane, ItemRecordGeneralPane, ItemRecordGraphPane } from
 import { IItemRecordView } from '../../interfaces';
 
 export const ItemRecordView: FunctionComponent<IItemRecordView> = ({ itemRecordDetail, view, stripes }) => {
-  return <Layer isOpen={!!itemRecordDetail?.showDetail ? itemRecordDetail.showDetail : false}>
+  return <Layer isOpen={ !!itemRecordDetail?.showDetail ? itemRecordDetail.showDetail : false }>
     <ErrorBoundary>
       <Paneset>
         <ItemRecordGeneralPane itemRecordDetail={itemRecordDetail} view={view} stripes={stripes} />
