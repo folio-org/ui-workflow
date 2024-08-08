@@ -83,6 +83,7 @@
   "workflows.detail.item.setup": "Setup",
   "workflows.label.active": "Active",
   "workflows.label.description": "Description",
+  "workflows.label.graphs": "Graphs",
   "workflows.label.id": "ID",
   "workflows.label.inactive": "Inactive",
   "workflows.label.name": "Name",

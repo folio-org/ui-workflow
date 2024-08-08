@@ -1,5 +1,10 @@
-import { IDetailPane, IItemRecordDetail } from '../';
+import { IDetailPane, IItemRecordControl } from '../';
 
+/**
+ * Provide properties managed by the Item Record pane.
+ *
+ * itemRecordControl: The Item Record control data.
+ */
 export interface IItemRecordData extends IDetailPane {
-  itemRecordDetail?: IItemRecordDetail;
+  itemRecordControl?: IItemRecordControl;
 }

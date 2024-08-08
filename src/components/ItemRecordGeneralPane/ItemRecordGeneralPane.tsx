@@ -2,13 +2,13 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Accordion, AccordionSet, Col, ErrorBoundary, Pane, Row } from '@folio/stripes/components';
 
-import { BooleanItemValue, BooleanMapItemValue, NodesItemValue, NumberItemValue, StringItemValue } from '../../components';
+import { BooleanItemValue, BooleanMapItemValue, NumberItemValue, StringItemValue } from '../../components';
 import { IItemRecordView } from '../../interfaces';
 import { t } from '../../utilities';
 
-export const ItemRecordGeneralPane: React.FC<IItemRecordView> = ({ itemRecordDetail, view, stripes }) => {
-  const selected = !!itemRecordDetail?.selectedItem ? itemRecordDetail.selectedItem : {};
-  const onClose = !!itemRecordDetail?.onClose ? itemRecordDetail.onClose : false;
+export const ItemRecordGeneralPane: React.FC<IItemRecordView> = ({ itemRecordControl, view, stripes }) => {
+  const selected = !!itemRecordControl?.selectedItem ? itemRecordControl.selectedItem : {};
+  const onClose = !!itemRecordControl?.onClose ? itemRecordControl.onClose : false;
 
   return <Pane defaultWidth='fill' dismissible onClose={onClose} paneTitle={ t('title.itemRecordGeneralPane') }>
     <ErrorBoundary>
