@@ -4,6 +4,11 @@ import { KeyValue } from '@folio/stripes/components';
 import { IItemValue } from '../../interfaces';
 import { t } from '../../utilities';
 
+/**
+ * Provide an Item value for displaying a list of boolean type.
+ *
+ * This handles representation of a map of boolean data.
+ */
 export const BooleanMapItemValue: React.FC<IItemValue> = ({ empty, id, value }) => {
   const values = [];
 

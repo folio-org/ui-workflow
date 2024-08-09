@@ -4,6 +4,11 @@ import { KeyValue } from '@folio/stripes/components';
 import { IItemValue } from '../../interfaces';
 import { t } from '../../utilities';
 
+/**
+ * Provide an Item value for displaying a boolean type.
+ *
+ * This handles multiple representations of boolean data.
+ */
 export const BooleanItemValue: React.FC<IItemValue> = ({ empty, id, value }) => {
   const strValue = typeof value === 'string' ? value.toLowerCase() : null;
   const tag = value === true ||

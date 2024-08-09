@@ -6,13 +6,13 @@ import { ErrorBoundary, Layer, Paneset } from '@folio/stripes/components';
 import { ItemRecordDetailPane, ItemRecordGeneralPane, ItemRecordGraphPane } from '../../components';
 import { IItemRecordView } from '../../interfaces';
 
-export const ItemRecordView: FunctionComponent<IItemRecordView> = ({ itemRecordDetail, view, stripes }) => {
-  return <Layer isOpen={ !!itemRecordDetail?.showDetail ? itemRecordDetail.showDetail : false }>
+export const ItemRecordView: FunctionComponent<IItemRecordView> = ({ itemRecordControl, view, stripes }) => {
+  return <Layer isOpen={ !!itemRecordControl?.showDetail ? itemRecordControl.showDetail : false }>
     <ErrorBoundary>
       <Paneset>
-        <ItemRecordGeneralPane itemRecordDetail={itemRecordDetail} view={view} stripes={stripes} />
-        <ItemRecordGraphPane itemRecordDetail={itemRecordDetail} view={view} stripes={stripes} />
-        <ItemRecordDetailPane itemRecordDetail={itemRecordDetail} view={view} stripes={stripes} />
+        <ItemRecordGeneralPane itemRecordControl={itemRecordControl} view={view} stripes={stripes} />
+        <ItemRecordGraphPane itemRecordControl={itemRecordControl} view={view} stripes={stripes} />
+        <ItemRecordDetailPane itemRecordControl={itemRecordControl} view={view} stripes={stripes} />
       </Paneset>
     </ErrorBoundary>
   </Layer>;

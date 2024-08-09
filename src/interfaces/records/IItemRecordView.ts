@@ -1,6 +1,12 @@
-import { IItemRecordDetail, IView } from '../';
+import { IItemRecordControl, IView } from '../';
 
+/**
+ * Provide properties for displaying an Item Record.
+ *
+ * itemRecordControl: The Item Record control data.
+ * stripes: The stripes use data.
+ */
 export interface IItemRecordView extends IView {
-  itemRecordDetail?: IItemRecordDetail
+  itemRecordControl?: IItemRecordControl
   stripes?: any;
 }
