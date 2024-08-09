@@ -13,5 +13,5 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, id, onSelect, valu
     return null;
   }
 
-  return <Card headerClass='node-detail' headerStart={ value?.name } key={ value?.id }>{value?.description}</Card>;
+  return <Card headerClass='node-detail' headerStart={ value?.name } headerEnd={ value?.deserializeAs } key={ value?.id }>{value?.description}</Card>;
 };
