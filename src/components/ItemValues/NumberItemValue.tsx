@@ -4,6 +4,11 @@ import { KeyValue } from '@folio/stripes/components';
 import { IItemValue } from '../../interfaces';
 import { t } from '../../utilities';
 
+/**
+ * Provide an Item value for displaying a number.
+ *
+ * This handles representation of the number as a literal number or as a string representing a number.
+ */
 export const NumberItemValue: React.FC<IItemValue> = ({ empty, id, value }) => {
   const tag = typeof value === 'number'
     ? value.toString()

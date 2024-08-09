@@ -1,4 +1,5 @@
 export * from './IItemRecord';
+export * from './IItemRecordControl';
 export * from './IItemRecordData';
-export * from './IItemRecordDetail';
+export * from './IItemRecordNodes';
 export * from './IItemRecordView';
