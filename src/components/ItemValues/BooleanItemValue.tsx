@@ -9,7 +9,7 @@ import { t } from '../../utilities';
  *
  * This handles multiple representations of boolean data.
  */
-export const BooleanItemValue: React.FC<IItemValue> = ({ empty, id, value }) => {
+export const BooleanItemValue: React.FC<IItemValue> = ({ empty, label, value }) => {
   const strValue = typeof value === 'string' ? value.toLowerCase() : null;
   const tag = value === true ||
     typeof value === 'number' && value !== 0 ||
@@ -23,5 +23,5 @@ export const BooleanItemValue: React.FC<IItemValue> = ({ empty, id, value }) => 
     return null;
   }
 
-  return <KeyValue label={ t(id) }>{tag}</KeyValue>;
+  return <KeyValue label={ t(label) }>{tag}</KeyValue>;
 };

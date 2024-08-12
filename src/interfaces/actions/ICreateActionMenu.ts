@@ -1,12 +1,12 @@
-import { IDetailPaneProperties } from '../panes/IDetailPaneProperties';
+import { IPaneControl } from '../panes';
 
 /**
  * Provide properties for the create pane action menu.
  *
- * importDetail: The import data.
+ * control: The pane control data.
  * stripes: The stripes use data.
  */
 export interface ICreateActionMenu {
-  importDetail?: IDetailPaneProperties;
+  control?: IPaneControl;
   stripes?: any;
 }

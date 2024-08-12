@@ -1,17 +1,22 @@
 import React from 'react';
-import { ErrorBoundary, Pane } from '@folio/stripes/components';
+import { ErrorBoundary, Pane, Paneset } from '@folio/stripes/components';
 
 import { GraphsItemValue } from '../../components';
-import { IItemRecordView } from '../../interfaces';
+import { IItemRecordPane } from '../../interfaces';
 import { t } from '../../utilities';
 
-export const ItemRecordGraphPane: React.FC<IItemRecordView> = ({ itemRecordControl, view, stripes }) => {
-  const selected = !!itemRecordControl?.selectedItem ? itemRecordControl.selectedItem : {};
-  const paneTitle = selected?.name ? itemRecordControl.selectedItem.name : t('title.itemRecordGraphPane');
+/**
+ * A pane for displaying the Workflow Item Record graphs.
+ */
+export const ItemRecordGraphPane: React.FC<IItemRecordPane> = ({ control, view, stripes }) => {
+  const selectedItem = !!control?.selectedItem ? control.selectedItem : {};
+  const paneTitle = selectedItem?.name ? selectedItem.name : t('title.itemRecordGraphPane');
 
-  return <Pane defaultWidth='fill' paneTitle={paneTitle}>
-    <ErrorBoundary>
-      <GraphsItemValue id='workflows.label.graphs' value={ selected?.nodes } />
-    </ErrorBoundary>
-  </Pane>;
+  return <Paneset>
+    <Pane defaultWidth='fill' paneTitle={paneTitle}>
+      <ErrorBoundary>
+        <GraphsItemValue label='workflows.label.graphs' value={ selectedItem?.nodes } onSelect={ control?.onNodeClick } selected={ control?.selectedNode } />
+      </ErrorBoundary>
+    </Pane>
+  </Paneset>;
 };

@@ -6,6 +6,9 @@ import { ExpandFilterPaneButton } from '@folio/stripes/smart-components';
 
 import { FILTER_PANE_VISIBILITY_KEY, HOME_PAGE_URL, USER_PERMS } from '../../constants';
 
+/**
+ * A menu for the filter pane.
+ */
 export const FilterMenu: FunctionComponent = (props: any) => {
   const [ filterPaneIsVisible, writeToggleFilterStorage ] = useLocalStorage(FILTER_PANE_VISIBILITY_KEY, true);
 

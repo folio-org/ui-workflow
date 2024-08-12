@@ -8,6 +8,9 @@ import { SEARCH_WORKFLOWS_DEFAULT_KEY, SEARCH_WORKFLOWS_VALUE_ID, VIEW } from '.
 import { useFilters, useFilterConfig, useSearch } from '../../hooks';
 import { IListProperties } from '../../interfaces';
 
+/**
+ * A pane for presenting search information for the browse view from VIEW.
+ */
 export const BrowseSearchPane: React.FC<IListProperties> = ({ data, isLoading, limit, offset, readFilters }) => {
   const filterConfig = useFilterConfig(VIEW.BROWSE);
   const filters = useFilters(VIEW.BROWSE);

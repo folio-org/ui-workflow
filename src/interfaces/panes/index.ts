@@ -1,2 +1,2 @@
-export * from './IDetailPane';
-export * from './IDetailPaneProperties';
+export * from './IPane';
+export * from './IPaneControl';

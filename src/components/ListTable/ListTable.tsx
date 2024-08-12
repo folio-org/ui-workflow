@@ -9,7 +9,10 @@ import { ITEMS_VISIBLE_COLUMNS, ITEMS_COLUMN_WIDTHS, CURRENT_PAGE_OFFSET_KEY, PA
 import { usePrevious } from '../../hooks';
 import { IItemRecord, IListProperties } from '../../interfaces';
 
-export const ListTable: React.FC<IListProperties> = ({ view, data, isLoading, limit, offset, readFilters, detailPaneSelect }) => {
+/**
+ * A table consisting of the Workflow Item Records.
+ */
+export const ListTable: React.FC<IListProperties> = ({ view, data, isLoading, limit, offset, readFilters, rowSelect }) => {
   const { changePage, pagination } = usePagination({ limit, offset });
 
   const onNeedMoreData = (thePagination: any) => {
@@ -60,7 +63,7 @@ export const ListTable: React.FC<IListProperties> = ({ view, data, isLoading, li
         totalCount={totalRecords}
         formatter={listTableResultFormatter}
         columnMapping={listTableMapping}
-        onRowClick={detailPaneSelect?.onRowClick}
+        onRowClick={ !!rowSelect ? rowSelect : noop }
       />
       <PrevNextPagination
         {...pagination}

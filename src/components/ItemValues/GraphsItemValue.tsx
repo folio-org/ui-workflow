@@ -12,12 +12,14 @@ import { IItemValue } from '../../interfaces';
  * This shall return NULL even if empty is not set.
  * The empty property is passed onto the individual graphs.
  */
-export const GraphsItemValue: React.FC<IItemValue> = ({ empty, id, onSelect, value }) => {
+export const GraphsItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected, value }) => {
   const values: any[] = [];
 
   if (typeof value === 'object') {
     Object.values(value).forEach(v => {
-      values.push(<GraphItemValue value={v} onSelect={onSelect} empty />);
+      if (!!v) {
+        values.push(<GraphItemValue empty onSelect={onSelect} selected={selected} value={v} />);
+      }
     });
   }
 
