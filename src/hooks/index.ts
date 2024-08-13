@@ -1,3 +1,4 @@
+export * from './useClickControl';
 export * from './useFilterConfig';
 export * from './useFilters';
 export * from './useItemRecordControl';
@@ -5,6 +6,7 @@ export * from './useLocalStorageToggle';
 export * from './useLists';
 export * from './usePaneControl';
 export * from './usePrevious';
+export * from './useRequest';
 export * from './useSearch';
 export * from './useTextModal';
 export * from './useUpload';

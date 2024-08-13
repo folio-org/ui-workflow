@@ -8,4 +8,5 @@ export * from './ItemRecordDetailPane';
 export * from './ItemValues';
 export * from './ListTable';
 export * from './SearchPane';
+export * from './WorkflowGeneralActionMenu';
 export * from './WorkflowIcon';

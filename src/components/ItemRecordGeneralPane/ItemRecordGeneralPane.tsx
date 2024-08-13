@@ -1,7 +1,9 @@
-import React from 'react';
-import { Accordion, AccordionSet, Col, ErrorBoundary, Pane, Paneset, Row } from '@folio/stripes/components';
+import React, { useCallback, useContext, useState } from 'react';
+import { Accordion, AccordionSet, Button, Col, ErrorBoundary, Pane, Paneset, Row } from '@folio/stripes/components';
+import { CalloutContext } from '@folio/stripes/core';
 
-import { BooleanItemValue, BooleanMapItemValue, NumberItemValue, StringItemValue } from '../../components';
+import { BooleanItemValue, BooleanMapItemValue, NumberItemValue, StringItemValue, WorkflowGeneralActionMenu } from '../';
+import { useClickControl, useDeleteRequest } from '../../hooks';
 import { IItemRecordPane } from '../../interfaces';
 import { t } from '../../utilities';
 
@@ -9,11 +11,42 @@ import { t } from '../../utilities';
  * A pane for displaying the Workflow Item Record general information.
  */
 export const ItemRecordGeneralPane: React.FC<IItemRecordPane> = ({ control, view, stripes }) => {
+  const callout = useContext(CalloutContext);
+  const { sendDelete } = useDeleteRequest();
   const selected = !!control?.selectedItem ? control.selectedItem : {};
   const onClose = !!control?.recordControl?.onClose ? control.recordControl.onClose : false;
 
+  const clickControl = useClickControl(
+    (onDone: any) => {
+      if (!selected?.id) return;
+
+      sendDelete(
+        `workflows/${selected.id}/delete`,
+        (response: any) => {
+          callout.sendCallout({
+            type: 'success',
+            message: t('workflows.item.callout.success.delete', { name: selected?.name, id: selected?.id })
+          });
+
+          onDone();
+          onClose();
+        },
+        (error: any, reason: string) => {
+          onDone();
+
+          callout.sendCallout({
+            type: 'error',
+            message: t('workflows.item.callout.failure.delete', { name: selected?.name, id: selected?.id, reason })
+          });
+        }
+      );
+    }
+  );
+
+  const actionMenu = <WorkflowGeneralActionMenu control={clickControl} stripes={stripes} />;
+
   return <Paneset>
-    <Pane defaultWidth='fill' dismissible onClose={onClose} paneTitle={ t('title.itemRecordGeneralPane') }>
+    <Pane defaultWidth='fill' dismissible onClose={onClose} paneTitle={ t('title.itemRecordGeneralPane') } lastMenu={actionMenu}>
       <ErrorBoundary>
         <AccordionSet>
           <Accordion label={ t('workflows.item.label') } id={ selected?.id }>

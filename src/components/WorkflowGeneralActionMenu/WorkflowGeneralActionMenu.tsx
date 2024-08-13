@@ -2,33 +2,33 @@ import React, { useCallback, useContext, useState } from 'react';
 import { Button, Dropdown, DropdownMenu } from '@folio/stripes/components';
 
 import { USER_PERMS } from '../../constants';
-import { ICreateActionMenu } from '../../interfaces';
+import { IWorkflowGeneralActionMenu } from '../../interfaces';
 import { t } from '../../utilities';
 
 /**
- * An action menu for the create view import pane.
+ * An action menu for the Workflow general view pane.
  */
-export const CreateActionMenu: React.FC<ICreateActionMenu> = ({ control, stripes }) => {
+export const WorkflowGeneralActionMenu: React.FC<IWorkflowGeneralActionMenu> = ({ control, stripes }) => {
   const [ open, setOpen ] = useState(false);
 
   const onToggle = useCallback(() => {
     setOpen(!open);
   }, [ open ]);
 
-  const onCreateClick = useCallback(() => {
+  const onDeleteClick = useCallback(() => {
     onToggle();
-    control?.setShow(true);
+    control?.onClick(control);
   }, [ control ]);
 
-  return <Dropdown id='menu-actions-create-dropdown' label={ t('button.actions') } buttonProps={{ buttonStyle: 'primary', marginBottom0: true }}>
+  return <Dropdown id='menu-actions-workflow-dropdown' label={ t('button.actions') } buttonProps={{ buttonStyle: 'primary', marginBottom0: true }}>
     <DropdownMenu data-role='menu' aria-label={ t('create.action.menu') } onToggle={onToggle} open>
       <Button
         data-role='menuitem'
         buttonStyle='dropdownItem'
-        onClick={onCreateClick}
-        disabled={ !stripes.hasPerm(USER_PERMS.WorkflowsItemPost) }
+        onClick={onDeleteClick}
+        disabled={ !stripes.hasPerm(USER_PERMS.WorkflowsItemDelete) }
       >
-        { t('button.create.import') }
+        { t('button.workflows.item.delete') }
       </Button>
     </DropdownMenu>
   </Dropdown>;
