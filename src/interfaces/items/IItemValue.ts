@@ -4,7 +4,7 @@ import { IItemRecordControl } from '../';
  * Provide properties for an Item Value.
  *
  * control: The Item Record control data.
- * empty: If TRUE, then return NULL when the data is empty or non-existent.
+ * empty: If TRUE, then return NULL when the value is empty or non-existent.
  * format: Specific to each Item value type, but generally designates formatting such as 'text/html' or 'text/plain' for TextItemValue.
  * label: The identifier string used for localization of the label.
  * onSelect: Event handler.
