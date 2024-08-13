@@ -4,7 +4,6 @@ import { IPaneControl } from '../';
  * Provide properties for managing the Item Record and its sub-parts.
  *
  * detailControl: The detail pane control settings.
- * nodeStack: Hook for managing a Node stack.
  * onItemClick: Event handler.
  * onNodeClick: Event handler.
  * recordControl: The Item Record pane control settings.
@@ -15,7 +14,6 @@ import { IPaneControl } from '../';
  */
 export interface IItemRecordControl {
   detailControl?: IPaneControl;
-  nodeStack?: any;
   onItemClick?: any;
   onNodeClick?: any;
   recordControl?: IPaneControl;
