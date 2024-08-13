@@ -10,15 +10,15 @@ import { IItemValue } from '../../interfaces';
  * This graph of a Node shall process the onSelect when clicked.
  */
 export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected, value }) => {
+  if (typeof value !== 'object' && empty === true) {
+    return null;
+  }
+
   const cardClass = !!selected?.id && value?.id === selected.id ? css?.selected : null;
 
   const onClick = (e: any) => {
     if (!!onSelect) onSelect(e, value);
   };
-
-  if (typeof value !== 'object' && empty === true) {
-    return null;
-  }
 
   return <Card
     headerClass={ css?.nodeHeader }

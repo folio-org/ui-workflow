@@ -8,11 +8,11 @@ import { t } from '../../utilities';
  * Provide an Item value for displaying an SQL string.
  */
 export const SqlItemValue: React.FC<IItemValue> = ({ empty, label, value }) => {
-  const tag = typeof value === 'string' ? value : undefined;
-
   if (typeof value !== 'string' && empty === true) {
     return null;
   }
+
+  const tag = typeof value === 'string' ? value : undefined;
 
   return <KeyValue label={ t(label) }>{tag}</KeyValue>;
 };
