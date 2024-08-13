@@ -9,7 +9,7 @@ import { t } from '../../utilities';
  *
  * This handles representation of a map of boolean data.
  */
-export const BooleanMapItemValue: React.FC<IItemValue> = ({ empty, id, value }) => {
+export const BooleanMapItemValue: React.FC<IItemValue> = ({ empty, label, value }) => {
   const values = [];
 
   if (typeof value === 'object') {
@@ -33,5 +33,5 @@ export const BooleanMapItemValue: React.FC<IItemValue> = ({ empty, id, value }) 
     return null;
   }
 
-  return <KeyValue label={ t(id) }>{values.length ? values : undefined}</KeyValue>;
+  return <KeyValue label={ t(label) }>{values.length ? values : undefined}</KeyValue>;
 };

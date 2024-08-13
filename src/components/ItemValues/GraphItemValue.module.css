@@ -1,0 +1,13 @@
+@import "@folio/stripes-components/lib/variables";
+
+.selected {
+  border: 1px solid oklch(70.00% 0 0) !important;
+
+  .nodeHeader {
+    background-color: oklch(85.00% 0 0);
+  }
+
+  .nodeBody {
+    background-color: oklch(90.00% 0 0);
+  }
+}

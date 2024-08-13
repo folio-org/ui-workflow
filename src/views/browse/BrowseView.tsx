@@ -2,7 +2,7 @@
 import type { FunctionComponent, useState } from 'react';
 import React from 'react';
 import { useLocalStorage } from '@rehooks/local-storage';
-import { Button, ErrorBoundary, Layer, Pane, Paneset, FilterPaneSearch, PaneHeader } from '@folio/stripes/components';
+import { Button, ErrorBoundary, Pane, Paneset, FilterPaneSearch, PaneHeader } from '@folio/stripes/components';
 import { useStripes } from '@folio/stripes/core';
 import { noop } from 'lodash';
 
@@ -13,7 +13,12 @@ import { IView, IItemRecordControl } from '../../interfaces';
 import { t } from '../../utilities';
 import { ItemRecordView } from '../';
 
-export const BrowseView: FunctionComponent<IView> = (props: any) => {
+/**
+ * A main view for displaying "browse" information.
+ *
+ * This is part of VIEW.
+ */
+export const BrowseView: FunctionComponent<IView> = (props?: any) => {
   const [ storedCurrentPageOffset ] = useLocalStorage<number>(CURRENT_PAGE_OFFSET_KEY, 0);
   const [ readFilter ] = useLocalStorage(FILTER_APPLIED_KEY[VIEW.BROWSE], DEFAULT_FILTERS[VIEW.BROWSE]);
   const [ readSearch ] = useLocalStorage(SEARCH_WORKFLOWS_VALUE_KEY, SEARCH_WORKFLOWS_DEFAULT_KEY);
@@ -25,33 +30,31 @@ export const BrowseView: FunctionComponent<IView> = (props: any) => {
 
   const stripes = useStripes();
   const { data, isLoading } = useLists(PATH[VIEW.BROWSE], { filters, filtersConfig, search, limit, offset });
-  const itemRecordControl: IItemRecordControl = useItemRecordControl(PATH[VIEW.BROWSE]);
+  const control: IItemRecordControl = useItemRecordControl(PATH[VIEW.BROWSE]);
 
-  return <ErrorBoundary>
-    <Paneset>
-      <Layer isOpen>
-        <Paneset isRoot>
-          <FilterPane view={ VIEW.BROWSE } data={data} isLoading={isLoading} limit={limit} offset={offset} readFilters={filters} />
-          <Pane
-            defaultWidth='fill'
-            paneTitle={ t('title.workflowList') }
-            appIcon={ <WorkflowIcon /> }
-            firstMenu={ <FilterMenu /> }
-            lastMenu={ <Button bottomMargin0 buttonStyle='primary' onClick={noop}>{ t('button.actions') }</Button> }
-          >
-            <ListTable
-              view={VIEW.BROWSE}
-              data={data}
-              isLoading={isLoading}
-              limit={limit}
-              offset={offset}
-              readFilters={filters}
-              detailPaneSelect={itemRecordControl}
-            />
-          </Pane>
-        </Paneset>
-      </Layer>
-      <ItemRecordView itemRecordControl={itemRecordControl} view={ VIEW.BROWSE } stripes={stripes} />
-    </Paneset>
-  </ErrorBoundary>;
+  return <Paneset>
+    <ErrorBoundary>
+      <Paneset isRoot>
+        <FilterPane view={ VIEW.BROWSE } data={data} isLoading={isLoading} limit={limit} offset={offset} readFilters={filters} />
+        <Pane
+          defaultWidth='75%'
+          paneTitle={ t('title.workflowList') }
+          appIcon={ <WorkflowIcon /> }
+          firstMenu={ <FilterMenu /> }
+          lastMenu={ <Button bottomMargin0 buttonStyle='primary' onClick={noop}>{ t('button.actions') }</Button> }
+        >
+          <ListTable
+            view={ VIEW.BROWSE }
+            data={data}
+            isLoading={isLoading}
+            limit={limit}
+            offset={offset}
+            readFilters={filters}
+            rowSelect={ control?.onItemClick }
+          />
+        </Pane>
+      </Paneset>
+      <ItemRecordView control={control} view={ VIEW.BROWSE } stripes={stripes} />
+    </ErrorBoundary>
+  </Paneset>;
 };

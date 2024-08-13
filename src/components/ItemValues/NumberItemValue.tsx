@@ -9,7 +9,7 @@ import { t } from '../../utilities';
  *
  * This handles representation of the number as a literal number or as a string representing a number.
  */
-export const NumberItemValue: React.FC<IItemValue> = ({ empty, id, value }) => {
+export const NumberItemValue: React.FC<IItemValue> = ({ empty, label, value }) => {
   const tag = typeof value === 'number'
     ? value.toString()
     : typeof value === 'string'
@@ -20,5 +20,5 @@ export const NumberItemValue: React.FC<IItemValue> = ({ empty, id, value }) => {
     return null;
   }
 
-  return <KeyValue label={ t(id) }>{tag}</KeyValue>;
+  return <KeyValue label={ t(label) }>{tag}</KeyValue>;
 };
