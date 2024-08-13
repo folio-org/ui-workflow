@@ -1,0 +1,14 @@
+@import "@folio/stripes-components/lib/variables";
+
+.codeItemValue {
+  border: 1px solid oklch(80.00% 0 0);
+  padding: 1rem;
+
+  background-color: oklch(98.00% 0 0);
+}
+
+.codeItemValueText,
+.codeItemValueTextModal {
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}

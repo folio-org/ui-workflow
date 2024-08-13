@@ -27,7 +27,7 @@ export const ItemRecordNodeScriptTask: React.FC<IItemRecordPane> = (props?: any)
       </Row>
       <Row>
         <Col xs={12}>
-          <CodeItemValue label='workflows.item.node.code' value={ selected?.code } />
+          <CodeItemValue label='workflows.item.node.code' value={ selected?.code } control={ props.control } />
         </Col>
       </Row>
     </Accordion>
