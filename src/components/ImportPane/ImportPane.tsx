@@ -12,6 +12,10 @@ import { t } from '../../utilities';
  * A pane used for importing a view.
  */
 export const ImportPane: React.FC<IPane> = ({ control, view, stripes }) => {
+  if (!control?.show) {
+    return null;
+  }
+
   const [ busy, setBusy ] = useState(false);
   const [ isDropZoneActive, setIsDropZoneActive ] = useState(false);
   const callout = useContext(CalloutContext);
@@ -83,10 +87,6 @@ export const ImportPane: React.FC<IPane> = ({ control, view, stripes }) => {
     setBusy(false);
     callout.sendCallout({ type: 'error', message: t('import.callout.failure.import', { name: 'filename', reason: 'some reason' }) });
   }, [ busy, callout, isDropZoneActive ]);
-
-  if (!control?.show) {
-    return null;
-  }
 
   return <Pane defaultWidth='fill' dismissible onClose={ control?.onClose } paneTitle={ t('import.workflow.title') } >
     <ErrorBoundary>

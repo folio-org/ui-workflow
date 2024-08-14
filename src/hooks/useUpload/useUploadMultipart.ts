@@ -1,5 +1,10 @@
 import { useOkapiKy } from '@folio/stripes/core';
 
+import { requestGetErrorReason } from '../../utilities';
+
+/**
+ * Perform an OKAPI HTTP multipart POST request.
+ */
 export const useUploadMultipart = () => {
   const ky = useOkapiKy();
 
@@ -20,18 +25,7 @@ export const useUploadMultipart = () => {
 
       onSuccess(file, response);
     } catch (error: any) {
-      let reason = error.toString();
-
-      if (error?.name === 'HTTPError') {
-        try {
-          const errorJson = await error.response.json();
-          if (errorJson?.errors?.length > 0) {
-            reason = errorJson.errors[0]?.code + ' ' + errorJson.errors[0]?.message;
-          }
-        } catch (error: any) {
-          // If error.response.json() fails, then do nothing.
-        }
-      }
+      const reason = await requestGetErrorReason(error);
 
       onError(file, error, reason);
     }
