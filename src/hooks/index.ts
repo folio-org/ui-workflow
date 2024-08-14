@@ -4,6 +4,7 @@ export * from './useFilters';
 export * from './useItemRecordControl';
 export * from './useLocalStorageToggle';
 export * from './useLists';
+export * from './useModal';
 export * from './usePaneControl';
 export * from './usePrevious';
 export * from './useRequest';

@@ -1,12 +1,12 @@
-import { IClickControl, IView } from '../';
+import { IView } from '../';
 
 /**
  * Provide properties for the Workflow general pane action menu.
  *
- * control: The click control data.
+ * deleteModal: The popup modal for the delete action.
  * stripes: The stripes use data.
  */
 export interface IWorkflowGeneralActionMenu extends IView {
-  control?: IClickControl;
+  deleteModal?: any;
   stripes?: any;
 }

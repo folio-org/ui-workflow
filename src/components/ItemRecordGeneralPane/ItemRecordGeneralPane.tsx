@@ -1,9 +1,9 @@
 import React, { useCallback, useContext, useState } from 'react';
-import { Accordion, AccordionSet, Button, Col, ErrorBoundary, Pane, Paneset, Row } from '@folio/stripes/components';
+import { Accordion, AccordionSet, Button, Col, ErrorBoundary, Modal, ModalFooter, Pane, Paneset, Row } from '@folio/stripes/components';
 import { CalloutContext } from '@folio/stripes/core';
 
 import { BooleanItemValue, BooleanMapItemValue, NumberItemValue, StringItemValue, WorkflowGeneralActionMenu } from '../';
-import { useClickControl, useDeleteRequest } from '../../hooks';
+import { useClickControl, useDeleteRequest, useModal } from '../../hooks';
 import { IItemRecordPane } from '../../interfaces';
 import { t } from '../../utilities';
 
@@ -11,43 +11,64 @@ import { t } from '../../utilities';
  * A pane for displaying the Workflow Item Record general information.
  */
 export const ItemRecordGeneralPane: React.FC<IItemRecordPane> = ({ control, view, stripes }) => {
-  const callout = useContext(CalloutContext);
-  const { sendDelete } = useDeleteRequest();
   const selected = !!control?.selectedItem ? control.selectedItem : {};
-  const onClose = !!control?.recordControl?.onClose ? control.recordControl.onClose : false;
+  const closeWorkflowPane = !!control?.recordControl?.onClose ? control.recordControl.onClose : false;
+  const callout = useContext(CalloutContext);
+  const deleteRequest = useDeleteRequest();
 
-  const clickControl = useClickControl(
+  const deleteModal = useModal(null, () => { if (!!deleteControl.busy) deleteControl.onDone() });
+
+  const deleteControl = useClickControl(
     (onDone: any) => {
       if (!selected?.id) return;
 
-      sendDelete(
+      deleteRequest.sendDelete(
         `workflows/${selected.id}/delete`,
         (response: any) => {
           callout.sendCallout({
             type: 'success',
-            message: t('workflows.item.callout.success.delete', { name: selected?.name, id: selected?.id })
+            message: t('workflows.item.callout.success.delete', { name: selected?.name, id: selected.id })
           });
 
           onDone();
-          onClose();
+          closeWorkflowPane();
         },
         (error: any, reason: string) => {
           onDone();
 
           callout.sendCallout({
             type: 'error',
-            message: t('workflows.item.callout.failure.delete', { name: selected?.name, id: selected?.id, reason })
+            message: t('workflows.item.callout.failure.delete', { name: selected?.name, id: selected.id, reason })
           });
         }
       );
-    }
+    },
+    () => { if (!!deleteModal.show) deleteModal.onHide() }
   );
 
-  const actionMenu = <WorkflowGeneralActionMenu control={clickControl} stripes={stripes} />;
+  const actionMenu = <WorkflowGeneralActionMenu deleteModal={deleteModal} stripes={stripes} />;
+
+  const deleteModalFooter = <ModalFooter>
+    <Button buttonStyle='danger' onClick={ deleteControl.onClick }>{ t('button.workflows.item.delete.confirm') }</Button>
+    <Button onClick={ deleteModal.onHide }>{ t('button.workflows.item.delete.cancel') }</Button>
+  </ModalFooter>;
 
   return <Paneset>
-    <Pane defaultWidth='fill' dismissible onClose={onClose} paneTitle={ t('title.itemRecordGeneralPane') } lastMenu={actionMenu}>
+    <Pane defaultWidth='fill' dismissible onClose={closeWorkflowPane} paneTitle={ t('title.itemRecordGeneralPane') } lastMenu={actionMenu}>
       <ErrorBoundary>
+        <Modal
+          aria-label={ t('workflows.item.delete.modal.aria', { name: selected?.name }) }
+          label={ t('workflows.item.delete.modal.label', { name: selected?.name }) }
+          dismissible
+          open={ deleteModal.show }
+          onClose={ deleteModal.onHide }
+          footer={ deleteModalFooter }
+        >
+          <>{ t('workflows.item.delete.modal.message', {
+            name: <strong>{ selected?.name }</strong>,
+            action: <strong>{ t('workflows.item.delete.modal.action') }</strong>
+          }) }</>
+        </Modal>
         <AccordionSet>
           <Accordion label={ t('workflows.item.label') } id={ selected?.id }>
             <Row>
