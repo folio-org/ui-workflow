@@ -6,4 +6,5 @@ export * from './useLists';
 export * from './usePaneControl';
 export * from './usePrevious';
 export * from './useSearch';
+export * from './useTextModal';
 export * from './useUpload';

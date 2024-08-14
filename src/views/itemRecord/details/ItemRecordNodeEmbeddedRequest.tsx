@@ -1,7 +1,7 @@
 import React from 'react';
 import { Accordion, AccordionSet, Col, Row } from '@folio/stripes/components';
 
-import { BooleanItemValue, StringItemValue, TextItemValue, UriItemValue } from '../../../components';
+import { BooleanItemValue, CodeItemValue, StringItemValue, UriItemValue } from '../../../components';
 import { IItemRecordPane } from '../../../interfaces';
 import { t } from '../../../utilities';
 
@@ -37,7 +37,7 @@ export const ItemRecordNodeEmbeddedRequest: React.FC<IItemRecordPane> = (props?:
       </Row>
       <Row>
         <Col xs={12}>
-          <TextItemValue label='workflows.item.node.bodyTemplate' value={ selected?.bodyTemplate } format='text/plain' />
+          <CodeItemValue label='workflows.item.node.bodyTemplate' value={ selected?.bodyTemplate } format='text/plain' control={ props.control } />
         </Col>
       </Row>
       <Row>

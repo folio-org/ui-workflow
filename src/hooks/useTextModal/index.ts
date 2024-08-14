@@ -1,0 +1,1 @@
+export { useTextModal } from './useTextModal';

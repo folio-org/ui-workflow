@@ -1,7 +1,7 @@
 import React from 'react';
 import { Accordion, AccordionSet, Col, Row } from '@folio/stripes/components';
 
-import { BooleanItemValue, StringItemValue, SqlItemValue } from '../../../components';
+import { BooleanItemValue, CodeItemValue, StringItemValue } from '../../../components';
 import { IItemRecordPane } from '../../../interfaces';
 import { t } from '../../../utilities';
 
@@ -24,7 +24,7 @@ export const ItemRecordNodeDatabaseQueryTask: React.FC<IItemRecordPane> = (props
       </Row>
       <Row>
         <Col xs={12}>
-          <SqlItemValue label='workflows.item.node.query' value={ selected?.query } />
+          <CodeItemValue label='workflows.item.node.query' value={ selected?.query } format='application/sql' raw control={ props.control } />
         </Col>
       </Row>
       <Row>

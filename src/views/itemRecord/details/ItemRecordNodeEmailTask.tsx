@@ -1,7 +1,7 @@
 import React from 'react';
 import { Accordion, AccordionSet, Col, Row } from '@folio/stripes/components';
 
-import { StringItemValue, TextItemValue } from '../../../components';
+import { CodeItemValue, StringItemValue } from '../../../components';
 import { IItemRecordPane } from '../../../interfaces';
 import { t } from '../../../utilities';
 
@@ -44,12 +44,12 @@ export const ItemRecordNodeEmailTask: React.FC<IItemRecordPane> = (props?: any) 
       </Row>
       <Row>
         <Col xs={12}>
-          <TextItemValue label='workflows.item.node.mailText' value={ selected?.mailText } format='text/plain' />
+          <CodeItemValue label='workflows.item.node.mailText' value={ selected?.mailText } raw format='text/plain' control={ props.control } />
         </Col>
       </Row>
       <Row>
         <Col xs={12}>
-          <TextItemValue label='workflows.item.node.mailMarkup' value={ selected?.mailMarkup } format='text/html' />
+          <CodeItemValue label='workflows.item.node.mailMarkup' value={ selected?.mailMarkup } raw format='text/html' control={ props.control } />
         </Col>
       </Row>
       <Row>

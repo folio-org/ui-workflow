@@ -37,7 +37,7 @@ export const ItemRecordNodeEmbeddedProcessor: React.FC<IItemRecordPane> = (props
       </Row>
       <Row>
         <Col xs={12}>
-          <CodeItemValue label='workflows.item.node.code' value={ selected?.code } />
+          <CodeItemValue label='workflows.item.node.code' value={ selected?.code } control={ props.control } />
         </Col>
       </Row>
     </Accordion>
