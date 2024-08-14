@@ -6,18 +6,20 @@ export const buildBrowseQuery = (filters: string[], filtersConfig: any, search: 
   let inactive = false;
   let name: string|null = null;
 
-  if (search?.key.length > 0 && search?.value.length > 0 && !!filtersConfig?.searchIndexes && !!filtersConfig?.searchSettings) {
+  if ((search?.key?.length || 0) > 0 && (search?.value?.length || 0) > 0 && !!filtersConfig?.searchIndexes && !!filtersConfig?.searchSettings) {
     let foundKey = false;
-    for (let i = 0; i < filtersConfig.searchIndexes.length; i++) {
+    const filtersLength = filtersConfig?.searchIndexes?.length || 0;
+
+    for (let i = 0; i < filtersLength; i++) {
       if (filtersConfig.searchIndexes[i].value === search.key) {
         foundKey = true;
         break;
       }
     }
 
-    if (foundKey) {
+    if (foundKey && !!search?.key && !!filtersConfig?.searchSettings[search.key]) {
       const setting = filtersConfig.searchSettings[search.key];
-      queryList.push(search.key + '=="' + search.value + '"');
+      queryList.push(search.key + '=="' + search?.value + '"');
     }
   }
 
