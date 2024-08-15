@@ -1,13 +1,13 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 
 /**
  * Control structure for using an Item Record.
  */
 export const useItemRecordControl = (path: any) => {
-  const [ selectedItem, setSelectedItem ] = React.useState();
-  const [ selectedNode, setSelectedNode ] = React.useState();
-  const [ showDetail, setShowDetail ] = React.useState(false);
-  const [ showRecord, setShowRecord ] = React.useState(false);
+  const [ selectedItem, setSelectedItem ] = useState();
+  const [ selectedNode, setSelectedNode ] = useState();
+  const [ showDetail, setShowDetail ] = useState(false);
+  const [ showRecord, setShowRecord ] = useState(false);
 
   const onItemClick = useCallback((event: any, item: any) => {
     setSelectedItem(!!item ? item : null);
@@ -21,7 +21,7 @@ export const useItemRecordControl = (path: any) => {
 
   const detailControl = {
     onClose: useCallback(() => {
-      setSelectedNode(null);
+      setSelectedNode(undefined);
       setShowDetail(false);
     }, [ selectedNode, showDetail ]),
     setShow: setShowDetail,

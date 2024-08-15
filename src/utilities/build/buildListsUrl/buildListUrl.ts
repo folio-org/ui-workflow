@@ -3,7 +3,7 @@ import { IListRequest, ISearchState } from '../../../interfaces';
 import { buildBrowseQuery } from '../../';
 
 export const buildListUrl = (url: any, request: IListRequest) => {
-  if (!url || url == "" || !request.filtersConfig) return "";
+  if (!url || url == "" || !request?.filtersConfig) return "";
 
   const { filters = [], search = { key: SEARCH_WORKFLOWS_DEFAULT_KEY, value: "" }, limit = 10, offset = 0 } = request || {};
 

@@ -5,7 +5,7 @@ import { useFilterConfigBrowse, useFilterConfigCreate } from './';
 
 export const useFilterConfig = (view: string): IFilterConfig => {
 
-  if (view == VIEW.create) {
+  if (view == VIEW.CREATE) {
     return useFilterConfigCreate();
   }
 

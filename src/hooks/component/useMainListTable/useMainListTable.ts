@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { writeStorage } from '@rehooks/local-storage';
 
-import { CURRENT_PAGE_OFFSET_KEY } from '../../constants';
+import { CURRENT_PAGE_OFFSET_KEY } from '../../../constants';
 
 /**
  * A hook specific to the MainListTable component for managing a table.
@@ -17,8 +17,8 @@ export const useMainListTable = (data: any, pagination: any) => {
   const [ showDetailPane, setShowDetailPane ] = useState(true);
 
   const onNeedMoreData = useCallback((thePagination: any) => {
-    writeStorage(CURRENT_PAGE_OFFSET_KEY, thePagination.offset);
-    pagination.changePage(thePagination);
+    writeStorage(CURRENT_PAGE_OFFSET_KEY, thePagination?.offset);
+    pagination?.changePage(thePagination);
   }, [ pagination ]);
 
   return {
