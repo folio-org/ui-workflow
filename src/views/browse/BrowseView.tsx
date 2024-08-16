@@ -30,7 +30,7 @@ export const BrowseView: FunctionComponent<IView> = (props?: any) => {
 
   const stripes = useStripes();
   const { data, isLoading } = useWorkflowList(PATH[VIEW.BROWSE], { filters, filtersConfig, search, limit, offset });
-  const control: IItemRecordControl = useItemRecordControl(PATH[VIEW.BROWSE]);
+  const control: IItemRecordControl = useItemRecordControl();
 
   return <Paneset>
     <ErrorBoundary>

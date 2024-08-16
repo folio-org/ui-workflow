@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react';
 /**
  * Control structure for using an Item Record.
  */
-export const useItemRecordControl = (path: any) => {
+export const useItemRecordControl = () => {
   const [ selectedItem, setSelectedItem ] = useState();
   const [ selectedNode, setSelectedNode ] = useState();
   const [ showDetail, setShowDetail ] = useState(false);
