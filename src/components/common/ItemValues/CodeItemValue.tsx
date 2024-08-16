@@ -15,10 +15,8 @@ export const CodeItemValue: React.FC<IItemValue> = ({ control, format, empty, la
     return null;
   }
 
-  const text = typeof value === 'string'
-    ? raw
-      ? value
-      : value.length > 0 ? JSON.parse(value) : ''
+  const text = (typeof value === 'string' && value.length > 0)
+    ? raw ? value : JSON.parse(value)
     : undefined;
 
   if (!!text && text.length > BRIEF_CODE_SIZE) {
@@ -51,9 +49,11 @@ export const CodeItemValue: React.FC<IItemValue> = ({ control, format, empty, la
     </>;
   }
 
-  return <KeyValue label={ t(label) }>
-    <div className={ css?.codeItemValue }>
-      { !!text ? <code className={ css?.codeItemValueText }>{text}</code> : undefined }
-    </div>
-  </KeyValue>;
+  const markup = !!text
+    ? <div className={ css?.codeItemValue }>
+        <code className={ css?.codeItemValueText }>{text}</code>
+      </div>
+    : undefined;
+
+  return <KeyValue label={ t(label) }>{markup}</KeyValue>;
 };
