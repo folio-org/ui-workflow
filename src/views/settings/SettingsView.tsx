@@ -8,6 +8,9 @@ import { Settings, SettingsProps } from '@folio/stripes/smart-components';
 import { WorkflowsSettings } from '../../settings';
 import { t } from '../../utilities';
 
+/**
+ * This is a main settings view for configuring the ui-workflow module.
+ */
 export const SettingsView: FunctionComponent<SettingsProps> = (props: any) => {
   const pages = [
     {
