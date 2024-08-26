@@ -1,20 +1,18 @@
 /**
  * Provide properties for a list, such as a table list.
  *
- * data: Data associated with the list.
- * isLoading: Current loading state.
+ * filters: A list of filters.
  * limit: The list size limit.
+ * list: The list hook properties like data, error, isLoading, and refetch.
  * offset: The list offset.
- * readFilters: A list of read filters.
  * rowSelect: Event handler.
  * view: The active view being used from the VIEW constant.
  */
 export interface IListProperties {
-  data?: any;
-  isLoading?: boolean;
+  filters?: string[];
   limit?: number;
+  list?: any;
   offset?: number;
-  readFilters?: string[];
   rowSelect?: any;
   view?: any;
 }

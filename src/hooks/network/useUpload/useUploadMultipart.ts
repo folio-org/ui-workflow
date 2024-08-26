@@ -3,7 +3,7 @@ import { useOkapiKy } from '@folio/stripes/core';
 import { requestGetErrorReason } from '../../../utilities';
 
 /**
- * Perform an OKAPI HTTP multipart POST request.
+ * Perform an OKAPI HTTP multipart POST request for uploading.
  */
 export const useUploadMultipart = () => {
   const ky = useOkapiKy();

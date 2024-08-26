@@ -12,20 +12,21 @@ import { BrowseSearchPane } from '../';
 /**
  * A pane for presenting the side panel information for the different views from VIEW.
  */
-export const FilterPane: React.FC<IListProperties> = ({ view, data, isLoading, limit, offset, readFilters }) => {
+export const FilterPane: React.FC<IListProperties> = ({ list, view }) => {
   const [ filterPaneIsVisible, writeToggleFilterStorage ] = useLocalStorage(FILTER_PANE_VISIBILITY_KEY, true);
 
-  const lastMenu = <PaneMenu><CollapseFilterPaneButton onClick={ () => writeToggleFilterStorage(false) } /></PaneMenu>;
+  if (!filterPaneIsVisible) return null;
+
   const browseStyle = (view == VIEW.CREATE) ? 'default' : 'primary';
   const createStyle = (view == VIEW.CREATE) ? 'primary' : 'default';
   const paneTitle = t((view == VIEW.CREATE) ? 'title.filterPane.create' : 'title.filterPane.search');
 
-  if (!filterPaneIsVisible) return null;
+  const lastMenu = <PaneMenu><CollapseFilterPaneButton onClick={ () => writeToggleFilterStorage(false) } /></PaneMenu>;
 
   let searchPane;
   if (view == VIEW.BROWSE) {
     searchPane = (
-      <BrowseSearchPane data={data} isLoading={isLoading} limit={limit} offset={offset} readFilters={readFilters} />
+      <BrowseSearchPane list={list} view={view} />
     );
   }
 

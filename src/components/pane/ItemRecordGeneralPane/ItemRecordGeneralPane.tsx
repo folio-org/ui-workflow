@@ -10,7 +10,7 @@ import { BooleanItemValue, BooleanMapItemValue, NumberItemValue, StringItemValue
 /**
  * A pane for displaying the Workflow Item Record general information.
  */
-export const ItemRecordGeneralPane: React.FC<IItemRecordPane> = ({ control, view, stripes }) => {
+export const ItemRecordGeneralPane: React.FC<IItemRecordPane> = ({ control, list, stripes }) => {
   const selected = !!control?.selectedItem ? control.selectedItem : {};
   const closeWorkflowPane = !!control?.recordControl?.onClose ? control.recordControl.onClose : false;
   const callout = useContext(CalloutContext);
@@ -29,6 +29,8 @@ export const ItemRecordGeneralPane: React.FC<IItemRecordPane> = ({ control, view
             type: 'success',
             message: t('workflows.item.callout.success.delete', { name: selected?.name, id: selected.id })
           });
+
+          list?.refetch();
 
           onDone();
           closeWorkflowPane();

@@ -5,59 +5,59 @@ import { Loading, LoadingPane, MultiColumnList, Row } from '@folio/stripes/compo
 import { PrevNextPagination, usePagination } from '@folio/stripes-acq-components';
 
 import { ITEMS_VISIBLE_COLUMNS, ITEMS_COLUMN_WIDTHS, CURRENT_PAGE_OFFSET_KEY } from '../../../constants';
-import { usePrevious, useMainListTable } from '../../../hooks';
+import { usePrevious, useWorkflowListTable } from '../../../hooks';
 import { IItemRecord, IListProperties } from '../../../interfaces';
 import { listTableMapping, listTableResultFormatter } from './helpers';
 
 /**
  * A table consisting of the Workflow Item Records.
  */
-export const MainListTable: React.FC<IListProperties> = ({ view, data, isLoading, limit, offset, readFilters, rowSelect }) => {
-  if (isLoading) return <LoadingPane />;
+export const WorkflowListTable: React.FC<IListProperties> = ({ filters, limit, list, offset, rowSelect }) => {
+  if (!list || list.isLoading) return <LoadingPane />;
 
   const pagination = usePagination({ limit, offset });
-  const prevFilters = usePrevious(readFilters);
-  const mainTable = useMainListTable(pagination, data);
+  const prevFilters = usePrevious(filters);
+  const table = useWorkflowListTable(pagination, list.data);
 
   useEffect(() => {
-    if (prevFilters && !isEqual(prevFilters, readFilters)) {
+    if (prevFilters && !isEqual(prevFilters, filters)) {
       writeStorage(CURRENT_PAGE_OFFSET_KEY, 0);
       pagination.changePage({ offset: 0, limit });
     }
-  }, [ prevFilters, readFilters ]);
+  }, [ prevFilters, filters ]);
 
   useEffect(() => {
-    if (isLoading) return;
+    if (list.isLoading) return;
 
-    if (data?.workflows) {
-      mainTable.setTotalRecords(data?.totalRecords ?? 0);
-      mainTable.setPage((mainTable.totalRecords > limit && offset > 0 && limit > 0) ? Math.floor(offset / limit) : 0);
-      mainTable.setTotalPages(mainTable.totalRecords > limit && limit > 0
-        ? Math.floor(mainTable.totalRecords / limit) + (mainTable.totalRecords % limit ? 1 : 0)
+    if (list.data?.workflows) {
+      table.setTotalRecords(list.data?.totalRecords ?? 0);
+      table.setPage((table.totalRecords > limit && offset > 0 && limit > 0) ? Math.floor(offset / limit) : 0);
+      table.setTotalPages(table.totalRecords > limit && limit > 0
+        ? Math.floor(table.totalRecords / limit) + (table.totalRecords % limit ? 1 : 0)
         : 1
       );
 
-      mainTable.setContentData(data.workflows);
+      table.setContentData(list.data.workflows);
     }
-  }, [ data, pagination ]);
+  }, [ list.data, pagination ]);
 
   return (
     <>
       <MultiColumnList
         interactive
-        contentData={ mainTable.contentData }
+        contentData={ table.contentData }
         columnWidths={ITEMS_COLUMN_WIDTHS}
         visibleColumns={ITEMS_VISIBLE_COLUMNS}
-        pageAmount={ mainTable.totalPages }
-        totalCount={ mainTable.totalRecords }
+        pageAmount={ table.totalPages }
+        totalCount={ table.totalRecords }
         formatter={listTableResultFormatter}
         columnMapping={listTableMapping}
         onRowClick={ !!rowSelect ? rowSelect : noop }
       />
       <PrevNextPagination
         { ...pagination.pagination }
-        totalCount={ mainTable.totalRecords }
-        onChange={ mainTable.onNeedMoreData }
+        totalCount={ table.totalRecords }
+        onChange={ table.onNeedMoreData }
       />
     </>
   );

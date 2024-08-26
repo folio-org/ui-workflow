@@ -9,12 +9,12 @@ import { IListProperties } from '../../../interfaces';
 import css from './SearchPane.module.css';
 
 /**
- * A pane for presenting search information for the browse view from VIEW.
+ * A pane for presenting search information for the browse view.
  */
-export const BrowseSearchPane: React.FC<IListProperties> = ({ data, isLoading, limit, offset, readFilters }) => {
-  const filterConfig = useFilterConfig(VIEW.BROWSE);
-  const filters = useFilters(VIEW.BROWSE);
-  const search = useSearch(VIEW.BROWSE, SEARCH_WORKFLOWS_DEFAULT_KEY);
+export const BrowseSearchPane: React.FC<IListProperties> = ({ list, view }) => {
+  const filterConfig = useFilterConfig(view);
+  const filters = useFilters(view);
+  const search = useSearch(view, SEARCH_WORKFLOWS_DEFAULT_KEY);
   const browsePane = useBrowseSearchPaneFilter(filters, search);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export const BrowseSearchPane: React.FC<IListProperties> = ({ data, isLoading, l
             ariaLabel={ariaLabel}
             searchableIndexes={ filterConfig.searchIndexes }
             selectedIndex={ search.index }
-            loading={isLoading}
+            loading={ list?.isLoading }
             value={ search.value }
             onChangeIndex={ search.onChangeIndex }
             onChange={ search.onChangeSearch }

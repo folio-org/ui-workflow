@@ -20,7 +20,7 @@ export const CreateView: FunctionComponent<IView> = (props?: any) => {
 
   return <Paneset>
     <ErrorBoundary>
-      <FilterPane view={ VIEW.CREATE } readFilters={null} />
+      <FilterPane view={ VIEW.CREATE } />
       <Pane
         defaultWidth='fill'
         paneTitle={ t('title.create') }
