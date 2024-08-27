@@ -9,11 +9,11 @@ export const useClickControl = (clickCallback?: any, doneCallback?: any) => {
   const [ busy, setBusy ] = React.useState(false);
 
   const onDone = useCallback(() => {
-    if (busy) {
-      if (!!doneCallback) {
-        doneCallback();
-      }
+    if (!!doneCallback) {
+      doneCallback();
+    }
 
+    if (busy) {
       setBusy(false);
     }
   }, [ busy ]);
