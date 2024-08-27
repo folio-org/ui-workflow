@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from '@folio/stripes/components';
 
+import { GraphItemIcon } from '../../../components';
 import { IItemValue } from '../../../interfaces';
 import css from './GraphItemValue.module.css';
 
@@ -16,6 +17,7 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected
 
   const cardClass = !!selected?.id && value?.id === selected.id ? css?.selected : null;
 
+
   const onClick = (e: any) => {
     if (!!onSelect) onSelect(e, value);
   };
@@ -24,8 +26,8 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected
     headerClass={ css?.nodeHeader }
     bodyClass={ css?.nodeBody }
     cardClass={cardClass}
-    headerStart={ value?.name }
-    headerEnd={ value?.deserializeAs }
+    headerEnd= {value?.name }
+    headerStart={ <GraphItemIcon type={ value?.deserializeAs } /> }
     key={ value?.id }
     onClick={onClick}>{ value?.description }
   </Card>;

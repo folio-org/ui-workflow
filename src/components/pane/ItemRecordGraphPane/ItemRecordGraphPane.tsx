@@ -9,7 +9,7 @@ import { t } from '../../../utilities';
  * A pane for displaying the Workflow Item Record graphs.
  */
 export const ItemRecordGraphPane: React.FC<IItemRecordPane> = ({ control, view, stripes }) => {
-  const selectedItem = !!control?.selectedItem ? control.selectedItem : {};
+  const selectedItem = !!control?.selectedItem ?  control.selectedItem : {};
   const paneTitle = selectedItem?.name ? selectedItem.name : t('title.itemRecordGraphPane');
 
   return <Paneset>

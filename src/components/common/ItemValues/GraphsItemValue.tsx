@@ -14,7 +14,6 @@ import { IItemValue } from '../../../interfaces';
  */
 export const GraphsItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected, value }) => {
   const values: any[] = [];
-
   if (typeof value === 'object') {
     Object.values(value).forEach(v => {
       if (!!v) {
