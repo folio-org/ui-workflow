@@ -4,12 +4,12 @@ import { writeStorage } from '@rehooks/local-storage';
 import { CURRENT_PAGE_OFFSET_KEY } from '../../../constants';
 
 /**
- * A hook specific to the MainListTable component for managing a table.
+ * A hook specific to the WorkflowListTable component for managing a table.
  *
  * data: The table content data.
  * pagination: The table pagination data.
  */
-export const useMainListTable = (data: any, pagination: any) => {
+export const useWorkflowListTable = (data: any, pagination: any) => {
   const [ page, setPage ] = useState(0);
   const [ totalPages, setTotalPages ] = useState(0);
   const [ totalRecords, setTotalRecords ] = useState(0);

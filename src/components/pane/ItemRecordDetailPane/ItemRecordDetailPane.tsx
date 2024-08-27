@@ -8,22 +8,22 @@ import { ItemRecordDetailView } from '../../../views';
 /**
  * A pane for displaying the Workflow Item Record details.
  */
-export const ItemRecordDetailPane: React.FC<IItemRecordPane> = ({ control, view, stripes }) => {
-  const selected = !!control?.selectedNode ? control.selectedNode : {};
+export const ItemRecordDetailPane: React.FC<IItemRecordPane> = (props?: any) => {
+  const selected = !!props?.control?.selectedNode ? props?.control.selectedNode : {};
 
-  if (!control?.detailControl?.show || !control?.selectedNode) {
+  if (!props?.control?.detailControl?.show || !props?.control?.selectedNode) {
     return null;
   }
 
   const paneTitle = !!selected?.name
     ? t('title.itemRecordDetailPane.node', { name: selected.name })
     : t('title.itemRecordDetailPane');
-  const onClose = !!control?.detailControl?.onClose ? control.detailControl.onClose : false;
+  const onClose = !!props?.control?.detailControl?.onClose ? props?.control.detailControl.onClose : false;
 
   return <Paneset>
     <Pane defaultWidth='fill' dismissible onClose={onClose} paneTitle={paneTitle}>
       <ErrorBoundary>
-        <ItemRecordDetailView control={control} view={view} stripes={stripes} />
+        <ItemRecordDetailView { ...props } />
       </ErrorBoundary>
     </Pane>
   </Paneset>;

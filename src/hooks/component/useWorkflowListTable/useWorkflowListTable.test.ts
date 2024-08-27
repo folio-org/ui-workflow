@@ -1,10 +1,10 @@
 import { renderHook } from '@testing-library/react';
 
-import { useMainListTable } from './';
+import { useWorkflowListTable } from './';
 
-describe('useMainListTable', () => {
+describe('useWorkflowListTable', () => {
   describe('When initial render happened', () => {
-    const { result } = renderHook(() => useMainListTable({}, {}));
+    const { result } = renderHook(() => useWorkflowListTable({}, {}));
 
     it('is expected to return defined', () => {
       expect(result.current).toBeDefined();

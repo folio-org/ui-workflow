@@ -6,7 +6,7 @@ import { Button, ErrorBoundary, Pane, Paneset, FilterPaneSearch, PaneHeader } fr
 import { useStripes } from '@folio/stripes/core';
 import { noop } from 'lodash';
 
-import { FilterMenu, FilterPane, MainListTable, WorkflowIcon } from '../../components';
+import { FilterMenu, FilterPane, WorkflowListTable, WorkflowIcon } from '../../components';
 import { getFilters, useItemRecordControl, useFilterConfig, useWorkflowList } from '../../hooks';
 import { CURRENT_PAGE_OFFSET_KEY, DEFAULT_FILTERS, FILTER_APPLIED_KEY, PAGINATION_AMOUNT, PATH, SEARCH_WORKFLOWS_DEFAULT_KEY, SEARCH_WORKFLOWS_VALUE_KEY, VIEW } from '../../constants';
 import { IView, IItemRecordControl } from '../../interfaces';
@@ -29,13 +29,13 @@ export const BrowseView: FunctionComponent<IView> = (props?: any) => {
   const search = (typeof readSearch == 'object') ? readSearch : { key: SEARCH_WORKFLOWS_DEFAULT_KEY, value: '' };
 
   const stripes = useStripes();
-  const { data, isLoading } = useWorkflowList(PATH[VIEW.BROWSE], { filters, filtersConfig, search, limit, offset });
+  const list = useWorkflowList(PATH[VIEW.BROWSE], { filters, filtersConfig, search, limit, offset });
   const control: IItemRecordControl = useItemRecordControl();
 
   return <Paneset>
     <ErrorBoundary>
       <Paneset isRoot>
-        <FilterPane view={ VIEW.BROWSE } data={data} isLoading={isLoading} limit={limit} offset={offset} readFilters={filters} />
+        <FilterPane list={list} view={ VIEW.BROWSE } />
         <Pane
           defaultWidth='75%'
           paneTitle={ t('title.workflowList') }
@@ -43,18 +43,17 @@ export const BrowseView: FunctionComponent<IView> = (props?: any) => {
           firstMenu={ <FilterMenu /> }
           lastMenu={ <Button bottomMargin0 buttonStyle='primary' onClick={noop}>{ t('button.actions') }</Button> }
         >
-          <MainListTable
-            view={ VIEW.BROWSE }
-            data={data}
-            isLoading={isLoading}
+          <WorkflowListTable
+            filters={filters}
             limit={limit}
+            list={list}
             offset={offset}
-            readFilters={filters}
             rowSelect={ control?.onItemClick }
+            view={ VIEW.BROWSE }
           />
         </Pane>
       </Paneset>
-      <ItemRecordView control={control} view={ VIEW.BROWSE } stripes={stripes} />
+      <ItemRecordView control={control} stripes={stripes} list={list} view={ VIEW.BROWSE } />
     </ErrorBoundary>
   </Paneset>;
 };

@@ -5,6 +5,12 @@ import { useLocalStorage, writeStorage } from '@rehooks/local-storage';
 import { ITEM_COLUMNS_NAME, SEARCH_WORKFLOWS_VALUE_KEY } from '../../../constants';
 import { ISearchState } from '../../../interfaces';
 
+/**
+ * Provide searching of Workflows for use with the search pane.
+ *
+ * view: The specific view the search is associated with.
+ * initialIndex: The initial, or default, index position to use.
+ */
 export const useSearch = (view: string, initialIndex: string) => {
   const [ storedSearch ] = useLocalStorage<ISearchState>(SEARCH_WORKFLOWS_VALUE_KEY, { key: initialIndex, value: "" });
   const [ appliedSearch, setAppliedSearch ] = React.useState<ISearchState>(storedSearch);
