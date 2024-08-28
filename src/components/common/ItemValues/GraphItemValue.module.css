@@ -5,9 +5,25 @@
 
   .nodeHeader {
     background-color: oklch(85.00% 0 0);
+    padding: 10px;
   }
 
   .nodeBody {
     background-color: oklch(90.00% 0 0);
+    padding: 10px;
   }
+}
+
+.headerEnd {
+  padding-left: 5px;
+}
+
+.roundedBorder {
+  border-radius: 10px;
+}
+
+.downArrow > .large {
+  fill: red;
+font-size: 24px !important;
+
 }

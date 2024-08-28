@@ -16,8 +16,8 @@ export const ItemRecordDetailPane: React.FC<IItemRecordPane> = ({ control, view,
   }
 
   const paneTitle = !!selected?.name
-    ? 'HERE'+ t('title.itemRecordDetailPane.node', { name: selected.name })
-    : 'ALSO HERE' + t('title.itemRecordDetailPane');
+    ? t('title.itemRecordDetailPane.node', { name: selected.name })
+    : t('title.itemRecordDetailPane');
   const onClose = !!control?.detailControl?.onClose ? control.detailControl.onClose : false;
 
   return <Paneset>

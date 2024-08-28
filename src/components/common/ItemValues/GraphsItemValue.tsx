@@ -1,6 +1,7 @@
 import React from 'react';
+import { Icon } from '@folio/stripes/components';
 
-import { GraphItemValue } from '../../../components';
+import { GraphItemValue, GraphItemDownArrowIcon } from '../../../components';
 import { IItemValue } from '../../../interfaces';
 
 /**
@@ -14,12 +15,20 @@ import { IItemValue } from '../../../interfaces';
  */
 export const GraphsItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected, value }) => {
   const values: any[] = [];
+
   if (typeof value === 'object') {
-    Object.values(value).forEach(v => {
+    Object.values(value).forEach((v, index) => {
       if (!!v) {
+        console.log(index, values.length);
         values.push(<GraphItemValue empty onSelect={onSelect} selected={selected} value={v} />);
       }
+
+      if (index < Object.values(value).length - 1) {
+        values.push(<div><GraphItemDownArrowIcon /></div>);
+      }
+
     });
+    
   }
 
   return values.length == 0 ? null : <>{values}</>;

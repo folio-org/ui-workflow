@@ -16,11 +16,12 @@
     "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-workflow ./translations/ui-workflow/compiled",
     "lint": "eslint \"./src/**/*.{js,jsx,ts,tsx}\"",
     "test": "jest --passWithNoTests",
-    "tsc:check-app": "tsc --noEmit --project \"./tsconfig.json\""
+    "tsc:check-app": "tsc --noEmit --project \"./tsconfig.json\"",
+    "generate:sprite": "npx svg-sprite-generator --output ./src/icons/sprites.svg './src/icons/*.svg'"
   },
   "devDependencies": {
     "@folio/stripes": "^9.0.0",
-    "@folio/stripes-cli": "^3.0.0",
+    "@folio/stripes-cli": "kaladay/stripes-cli-2.x-backports#proxy-strip-acao-custom",
     "@folio/stripes-components": "^12.0.0",
     "@folio/stripes-connect": "^9.0.0",
     "@folio/stripes-core": "^10.0.0",
@@ -59,6 +60,7 @@
     "redux": "^4.0.0",
     "redux-observable": "^1.2.0",
     "rxjs": "^6.6.0",
+    "svg-sprite-generator": "^0.0.7",
     "ts-jest": "^29.1.0"
   },
   "dependencies": {
@@ -74,7 +76,6 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0"
   },
-  "optionalDependencies": {},
   "stripes": {
     "actsAs": [
       "app",

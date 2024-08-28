@@ -17,18 +17,18 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected
 
   const cardClass = !!selected?.id && value?.id === selected.id ? css?.selected : null;
 
-
   const onClick = (e: any) => {
     if (!!onSelect) onSelect(e, value);
   };
 
   return <Card
-    headerClass={ css?.nodeHeader }
-    bodyClass={ css?.nodeBody }
-    cardClass={cardClass}
-    headerEnd= {value?.name }
-    headerStart={ <GraphItemIcon type={ value?.deserializeAs } /> }
-    key={ value?.id }
-    onClick={onClick}>{ value?.description }
-  </Card>;
+      headerClass={ css?.nodeHeader }
+      bodyClass={ css?.nodeBody }
+      cardClass={ cardClass }
+      headerEnd={<span className={css.headerEnd}>{value?.name}</span>}
+      headerStart={<GraphItemIcon type={value?.deserializeAs} />}
+      key={ value?.id }
+      onClick={onClick}
+      roundedBorder={true}>{ value?.description }
+    </Card>;
 };
