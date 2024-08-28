@@ -16,7 +16,10 @@ export const ItemRecordGeneralPane: React.FC<IItemRecordPane> = ({ control, list
   const callout = useContext(CalloutContext);
   const deleteRequest = useDeleteRequest();
 
-  const deleteModal = useModal(null, () => { if (!!deleteControl.busy) deleteControl.onDone() });
+  const deleteModal = useModal(
+    () => deleteControl.setBusy(false),
+    () => { if (!!deleteControl.busy) deleteControl.onDone(); }
+  );
 
   const deleteControl = useClickControl(
     (onDone: any) => {
@@ -62,7 +65,9 @@ export const ItemRecordGeneralPane: React.FC<IItemRecordPane> = ({ control, list
           aria-label={ t('workflows.item.delete.modal.aria', { name: selected?.name }) }
           label={ t('workflows.item.delete.modal.label', { name: selected?.name }) }
           dismissible
+          closeOnBackgroundClick
           open={ deleteModal.show }
+          onOpen={ deleteModal.onShow }
           onClose={ deleteModal.onHide }
           footer={ deleteModalFooter }
         >
