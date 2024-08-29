@@ -1,6 +1,7 @@
 import React from 'react';
 import { MultiColumnList } from '@folio/stripes/components';
 
+import { NO_VALUE } from '../../../constants';
 import { IItemValue } from '../../../interfaces';
 import { t } from '../../../utilities';
 
@@ -16,7 +17,7 @@ import { t } from '../../../utilities';
  * The column is mapped to the `workflows.label.${column}` and so the language file must have this defined.
  */
 export const StringListItemValue: React.FC<IItemValue> = ({ column, empty, label, value }) => {
-  const values: any[] = [];
+  const values: Record<string, any>[] = [];
   const c: string = !!column ? column : 'values';
 
   if (typeof value === 'object') {
@@ -37,7 +38,7 @@ export const StringListItemValue: React.FC<IItemValue> = ({ column, empty, label
   // Only the "The list contains no items" is displayed (without a header/label) and that is confusing.
   if (values.length == 0) {
     let val: Record<string, any> = {};
-    val[c] = '-';
+    val[c] = NO_VALUE;
     values.push(val);
   }
 
