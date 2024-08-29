@@ -16,6 +16,7 @@ export * from './ItemRecordNodeExclusiveGateway';
 export * from './ItemRecordNodeFileTask';
 export * from './ItemRecordNodeFtpTask';
 export * from './ItemRecordNodeInclusiveGateway';
+export * from './ItemRecordNodeInputTask';
 export * from './ItemRecordNodeMoveToLastGateway';
 export * from './ItemRecordNodeMoveToNode';
 export * from './ItemRecordNodeParallelGateway';

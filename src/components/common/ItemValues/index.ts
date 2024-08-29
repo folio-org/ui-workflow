@@ -6,4 +6,5 @@ export * from './GraphsItemValue';
 export * from './NumberItemValue';
 export * from './PasswordItemValue';
 export * from './StringItemValue';
+export * from './StringListItemValue';
 export * from './UriItemValue';

@@ -20,6 +20,7 @@ import {
   ItemRecordNodeFileTask,
   ItemRecordNodeFtpTask,
   ItemRecordNodeInclusiveGateway,
+  ItemRecordNodeInputTask,
   ItemRecordNodeMoveToLastGateway,
   ItemRecordNodeMoveToNode,
   ItemRecordNodeParallelGateway,
@@ -57,6 +58,7 @@ export const ItemRecordDetailView: React.FC<IItemRecordPane> = (props?: any) => 
     <ItemRecordNodeFileTask { ...props } />
     <ItemRecordNodeFtpTask { ...props } />
     <ItemRecordNodeInclusiveGateway { ...props } />
+    <ItemRecordNodeInputTask { ...props } />
     <ItemRecordNodeMoveToLastGateway { ...props } />
     <ItemRecordNodeMoveToNode { ...props } />
     <ItemRecordNodeParallelGateway { ...props } />
