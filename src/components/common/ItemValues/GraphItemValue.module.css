@@ -24,6 +24,6 @@
 
 .graphItemDownArrowIconDiv {
   display: flex;
-  margin-top: -15px;
+  margin: -9px 0 5px 0;
   justify-content: center;
 }
