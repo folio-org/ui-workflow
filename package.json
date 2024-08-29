@@ -16,8 +16,7 @@
     "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-workflow ./translations/ui-workflow/compiled",
     "lint": "eslint \"./src/**/*.{js,jsx,ts,tsx}\"",
     "test": "jest --passWithNoTests",
-    "tsc:check-app": "tsc --noEmit --project \"./tsconfig.json\"",
-    "generate:sprite": "npx svg-sprite-generate -d ./icons -o ./src/assets/sprite.svg"
+    "tsc:check-app": "tsc --noEmit --project \"./tsconfig.json\""
   },
   "devDependencies": {
     "@folio/stripes": "^9.0.0",
@@ -59,7 +58,6 @@
     "redux": "^4.0.0",
     "redux-observable": "^1.2.0",
     "rxjs": "^6.6.0",
-    "svg-sprite-generator": "^0.0.7",
     "ts-jest": "^29.1.0"
   },
   "dependencies": {
