@@ -17,7 +17,7 @@
     "lint": "eslint \"./src/**/*.{js,jsx,ts,tsx}\"",
     "test": "jest --passWithNoTests",
     "tsc:check-app": "tsc --noEmit --project \"./tsconfig.json\"",
-    "generate:sprite": "npx svg-sprite-generator --output ./src/icons/sprites.svg './src/icons/*.svg'"
+    "generate:sprite": "npx svg-sprite-generate -d ./icons -o ./src/assets/sprite.svg"
   },
   "devDependencies": {
     "@folio/stripes": "^9.0.0",
@@ -51,7 +51,6 @@
     "moment": "^2.29.0",
     "popper.js": "^1.16.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "react-final-form": "^6.5.0",
     "react-intl": "^6.4.0",
     "react-redux": "^8.0.0",
@@ -69,7 +68,6 @@
   "peerDependencies": {
     "@folio/stripes": "^9.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "react-final-form": "^6.5.0",
     "react-intl": "^6.4.0",
     "react-redux": "^8.0.0",

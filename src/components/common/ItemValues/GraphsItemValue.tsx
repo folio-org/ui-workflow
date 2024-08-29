@@ -3,6 +3,7 @@ import { Icon } from '@folio/stripes/components';
 
 import { GraphItemValue, GraphItemDownArrowIcon } from '../../../components';
 import { IItemValue } from '../../../interfaces';
+import css from './GraphItemValue.module.css';
 
 /**
  * Provide an Item value for displaying a list of Nodes as a graph.
@@ -24,7 +25,7 @@ export const GraphsItemValue: React.FC<IItemValue> = ({ empty, onSelect, selecte
       }
 
       if (index < Object.values(value).length - 1) {
-        values.push(<div><GraphItemDownArrowIcon /></div>);
+        values.push(<div className={ css?.graphItemDownArrowIconDiv }><GraphItemDownArrowIcon /></div>);
       }
 
     });
