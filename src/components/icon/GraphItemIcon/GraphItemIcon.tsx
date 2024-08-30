@@ -1,5 +1,4 @@
 import React from 'react';
-import { Icon } from '@folio/stripes/components';
 
 import {
   GraphItemIconCompressFileTaskSvg,
@@ -22,6 +21,7 @@ import {
   GraphItemIconStartEventSvg,
   GraphItemIconSubprocessSvg
 } from './GraphItemIconSvgs';
+import css from './GraphItemIcon.module.css';
 
 export const GraphItemIcon: React.FC<{ type: string }> = ({ type }) => {
   let icon;
@@ -64,6 +64,6 @@ export const GraphItemIcon: React.FC<{ type: string }> = ({ type }) => {
     break;
     default: return <GraphItemtIconDefaultSvg />;
   }
-  return <>{icon}<span>{type}</span></>;
+  return <div className={css?.graphItemtIconTypeDiv}>{icon}<span>{type}</span></div>;
 
 };

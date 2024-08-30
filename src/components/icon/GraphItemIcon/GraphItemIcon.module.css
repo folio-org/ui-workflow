@@ -3,3 +3,18 @@
   width: 22px;
   height: 22px;
 }
+
+.graphItemtIconType {
+  display: flex;
+  align-items: center;
+  height: 17px;
+}
+
+.graphItemtIconTypeDiv {
+  display: flex;
+  align-items: center;
+}
+
+.graphItemtIconTypeDiv span {
+  margin-left: 6px;
+}
