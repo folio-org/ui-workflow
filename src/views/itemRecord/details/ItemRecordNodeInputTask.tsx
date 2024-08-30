@@ -1,7 +1,7 @@
 import React from 'react';
 import { Accordion, AccordionSet, Col, Row } from '@folio/stripes/components';
 
-import { BooleanItemValue, StringItemValue, StringListItemValue } from '../../../components';
+import { InputItemValue } from '../../../components';
 import { IItemRecordPane } from '../../../interfaces';
 import { t } from '../../../utilities';
 
@@ -15,31 +15,20 @@ export const ItemRecordNodeInputTask: React.FC<IItemRecordPane> = (props?: any) 
     return null;
   }
 
+  const id = `${ selected?.id }.deserializeAs.${ selected.deserializeAs }`;
+  const inputs: any[] = [];
+  const initialStatus: Record<string, any> = {};
+
+  if (selected?.inputs?.length || 0 > 0) {
+    Object.keys(selected.inputs).forEach((k) => {
+      inputs.push(<InputItemValue index={k} parent={selected} parentId={id} value={ selected.inputs[k] } />);
+      initialStatus[`${id}.${k}`] = false;
+    });
+  }
+
   return <AccordionSet>
-    <Accordion label={ t('workflows.item.node.deserializeAs.' + selected.deserializeAs) } id={ selected?.id + '.deserializeAs.' + selected.deserializeAs }>
-      <Row>
-        <Col xs={6}>
-          <StringItemValue label='workflows.item.node.inputType' value={ selected?.inputType } />
-        </Col>
-        <Col xs={6}>
-          <BooleanItemValue label='workflows.item.node.required' value={ selected?.required } />
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12}>
-          <StringItemValue label='workflows.item.node.defaultValue' value={ selected?.defaultValue } />
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12}>
-          <StringListItemValue label='workflows.item.node.attributes' column='attributes' value={ selected?.attributes } />
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12}>
-          <StringListItemValue label='workflows.item.node.options' column='options' value={ selected?.options } />
-        </Col>
-      </Row>
+    <Accordion label={ t('workflows.item.node.deserializeAs.' + selected.deserializeAs) } id={id}>
+      <AccordionSet initialStatus={initialStatus}>{inputs}</AccordionSet>
     </Accordion>
   </AccordionSet>;
 };
