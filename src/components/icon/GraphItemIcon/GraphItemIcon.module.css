@@ -1,0 +1,8 @@
+.graphItemtIconTypeDiv {
+  display: flex;
+  align-items: center;
+}
+
+.graphItemtIconTypeDiv span {
+  margin-left: 6px;
+}

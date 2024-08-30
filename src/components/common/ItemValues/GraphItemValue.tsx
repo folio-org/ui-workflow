@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from '@folio/stripes/components';
 
+import { GraphItemIcon } from '../../../components';
 import { IItemValue } from '../../../interfaces';
 import css from './GraphItemValue.module.css';
 
@@ -24,9 +25,12 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected
     headerClass={ css?.nodeHeader }
     bodyClass={ css?.nodeBody }
     cardClass={cardClass}
-    headerStart={ value?.name }
-    headerEnd={ value?.deserializeAs }
+    headerEnd={ <span className={ css?.headerEnd }>{ value?.name }</span> }
+    headerStart={ <GraphItemIcon type={ value?.deserializeAs } /> }
     key={ value?.id }
-    onClick={onClick}>{ value?.description }
+    onClick={onClick}
+    roundedBorder
+  >
+    { value?.description }
   </Card>;
 };
