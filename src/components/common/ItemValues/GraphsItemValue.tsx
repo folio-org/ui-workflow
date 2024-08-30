@@ -18,7 +18,7 @@ export const GraphsItemValue: React.FC<IItemValue> = ({ empty, onSelect, selecte
   if (typeof value === 'object') {
     Object.values(value).forEach(v => {
       if (!!v) {
-        values.push(<GraphItemValue empty onSelect={onSelect} selected={selected} value={v} />);
+        values.push(<GraphItemValue empty={empty} onSelect={onSelect} selected={selected} value={v} />);
       }
     });
   }
