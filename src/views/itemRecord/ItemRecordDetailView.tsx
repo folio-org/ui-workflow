@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { IItemRecordPane } from '../../interfaces';
 import {
   ItemRecordNode,
   ItemRecordNodeCompressFileTask,
@@ -13,7 +12,6 @@ import {
   ItemRecordNodeEmbeddedLoopReference,
   ItemRecordNodeEmbeddedProcessor,
   ItemRecordNodeEmbeddedRequest,
-  ItemRecordNodeEmbeddedVariable,
   ItemRecordNodeEndEvent,
   ItemRecordNodeEventSubprocess,
   ItemRecordNodeExclusiveGateway,
@@ -32,7 +30,9 @@ import {
   ItemRecordNodeStartEvent,
   ItemRecordNodeSubprocess,
   ItemRecordNodeVariables,
-} from './details';
+} from '../../components';
+
+import { IItemRecordPane } from '../../interfaces';
 
 /**
  * A sub-view for displaying Workflow Item Record Node detail information.
@@ -51,7 +51,6 @@ export const ItemRecordDetailView: React.FC<IItemRecordPane> = (props?: any) => 
     <ItemRecordNodeEmbeddedLoopReference { ...props } />
     <ItemRecordNodeEmbeddedProcessor { ...props } />
     <ItemRecordNodeEmbeddedRequest { ...props } />
-    <ItemRecordNodeEmbeddedVariable { ...props } />
     <ItemRecordNodeEndEvent { ...props } />
     <ItemRecordNodeEventSubprocess { ...props } />
     <ItemRecordNodeExclusiveGateway { ...props } />

@@ -8,4 +8,5 @@ export * from './NumberItemValue';
 export * from './PasswordItemValue';
 export * from './StringItemValue';
 export * from './StringListItemValue';
+export * from './TableListItemValue';
 export * from './UriItemValue';
