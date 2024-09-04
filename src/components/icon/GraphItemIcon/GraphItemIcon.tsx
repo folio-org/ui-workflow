@@ -1,11 +1,11 @@
 import React from 'react';
 
+import appIcon from '../../../../icons/GraphItem/app.png';
 import compressFileTaskIcon from '../../../../icons/GraphItem/compressFileTaskIcon.png';
 import conditionTaskIcon from '../../../../icons/GraphItem/conditionTaskIcon.png';
 import databaseConnectionTaskIcon from '../../../../icons/GraphItem/databaseConnectionTaskIcon.png';
 import databaseDisconnectionTaskIcon from '../../../../icons/GraphItem/databaseDisconnectionTaskIcon.png';
 import databaseQueryTaskIcon from '../../../../icons/GraphItem/databaseQueryTaskIcon.png';
-import defaultIcon from '../../../../icons/GraphItem/default.png';
 import emailTaskIcon from '../../../../icons/GraphItem/emailTaskIcon.png';
 import endEventIcon from '../../../../icons/GraphItem/endEventIcon.png';
 import fileTaskIcon from '../../../../icons/GraphItem/fileTaskIcon.png';
@@ -18,7 +18,7 @@ import subTaskIcon from '../../../../icons/GraphItem/subTaskIcon.png';
 import css from './GraphItemIcon.module.css';
 
 export const GraphItemIcon: React.FC<{ type: string }> = ({ type }) => {
-  let icon = defaultIcon;
+  let icon;
 
   switch(type) {
     case "CompressFileTask":
@@ -26,9 +26,6 @@ export const GraphItemIcon: React.FC<{ type: string }> = ({ type }) => {
         break;
     case "Condition":
         icon = conditionTaskIcon;
-        break;
-    case "ConnectTo":
-        icon = defaultIcon;
         break;
     case "DatabaseConnectionTask":
         icon = databaseConnectionTaskIcon;
@@ -42,9 +39,6 @@ export const GraphItemIcon: React.FC<{ type: string }> = ({ type }) => {
     case "EmailTask":
         icon = emailTaskIcon;
         break;
-    case "EventTrigger":
-        icon = defaultIcon;
-        break;
     case "EndEvent":
         icon = endEventIcon;
         break;
@@ -54,12 +48,6 @@ export const GraphItemIcon: React.FC<{ type: string }> = ({ type }) => {
     case "InputTask":
           icon = inputTaskIcon;
           break;
-    case "InclusiveGateway":
-        icon = defaultIcon;
-        break;
-    case "MoveToNode":
-        icon = defaultIcon;
-        break;
     case "ParallelGateway":
         icon = parallelTaskIcon;
         break;
@@ -76,7 +64,7 @@ export const GraphItemIcon: React.FC<{ type: string }> = ({ type }) => {
         icon = subTaskIcon
         break;
     default:
-        icon = defaultIcon;
+        icon = appIcon;
         break;
   }
 
