@@ -18,7 +18,7 @@ import subTaskIcon from '../../../../icons/GraphItem/subTaskIcon.png';
 import css from './GraphItemIcon.module.css';
 
 export const GraphItemIcon: React.FC<{ type: string }> = ({ type }) => {
-  let icon;
+  let icon = appIcon;
 
   switch(type) {
     case "CompressFileTask":
