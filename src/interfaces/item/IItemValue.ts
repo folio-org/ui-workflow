@@ -4,6 +4,8 @@ import { IItemRecordControl } from '../';
  * Provide properties for an Item Value.
  *
  * column: A label part to use associate columns, such as constructing the label via `workflows.label.${column}` or `workflows.label.${column}.id`.
+ * columns: A name of columns, similar to the column value, but is used to construct both the label such as workflows.label.${columns[0]} and to setup the table columns.
+ * columnsWidths: A keyed mapping of custom widths to assign to each individual column from the 'columns' array.
  * control: The Item Record control data.
  * empty: If TRUE, then return NULL when the value is undefined or not a valid type.
  * format: Specific to each Item value type, but generally designates formatting such as 'text/html' or 'text/plain' for TextItemValue.
@@ -18,9 +20,12 @@ import { IItemRecordControl } from '../';
  */
 export interface IItemValue {
   column?: string;
+  columns?: string[];
+  columnsWidths?: object;
   control?: IItemRecordControl;
   empty?: boolean;
   format?: any;
+  id?: any;
   index?: any;
   label?: any;
   onSelect?: any;
