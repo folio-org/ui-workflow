@@ -1,15 +1,33 @@
-export { appIcon } from './app.png';
-export { compressFileTaskIcon } from './compressFileTaskIcon.png';
-export { conditionTaskIcon } from './conditionTaskIcon.png';
-export { databaseConnectionTaskIcon } from './databaseConnectionTaskIcon.png';
-export { databaseDisconnectionTaskIcon } from './databaseDisconnectionTaskIcon.png';
-export { databaseQueryTaskIcon } from './databaseQueryTaskIcon.png';
-export { emailTaskIcon } from './emailTaskIcon.png';
-export { endEventIcon } from './endEventIcon.png';
-export { fileTaskIcon } from './fileTaskIcon.png';
-export { inputTaskIcon } from './inputTaskIcon.png';
-export { parallelTaskIcon } from './parallelTaskIcon.png';
-export { requestTaskIcon } from './requestTaskIcon.png';
-export { scriptTaskIcon } from './scriptTaskIcon.png';
-export { startEventIcon } from './startEventIcon.png';
-export { subTaskIcon } from './subTaskIcon.png';
+import appIcon from '../app.png';
+import compressFileTaskIcon from './compressFileTaskIcon.png';
+import conditionTaskIcon from './conditionTaskIcon.png';
+import databaseConnectionTaskIcon from './databaseConnectionTaskIcon.png';
+import databaseDisconnectionTaskIcon from './databaseDisconnectionTaskIcon.png';
+import databaseQueryTaskIcon from './databaseQueryTaskIcon.png';
+import emailTaskIcon from './emailTaskIcon.png';
+import endEventIcon from './endEventIcon.png';
+import fileTaskIcon from './fileTaskIcon.png';
+import inputTaskIcon from './inputTaskIcon.png';
+import parallelTaskIcon from './parallelTaskIcon.png';
+import requestTaskIcon from './requestTaskIcon.png';
+import scriptTaskIcon from './scriptTaskIcon.png';
+import startEventIcon from './startEventIcon.png';
+import subTaskIcon from './subTaskIcon.png';
+
+export {
+  appIcon,
+  compressFileTaskIcon,
+  conditionTaskIcon,
+  databaseConnectionTaskIcon,
+  databaseDisconnectionTaskIcon,
+  databaseQueryTaskIcon,
+  emailTaskIcon,
+  endEventIcon,
+  fileTaskIcon,
+  inputTaskIcon,
+  parallelTaskIcon,
+  requestTaskIcon,
+  scriptTaskIcon,
+  startEventIcon,
+  subTaskIcon
+};
