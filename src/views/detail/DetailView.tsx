@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoadingPane, Paneset } from '@folio/stripes/components';
+import { Paneset } from '@folio/stripes/components';
 import { useStripes } from '@folio/stripes/core';
 
 import { BACKEND_PATH, VIEW } from '../../constants';
@@ -24,10 +24,6 @@ export const DetailView: React.FC = (props?: any) => {
     view: VIEW.DETAIL,
     workflow,
   };
-
-  if (workflow?.isLoading) {
-    return <LoadingPane />;
-  }
 
   const layouts = [
     {
