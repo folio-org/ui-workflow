@@ -1,10 +1,11 @@
-import { isEqual, noop } from 'lodash';
-import React, { useEffect } from 'react';
+import { isEqual } from 'lodash';
+import React, { useCallback, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import { useLocalStorage, writeStorage } from '@rehooks/local-storage';
 import { Loading, LoadingPane, MultiColumnList, Row } from '@folio/stripes/components';
 import { PrevNextPagination, usePagination } from '@folio/stripes-acq-components';
 
-import { ITEMS_VISIBLE_COLUMNS, ITEMS_COLUMN_WIDTHS, CURRENT_PAGE_OFFSET_KEY } from '../../../constants';
+import { ITEMS_VISIBLE_COLUMNS, ITEMS_COLUMN_WIDTHS, CURRENT_PAGE_OFFSET_KEY, UI_PATH, VIEW } from '../../../constants';
 import { usePrevious, useWorkflowListTable } from '../../../hooks';
 import { IItemRecord, IListProperties } from '../../../interfaces';
 import { listTableMapping, listTableResultFormatter } from './helpers';
@@ -12,9 +13,10 @@ import { listTableMapping, listTableResultFormatter } from './helpers';
 /**
  * A table consisting of the Workflow Item Records.
  */
-export const WorkflowListTable: React.FC<IListProperties> = ({ filters, limit, list, offset, rowSelect }) => {
+export const WorkflowListTable: React.FC<IListProperties> = ({ filters, limit, list, offset, path }) => {
   if (!list || list.isLoading) return <LoadingPane />;
 
+  const navigate = useHistory();
   const pagination = usePagination({ limit, offset });
   const prevFilters = usePrevious(filters);
   const table = useWorkflowListTable(pagination, list.data);
@@ -41,6 +43,11 @@ export const WorkflowListTable: React.FC<IListProperties> = ({ filters, limit, l
     }
   }, [ list.data, pagination ]);
 
+  const onRowClick = useCallback((event: any, item: any) => {
+    // Change this to useNavigate once React 6 or greater is used.
+    navigate.push(`${path}/${ UI_PATH[VIEW.DETAIL] }/${ item?.id }`);
+  }, []);
+
   return (
     <>
       <MultiColumnList
@@ -52,7 +59,7 @@ export const WorkflowListTable: React.FC<IListProperties> = ({ filters, limit, l
         totalCount={ table.totalRecords }
         formatter={listTableResultFormatter}
         columnMapping={listTableMapping}
-        onRowClick={ !!rowSelect ? rowSelect : noop }
+        onRowClick={onRowClick}
       />
       <PrevNextPagination
         { ...pagination.pagination }

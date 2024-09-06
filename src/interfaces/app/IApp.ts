@@ -5,7 +5,7 @@ import { Settings, SettingsProps } from '@folio/stripes/smart-components';
  *
  * match: A structure for managing the requested URL path.
  */
-export interface IWorkflowApp {
+export interface IApp {
   match: {
     path: string
   };
