@@ -140,7 +140,7 @@
     "workflows.item.node.target": "Target",
     "workflows.item.node.type": "Type",
     "workflows.item.node.url": "URL",
-    "workflows.item.node.username": "Username",
+    "workflows.item.node.username": "Nom d'utilisateur",
     "workflows.item.node.variables": "Variables",
     "workflows.item.nodes.label": "Nodes",
     "workflows.item.setup": "Setup",
