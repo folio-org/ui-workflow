@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useState } from 'react';
-import { Accordion, AccordionSet, Button, Col, ErrorBoundary, Modal, ModalFooter, Pane, Row } from '@folio/stripes/components';
+import { Accordion, AccordionSet, Button, Col, ErrorBoundary, LoadingPane, Modal, ModalFooter, Pane, Row } from '@folio/stripes/components';
 import { CalloutContext } from '@folio/stripes/core';
 
 import { useClickControl, useDeleteRequest, useModal } from '../../../hooks';
@@ -58,8 +58,13 @@ export const ItemRecordGeneralPane: React.FC<IItemRecordPane> = ({ control, stri
     <Button onClick={ deleteModal.onHide }>{ t('button.workflows.item.delete.cancel') }</Button>
   </ModalFooter>;
 
-  return <Pane id={id} defaultWidth='fill' dismissible onClose={closeWorkflowPane} paneTitle={ t('title.itemRecordGeneralPane') } lastMenu={actionMenu}>
+  const loadingPane = (workflow?.isLoading)
+    ? <LoadingPane />
+    : null;
+
+  return <Pane id={id} defaultWidth='30%' dismissible onClose={closeWorkflowPane} paneTitle={ t('title.itemRecordGeneralPane') } lastMenu={actionMenu}>
     <ErrorBoundary>
+      {loadingPane}
       <Modal
         aria-label={ t('workflows.item.delete.modal.aria', { name: selected?.name }) }
         label={ t('workflows.item.delete.modal.label', { name: selected?.name }) }

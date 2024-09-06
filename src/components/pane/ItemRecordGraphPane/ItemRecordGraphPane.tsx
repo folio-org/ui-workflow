@@ -1,5 +1,5 @@
 import React from 'react';
-import { ErrorBoundary, Pane } from '@folio/stripes/components';
+import { ErrorBoundary, LoadingPane, Pane } from '@folio/stripes/components';
 
 import { GraphsItemValue } from '../../../components';
 import { IItemRecordPane } from '../../../interfaces';
@@ -15,9 +15,13 @@ export const ItemRecordGraphPane: React.FC<IItemRecordPane> = ({ control, id, wo
 
   const selected = workflow?.data;
   const paneTitle = selected?.name ? selected.name : t('title.itemRecordGraphPane');
+  const loadingPane = (workflow?.isLoading)
+    ? <LoadingPane />
+    : null;
 
-  return <Pane id={id} defaultWidth='fill' paneTitle={paneTitle}>
+  return <Pane id={id} defaultWidth='70%' paneTitle={paneTitle}>
     <ErrorBoundary>
+      {loadingPane}
       <GraphsItemValue label='workflows.label.graphs' value={ selected?.nodes } onSelect={ control?.onNodeClick } selected={selected} />
     </ErrorBoundary>
   </Pane>;

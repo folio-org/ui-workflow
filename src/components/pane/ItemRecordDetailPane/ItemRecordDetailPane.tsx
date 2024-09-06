@@ -1,5 +1,5 @@
 import React from 'react';
-import { ErrorBoundary, Pane } from '@folio/stripes/components';
+import { ErrorBoundary, LoadingPane, Pane } from '@folio/stripes/components';
 
 import { IItemRecordPane } from '../../../interfaces';
 import { t } from '../../../utilities';
@@ -19,8 +19,13 @@ export const ItemRecordDetailPane: React.FC<IItemRecordPane> = (props?: any) => 
     : t('title.itemRecordDetailPane');
   const onClose = !!props.control.detailControl?.onClose ? props.control.detailControl.onClose : false;
 
-  return <Pane id={ props?.id } defaultWidth='fill' dismissible onClose={onClose} paneTitle={paneTitle}>
+  const loadingPane = (props?.workflow?.isLoading)
+    ? <LoadingPane />
+    : null;
+
+  return <Pane id={ props?.id } defaultWidth='30%' dismissible onClose={onClose} paneTitle={paneTitle}>
     <ErrorBoundary>
+      {loadingPane}
       <ItemRecordDetailView { ...props } />
     </ErrorBoundary>
   </Pane>;
