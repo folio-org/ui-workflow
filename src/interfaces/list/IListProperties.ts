@@ -5,7 +5,7 @@
  * limit: The list size limit.
  * list: The list hook properties like data, error, isLoading, and refetch.
  * offset: The list offset.
- * rowSelect: Event handler.
+ * path: The base path of the workflow module.
  * view: The active view being used from the VIEW constant.
  */
 export interface IListProperties {
@@ -13,6 +13,6 @@ export interface IListProperties {
   limit?: number;
   list?: any;
   offset?: number;
-  rowSelect?: any;
+  path?: string;
   view?: any;
 }

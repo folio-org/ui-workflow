@@ -1,1 +1,1 @@
-export { WorkflowsSettings } from './WorkflowsSettings';
+export * from './WorkflowsSettings';

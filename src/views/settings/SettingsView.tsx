@@ -1,4 +1,3 @@
-import type { FunctionComponent } from 'react';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
@@ -11,7 +10,7 @@ import { t } from '../../utilities';
 /**
  * This is a main settings view for configuring the ui-workflow module.
  */
-export const SettingsView: FunctionComponent<SettingsProps> = (props: any) => {
+export const SettingsView: React.FC<SettingsProps> = (props: any) => {
   const pages = [
     {
       route: 'workflows-settings',
