@@ -16,7 +16,7 @@ export const ItemRecordNodes: React.FC<IItemRecordPane> = (props?: any) => {
     id: t('workflows.label.id')
   };
 
-  if (!selected?.nodes || !(selected.nodes.forEach?.length)) {
+  if (!selected?.nodes || !(selected.nodes?.length)) {
     return null;
   }
 
