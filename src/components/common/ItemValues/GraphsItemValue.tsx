@@ -1,7 +1,9 @@
 import React from 'react';
+import { Icon } from '@folio/stripes/components';
 
-import { GraphItemValue } from '../../../components';
+import { GraphItemValue, GraphItemDownArrowIcon } from '../../../components';
 import { IItemValue } from '../../../interfaces';
+import css from './GraphsItemValue.module.css';
 
 /**
  * Provide an Item value for displaying a list of Nodes as a graph.
@@ -16,9 +18,13 @@ export const GraphsItemValue: React.FC<IItemValue> = ({ empty, onSelect, selecte
   const values: any[] = [];
 
   if (typeof value === 'object') {
-    Object.values(value).forEach(v => {
+    Object.values(value).forEach((v, i) => {
       if (!!v) {
-        values.push(<GraphItemValue empty onSelect={onSelect} selected={selected} value={v} />);
+        values.push(<GraphItemValue empty={empty} onSelect={onSelect} selected={selected} value={v} />);
+      }
+
+      if (i < Object.values(value).length - 1) {
+        values.push(<div className={ css?.graphItemDownArrowIconDiv }><GraphItemDownArrowIcon /></div>);
       }
     });
   }

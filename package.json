@@ -102,7 +102,7 @@
       },
       {
         "permissionName": "settings.workflow.enabled",
-        "displayName": "Settings (workflow): display list of settings pages",
+        "displayName": "Settings (workflow): Display list of settings pages",
         "subPermissions": [
           "settings.enabled"
         ],
@@ -110,7 +110,7 @@
       },
       {
         "permissionName": "settings.workflow.configure",
-        "displayName": "Settings (workflow): Make changes to the workflow settings.",
+        "displayName": "Settings (workflow): Make changes to the workflow settings",
         "subPermissions": [
           "settings.enabled"
         ],
@@ -118,12 +118,12 @@
       },
       {
         "permissionName": "ui-workflow.all",
-        "displayName": "Full access to all UI-Workflow functionality.",
+        "displayName": "Workflow (Admin): All permissions",
         "subPermissions": [
           "workflow.actions.all",
           "workflow.events.all",
-          "workflow.triggers.all",
           "workflow.tasks.all",
+          "workflow.triggers.all",
           "workflow.workflows.all"
         ],
         "visible": true

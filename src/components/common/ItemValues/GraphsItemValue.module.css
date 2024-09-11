@@ -1,0 +1,5 @@
+.graphItemDownArrowIconDiv {
+  display: flex;
+  margin: -9px 0 5px 0;
+  justify-content: center;
+}

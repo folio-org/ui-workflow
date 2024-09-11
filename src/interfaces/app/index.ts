@@ -1,2 +1,1 @@
-export * from './IView';
-export * from './IWorkflowApp';
+export * from './IApp';

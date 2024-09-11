@@ -11,7 +11,7 @@ import { t } from '../../../utilities';
 /**
  * A pane used for importing a view.
  */
-export const ImportPane: React.FC<IPane> = ({ control, view, stripes }) => {
+export const ImportPane: React.FC<IPane> = ({ control, list, stripes, view }) => {
   if (!control?.show) {
     return null;
   }
@@ -32,6 +32,8 @@ export const ImportPane: React.FC<IPane> = ({ control, view, stripes }) => {
           (file: any, response: any) => {
             setIsDropZoneActive(false);
             setBusy(false);
+
+            list?.refetch();
 
             callout.sendCallout({
               type: 'success',

@@ -1,1 +1,1 @@
-export * from './MainListTable';
+export * from './WorkflowListTable';

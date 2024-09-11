@@ -5,11 +5,17 @@ import { POLLING_STATUS_DELAY } from '../../../constants';
 import { IListRequest, IListResponse, IItemRecord } from '../../../interfaces';
 import { buildListUrl } from '../../../utilities';
 
+/**
+ * Fetch the list of Workflows.
+ *
+ * path: The specific path to fetch from.
+ * request: The request structure used for fetching the list.
+ */
 export const useWorkflowList = (path: any, request: IListRequest) => {
   const ky = useOkapiKy();
   const url = buildListUrl(path, request);
 
-  const { data, isLoading, error } = useQuery({
+  const { data, error, isLoading, refetch } = useQuery({
     queryKey: [ url ],
     queryFn: () => {
       if (url == "") return null;
@@ -19,5 +25,5 @@ export const useWorkflowList = (path: any, request: IListRequest) => {
     refetchOnWindowFocus: false
   });
 
-  return { data, isLoading, error };
+  return { data, error, isLoading, refetch };
 };

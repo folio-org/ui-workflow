@@ -1,2 +1,2 @@
 export * from './useBrowseSearchPaneFilter';
-export * from './useMainListTable';
+export * from './useWorkflowListTable';

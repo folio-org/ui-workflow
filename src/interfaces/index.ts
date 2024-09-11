@@ -1,6 +1,7 @@
 export * from './action';
 export * from './app';
 export * from './filter';
+export * from './icon';
 export * from './item';
 export * from './list';
 export * from './pane';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ErrorBoundary, Pane, Paneset } from '@folio/stripes/components';
+import { ErrorBoundary, LoadingPane, Pane } from '@folio/stripes/components';
 
 import { IItemRecordPane } from '../../../interfaces';
 import { t } from '../../../utilities';
@@ -8,23 +8,25 @@ import { ItemRecordDetailView } from '../../../views';
 /**
  * A pane for displaying the Workflow Item Record details.
  */
-export const ItemRecordDetailPane: React.FC<IItemRecordPane> = ({ control, view, stripes }) => {
-  const selected = !!control?.selectedNode ? control.selectedNode : {};
-
-  if (!control?.detailControl?.show || !control?.selectedNode) {
+export const ItemRecordDetailPane: React.FC<IItemRecordPane> = (props?: any) => {
+  if (!props?.workflow?.data || !props?.control?.detailControl?.show) {
     return null;
   }
 
+  const selected = props?.workflow?.data;
   const paneTitle = !!selected?.name
     ? t('title.itemRecordDetailPane.node', { name: selected.name })
     : t('title.itemRecordDetailPane');
-  const onClose = !!control?.detailControl?.onClose ? control.detailControl.onClose : false;
+  const onClose = !!props.control.detailControl?.onClose ? props.control.detailControl.onClose : false;
 
-  return <Paneset>
-    <Pane defaultWidth='fill' dismissible onClose={onClose} paneTitle={paneTitle}>
-      <ErrorBoundary>
-        <ItemRecordDetailView control={control} view={view} stripes={stripes} />
-      </ErrorBoundary>
-    </Pane>
-  </Paneset>;
+  const loadingPane = (props?.workflow?.isLoading)
+    ? <LoadingPane />
+    : null;
+
+  return <Pane id={ props?.id } defaultWidth='30%' dismissible onClose={onClose} paneTitle={paneTitle}>
+    <ErrorBoundary>
+      {loadingPane}
+      <ItemRecordDetailView { ...props } />
+    </ErrorBoundary>
+  </Pane>;
 };

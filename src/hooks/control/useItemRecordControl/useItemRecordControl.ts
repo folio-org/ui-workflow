@@ -1,21 +1,21 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useHistory } from "react-router-dom";
 
 /**
  * Control structure for using an Item Record.
  */
-export const useItemRecordControl = () => {
-  const [ selectedItem, setSelectedItem ] = useState();
+export const useItemRecordControl = (path: string) => {
   const [ selectedNode, setSelectedNode ] = useState();
   const [ showDetail, setShowDetail ] = useState(false);
-  const [ showRecord, setShowRecord ] = useState(false);
+  const navigate = useHistory();
 
-  const onItemClick = useCallback((event: any, item: any) => {
-    setSelectedItem(!!item ? item : null);
-    setShowRecord(!!item);
-  }, [ selectedItem, showRecord ]);
+  const close = useCallback((event: any, item: any) => {
+    // Change this to useNavigate once React 6 or greater is used.
+    navigate.push(path);
+  }, []);
 
   const onNodeClick = useCallback((event: any, node: any, append: any) => {
-    setSelectedNode(!!node ? node : null);
+    setSelectedNode(!!node ? node : undefined);
     setShowDetail(!!node);
   }, [ selectedNode, showDetail ]);
 
@@ -25,17 +25,8 @@ export const useItemRecordControl = () => {
       setShowDetail(false);
     }, [ selectedNode, showDetail ]),
     setShow: setShowDetail,
-    show: showDetail
+    show: showDetail,
   };
 
-  const recordControl = {
-    onClose: useCallback(() => {
-      setShowDetail(false);
-      setShowRecord(false);
-    }, [ showDetail, showRecord ]),
-    setShow: setShowRecord,
-    show: showRecord
-  };
-
-  return { detailControl, onItemClick, onNodeClick, recordControl, selectedItem, selectedNode, setSelectedItem, setSelectedNode };
+  return { close, detailControl, onNodeClick, selectedNode, setSelectedNode };
 }
