@@ -156,5 +156,21 @@
     "workflows.value.boolean.false": "False",
     "workflows.value.boolean.true": "True",
     "workflows.value.inactive": "Inactive",
-    "workflows.value.password.hidden": "(hidden)"
+    "workflows.value.password.hidden": "(hidden)",
+    "workflows.item.node.deserializeAs.InputTask": "Input task",
+    "workflows.item.node.inputs.input.attributes": "Attributes",
+    "workflows.item.node.inputs.input.defaultValue": "Default value",
+    "workflows.item.node.inputs.input.inputType": "Input type",
+    "workflows.item.node.inputs.input.options": "Options",
+    "workflows.item.node.inputs.input.required": "Required",
+    "workflows.item.node.inputs.label": "Input field • {name}.",
+    "workflows.label.asJson": "As JSON",
+    "workflows.label.asTransient": "As transient",
+    "workflows.label.attributes": "Attributes",
+    "workflows.label.inputVariables": "Input variables",
+    "workflows.label.key": "Key",
+    "workflows.label.options": "Options",
+    "workflows.label.outputVariable": "Output variable",
+    "workflows.label.spin": "Spin",
+    "workflows.label.values": "Values"
 }
