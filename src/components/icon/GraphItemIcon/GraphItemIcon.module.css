@@ -6,3 +6,11 @@
 .graphItemtIconTypeDiv span {
   margin-left: 6px;
 }
+
+.commonIconStyle {
+  border-radius: 25%;
+  width: 22px;
+  height: 22px;
+  margin-left: -10px;
+  margin-right: 10px;
+}

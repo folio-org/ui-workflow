@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { AppIcon } from '@folio/stripes/core';
 import {
   appIcon,
   compressFileTaskIcon,
@@ -86,7 +86,8 @@ export const GraphItemIcon: React.FC<{ type: string }> = ({ type }) => {
   }
 
   return <div className={css?.graphItemtIconTypeDiv}>
-    <img alt="Graph Item Icon" src={icon} style={{ borderRadius: '25%', width: '22px', height: '22px' }}  />
+    {/* <img alt="Graph Item Icon" src={icon} style={{ borderRadius: '25%', width: '22px', height: '22px' }}  /> */}
+    <AppIcon app="@folio/workflow" iconKey="app" size="medium" src={icon} className={css?.commonIconStyle} />
     <span>{type}</span>
   </div>;
 };
