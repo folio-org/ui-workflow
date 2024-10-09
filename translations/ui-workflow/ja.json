@@ -61,7 +61,7 @@
     "workflows.item.node.code.modal.label": "ノード -{name} - コード",
     "workflows.item.node.completeConditionExpression": "Complete condition expression",
     "workflows.item.node.container": "コンテナ",
-    "workflows.item.node.contentType": "Content type",
+    "workflows.item.node.contentType": "コンテンツタイプ",
     "workflows.item.node.dataInputRefExpression": "Data input reference expression",
     "workflows.item.node.delay": "Delay",
     "workflows.item.node.deserializeAs": "Deserialize as",
