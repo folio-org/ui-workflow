@@ -15,7 +15,7 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected
     return null;
   }
 
-  const cardClass = !!selected?.id && value?.id === selected.id ? css?.selected : null;
+  const cardClass = !!selected?.selectedNode?.id && value?.id === selected?.selectedNode?.id ? css?.selected : css?.nodeCard;
 
   const onClick = (e: any) => {
     if (!!onSelect) onSelect(e, value);
