@@ -15,22 +15,16 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected
     return null;
   }
 
-  const [isHovered, setIsHovered] = useState(false);
-  const cardClass = !!selected?.id && value?.id === selected.id ? css?.selected : null;
-
   const onClick = (e: any) => {
     if (!!onSelect) onSelect(e, value);
 
   };
 
   return (
-    <Card
-    onMouseEnter={() => setIsHovered(true)}
-    onMouseLeave={() => setIsHovered(false)}
+    <Card 
     headerClass={ css?.nodeHeader }
     bodyClass={ css?.nodeBody }
-    cardClass={cardClass}
-    cardStyle= {isHovered ? 'positive' : 'default'}
+    cardClass={css?.styleCard}
     headerEnd={ <span className={ css?.headerEnd }>{ value?.name }</span> }
     headerStart={ <GraphItemIcon type={ value?.deserializeAs } /> }
     key={ value?.id }
