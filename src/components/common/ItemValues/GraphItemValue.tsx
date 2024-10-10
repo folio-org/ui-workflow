@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Card } from '@folio/stripes/components';
 
 import { GraphItemIcon } from '../../../components';
