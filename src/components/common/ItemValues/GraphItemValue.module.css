@@ -17,13 +17,11 @@
 
 .styleCard:hover {
   .nodeHeader {
-    background-color: oklch(65.00% 2 3);
-    padding: 10px;
+    background-color: oklch(70% 0.1135 254.12 / 15.78%);
   }
   
   .nodeBody {
-    background-color: oklch(65.00% 2 3);
-    padding: 10px;
+    background-color: oklch(70% 0.1135 254.12 / 15.78%);
   }
 }
 
