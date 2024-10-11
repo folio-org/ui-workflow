@@ -19,8 +19,7 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected
   // Define states
   const [activeCard, setActiveCard] = useState<string | null>(null); // Tracks the active card
   const hoveredCard = document.querySelector('.styleCard') as HTMLElement | null;
-  // const activeCard = document.querySelector('.styleCard') as HTMLElement | null;
-
+ 
   const [isHovered, setIsHovered] = useState('0');
 
   const onClick = (e: any) => {
