@@ -15,6 +15,42 @@
   }
 }
 
+.styleCard {
+
+  --is-hovered: 0;
+  /* Remove default focus outline */
+  outline: none; 
+
+}
+
+.styleCard:hover {
+  
+  --is-hovered: 1;
+  /* added just now */
+  border-radius: 10px;  
+  .nodeHeader {
+    background-color: oklch(70% 0.1135 254.12 / 15.78%);
+  }
+  
+  .nodeBody {
+    background-color: oklch(70% 0.1135 254.12 / 15.78%);
+  }
+}
+
+/* Focus state (when card is clicked or focused) */
+.styleCard:focus {
+  --is-clicked: 1;
+  border: 1px solid oklch(70.00% 0 0) !important;
+  border-radius: 10px;
+}
+
+.styleCard:focus .nodeHeader,
+.styleCard:focus .nodeBody {
+  background-color: oklch(70% 0.1135 254.12 / 15.78%);
+}
+
 .headerEnd {
   padding-left: 5px;
 }
+
+ 
