@@ -42,7 +42,7 @@
 .styleCard:focus,
 .styleCard.active {
  
-  border: 1px solid oklch(70.00% 0 0);
+  border: 2px solid oklch(70.00% 0 0);
   border-radius: 10px;
   /* background-color: oklch(85.00% 0 0) !important; */
   .nodeHeader {
