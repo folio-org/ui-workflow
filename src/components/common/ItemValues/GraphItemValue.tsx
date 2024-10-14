@@ -1,10 +1,9 @@
-import React, { act, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card } from '@folio/stripes/components';
 
 import { GraphItemIcon } from '../../../components';
 import { IItemValue } from '../../../interfaces';
 import css from './GraphItemValue.module.css';
-import { forEach } from 'lodash';
 
 /**
  * Provide an Item value for displaying a single graph of a Node.
@@ -35,6 +34,7 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected
 
   }, [hoveredCard]);
 
+  const cardClass = activeCard === value.id || isHovered ? css?.selected : '';
 
     return (
           <Card
@@ -46,8 +46,7 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected
             }}
               headerClass={css?.nodeHeader}
               bodyClass={css?.nodeBody}
-              cardClass={activeCard === value.id || isHovered ? css?.styleCard : ''}
-              // className={activeCard === value.id || isHovered ? css?.styleCard : ''} // Apply 'styleCard' class if the card is active
+              cardClass={cardClass}
               headerEnd={<span className={css?.headerEnd}>{value?.name}</span>}
               headerStart={<GraphItemIcon type={value?.deserializeAs} />}
               roundedBorder
