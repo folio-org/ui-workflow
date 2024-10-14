@@ -20,11 +20,13 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected
 
   };
 
+  const cardClass = css?.selected;
+
   return (
     <Card 
     headerClass={ css?.nodeHeader }
     bodyClass={ css?.nodeBody }
-    cardClass={css?.styleCard}
+    cardClass={cardClass}
     headerEnd={ <span className={ css?.headerEnd }>{ value?.name }</span> }
     headerStart={ <GraphItemIcon type={ value?.deserializeAs } /> }
     key={ value?.id }
