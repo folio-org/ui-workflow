@@ -20,7 +20,10 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected
 
   };
 
-  const cardClass = css?.selected;
+   //cardClass defined by selected Node
+   const cardClass = (!!selected?.selectedNode?.id && value?.id === selected?.selectedNode?.id) 
+   ? css?.selected 
+   : css?.nodeCard;
 
   return (
     <Card 
@@ -31,9 +34,6 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected
     headerStart={ <GraphItemIcon type={ value?.deserializeAs } /> }
     key={ value?.id }
     onClick={onClick}
-    style={{
-      cursor: 'pointer'
-    }}
     roundedBorder
   >
     { value?.description }
