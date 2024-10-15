@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Card } from '@folio/stripes/components';
 
 import { GraphItemIcon } from '../../../components';
@@ -10,13 +10,12 @@ import css from './GraphItemValue.module.css';
  *
  * This graph of a Node shall process the onSelect when clicked.
  */
-
 export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected, value }) => {
   if (typeof value !== 'object' && empty === true) {
     return null;
   }
   
-  //cardClass defined by selected Node
+  // cardClass defined by selected Node
   const cardClass = (!!selected?.selectedNode?.id && value?.id === selected?.selectedNode?.id) 
     ? css?.selected 
     : css?.nodeCard;
@@ -25,19 +24,16 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected
     if (!!onSelect) onSelect(e, value);
   };
 
-    return (
-          <Card
-            key={value.id} 
-            tabIndex={0} 
-            onClick={onClick}
-            headerClass={css?.nodeHeader}
-            bodyClass={css?.nodeBody}
-            cardClass={cardClass}
-            headerEnd={<span className={css?.headerEnd}>{value?.name}</span>}
-            headerStart={<GraphItemIcon type={value?.deserializeAs} />}
-            roundedBorder
-            >
-              {value?.description}
-            </Card>
-  );
+  return <Card
+    headerClass={ css?.nodeHeader }
+    bodyClass={ css?.nodeBody }
+    cardClass={cardClass}
+    headerEnd={ <span className={ css?.headerEnd }>{ value?.name }</span> }
+    headerStart={ <GraphItemIcon type={ value?.deserializeAs } /> }
+    key={ value?.id }
+    onClick={onClick}
+    roundedBorder
+  >
+    { value?.description }
+  </Card>;
 };
