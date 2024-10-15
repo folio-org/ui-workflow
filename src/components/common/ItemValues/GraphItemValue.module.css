@@ -1,14 +1,14 @@
 @import "@folio/stripes-components/lib/variables";
 
+.nodeCard:hover,
 .selected {
-  outline: none;
-}
+  cursor: pointer;
+  border: 1px solid oklch(70.00% 0 0) !important;
 
-.selected:hover {
   .nodeHeader {
-    background-color: oklch(70% 0.1135 254.12 / 15.78%);
+    background-color: oklch(85.00% 0 0);
   }
-  
+
   .nodeBody {
     background-color: oklch(70% 0.1135 254.12 / 15.78%);
   }
