@@ -25,8 +25,7 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected
 
   };
 
-  return (
-    <Card 
+  return <Card
     headerClass={ css?.nodeHeader }
     bodyClass={ css?.nodeBody }
     cardClass={cardClass}
@@ -37,6 +36,5 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected
     roundedBorder
   >
     { value?.description }
-  </Card>
-  );
+  </Card>;
 };
