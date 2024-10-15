@@ -1,41 +1,17 @@
 @import "@folio/stripes-components/lib/variables";
 
+.nodeCard:hover,
 .selected {
-  outline: none; 
-}
+  cursor: pointer;
+  border: 1px solid oklch(70.00% 0 0) !important;
 
-.selected:hover:not(.active) {
-
-  border-radius: 10px;  
   .nodeHeader {
-    background-color: oklch(70% 0.1135 254.12 / 15.78%);
+    background-color: oklch(85.00% 0 0);
   }
-  
+
   .nodeBody {
     background-color: oklch(70% 0.1135 254.12 / 15.78%);
   }
-}
-
-/* Focus state (when card is clicked or focused) */
-.selected:focus,
-.selected:active {
- 
-  border: 2px solid oklch(70.00% 0 0);
-  border-radius: 10px;
-
-  .nodeHeader {
-    background-color: oklch(85.00% 0 0) !important;
-  }
-  
-  .nodeBody {
-    background-color: oklch(90.00% 0 0) !important;
-  }
-
-}
-
-.selected:focus .nodeHeader,
-.selected:focus .nodeBody {
-  background-color: oklch(70% 0.1135 254.12 / 15.78%);
 }
 
 .headerEnd {

@@ -15,41 +15,27 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected
   if (typeof value !== 'object' && empty === true) {
     return null;
   }
-  // Define states
-  const [activeCard, setActiveCard] = useState<string | null>(null); // Tracks the active card
-  const hoveredCard = document.querySelector('.styleCard') as HTMLElement | null;
- 
-  const [isHovered, setIsHovered] = useState('0');
+  
+  //cardClass defined by selected Node
+  const cardClass = (!!selected?.selectedNode?.id && value?.id === selected?.selectedNode?.id) 
+    ? css?.selected 
+    : css?.nodeCard;
 
   const onClick = (e: any) => {
     if (!!onSelect) onSelect(e, value);
   };
 
-  useEffect(()=> {
- 
-  if (hoveredCard) {
-    const hovered = hoveredCard.style.getPropertyValue('--is-hovered').trim();
-    setIsHovered(hovered);
-  }
-
-  }, [hoveredCard]);
-
-  const cardClass = activeCard === value.id || isHovered ? css?.selected : '';
-
     return (
           <Card
             key={value.id} 
             tabIndex={0} 
-            onClick={(e: any) => {setActiveCard(value.id); onClick(e);}} 
-            style={{
-              cursor: 'pointer'
-            }}
-              headerClass={css?.nodeHeader}
-              bodyClass={css?.nodeBody}
-              cardClass={cardClass}
-              headerEnd={<span className={css?.headerEnd}>{value?.name}</span>}
-              headerStart={<GraphItemIcon type={value?.deserializeAs} />}
-              roundedBorder
+            onClick={onClick}
+            headerClass={css?.nodeHeader}
+            bodyClass={css?.nodeBody}
+            cardClass={cardClass}
+            headerEnd={<span className={css?.headerEnd}>{value?.name}</span>}
+            headerStart={<GraphItemIcon type={value?.deserializeAs} />}
+            roundedBorder
             >
               {value?.description}
             </Card>

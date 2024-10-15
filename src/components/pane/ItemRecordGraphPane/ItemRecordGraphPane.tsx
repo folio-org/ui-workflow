@@ -13,7 +13,10 @@ export const ItemRecordGraphPane: React.FC<IItemRecordPane> = ({ control, id, wo
     return null;
   }
 
-  const selected = workflow?.data;
+  const selected = {
+    ...workflow?.data,
+    selectedNode: control?.selectedNode
+  };
   const paneTitle = selected?.name ? selected.name : t('title.itemRecordGraphPane');
   const loadingPane = (workflow?.isLoading)
     ? <LoadingPane />
