@@ -4,9 +4,6 @@
 }
 
 .graphItemtIconTypeDiv span {
-  margin-left: 6px;
-}
-
-.commonIconStyle {
-  margin-right: 10px;
+  margin-right: 3px; 
+  vertical-align: center;
 }

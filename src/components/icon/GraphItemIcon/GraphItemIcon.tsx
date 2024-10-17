@@ -86,7 +86,7 @@ export const GraphItemIcon: React.FC<{ type: string }> = ({ type }) => {
   }
 
   return <div className={css?.graphItemtIconTypeDiv}>
-    <AppIcon app="@folio/workflow" iconKey="app" size="medium" src={icon} className={css?.commonIconStyle} />
+    <AppIcon app="@folio/workflow" iconKey="app" size="small" src={icon} />
     <span>{type}</span>
   </div>;
 };
