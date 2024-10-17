@@ -14,7 +14,7 @@ export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected
   if (typeof value !== 'object' && empty === true) {
     return null;
   }
-  
+
   // cardClass defined by selected Node
   const cardClass = (!!selected?.selectedNode?.id && value?.id === selected?.selectedNode?.id) 
     ? css?.selected 
