@@ -119,7 +119,7 @@
     "workflows.item.node.mailText": "Mail text",
     "workflows.item.node.mailTo": "Mail to",
     "workflows.item.node.method": "Method",
-    "workflows.item.node.multiInstance": "Multiple instance",
+    "workflows.item.node.multiInstance": "Notice multiple",
     "workflows.item.node.nodeId": "Node ID",
     "workflows.item.node.nodes": "Nodes",
     "workflows.item.node.op": "Operation",
