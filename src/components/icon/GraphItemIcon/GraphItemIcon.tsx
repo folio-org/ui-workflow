@@ -1,5 +1,6 @@
 import React from 'react';
 import { AppIcon } from '@folio/stripes/core';
+
 import {
   appIcon,
   compressFileTaskIcon,
