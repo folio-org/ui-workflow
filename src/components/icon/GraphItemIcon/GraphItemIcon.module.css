@@ -4,5 +4,6 @@
 }
 
 .graphItemtIconTypeDiv span {
-  margin-left: 6px;
+  margin-right: 3px; 
+  vertical-align: center;
 }

@@ -1,17 +1,16 @@
 @import "@folio/stripes-components/lib/variables";
 
+.nodeCard:hover,
 .selected {
+  cursor: pointer;
   border: 1px solid oklch(70.00% 0 0) !important;
-  border-radius: 10px;
 
   .nodeHeader {
     background-color: oklch(85.00% 0 0);
-    padding: 10px;
   }
 
   .nodeBody {
-    background-color: oklch(90.00% 0 0);
-    padding: 10px;
+    background-color: oklch(70% 0.1135 254.12 / 15.78%);
   }
 }
 
