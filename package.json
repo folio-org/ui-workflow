@@ -124,11 +124,6 @@
           "workflow.actions.all",
           "workflow.events.all",
           "workflow.nodes.all",
-          "workflow.nodes.collection.get",
-          "workflow.nodes.item.delete",
-          "workflow.nodes.item.get",
-          "workflow.nodes.item.post",
-          "workflow.nodes.item.put",
           "workflow.tasks.all",
           "workflow.triggers.all",
           "workflow.workflows.all"
