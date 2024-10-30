@@ -123,6 +123,7 @@
         "subPermissions": [
           "workflow.actions.all",
           "workflow.events.all",
+          "workflow.nodes.all",
           "workflow.tasks.all",
           "workflow.triggers.all",
           "workflow.workflows.all"
