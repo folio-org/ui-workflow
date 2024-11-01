@@ -88,6 +88,7 @@
     "okapiInterfaces": {
       "workflow-actions": "1.0",
       "workflow-events": "1.0",
+      "workflow-nodes": "1.0",
       "workflow-triggers": "1.0",
       "workflow-tasks": "1.0",
       "workflow-workflows": "1.0"
