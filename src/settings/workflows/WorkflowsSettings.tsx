@@ -3,11 +3,11 @@ import type { FunctionComponent } from 'react'
 import { FormattedMessage } from 'react-intl';
 
 import { stripesConnect } from '@folio/stripes/core';
-import { ConfigManager as UnconnectedConfigManager } from '@folio/stripes/smart-components';
+import { ConfigManager } from '@folio/stripes/smart-components';
 
 import { WorkflowsSettingsForm } from './WorkflowsSettingsForm';
 
-const ConfigManager = stripesConnect(UnconnectedConfigManager);
+const ConnectedConfigManager = stripesConnect(ConfigManager);
 
 export const WorkflowsSettings: FunctionComponent = () => {
   const getInitialValues = (settings: any) => {
@@ -16,7 +16,7 @@ export const WorkflowsSettings: FunctionComponent = () => {
   }
 
   return (
-    <ConfigManager
+    <ConnectedConfigManager
       configFormComponent={WorkflowsSettingsForm}
       configName="workflows"
       getInitialValues={getInitialValues}
