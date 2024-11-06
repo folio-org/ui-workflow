@@ -3,7 +3,7 @@ import { Response, Server } from 'miragejs';
 
 import { OKAPI_WORKFLOW_IMPORT } from '../../../constants';
 import { startMirage } from '../../../../test/mirage';
-import { useUploadMultipart } from './';
+import { useUploadMultipart } from '.';
 
 let server: Server;
 
@@ -27,7 +27,7 @@ describe('useUploadMultipart', () => {
 
   describe('When uploadMultipart() fails expectedly', () => {
     const { result } = renderHook(() => useUploadMultipart());
-    let file = { name: 'file_name_1.txt' };
+    const file = { name: 'file_name_1.txt' };
     const onSuccessMock = jest.fn();
     const onErrorMock = jest.fn();
 
@@ -45,7 +45,7 @@ describe('useUploadMultipart', () => {
 
   describe('When uploadMultipart() succeeds expectedly', () => {
     const { result } = renderHook(() => useUploadMultipart());
-    let file = { name: 'file_name_2.txt' };
+    const file = { name: 'file_name_2.txt' };
     const onSuccessMock = jest.fn();
     const onErrorMock = jest.fn();
     const uuid = 'd8b47696-4903-47f7-aeab-76c0f48616f4';
@@ -61,5 +61,4 @@ describe('useUploadMultipart', () => {
       expect(onSuccessMock).toBeCalled();
     });
   });
-
 });

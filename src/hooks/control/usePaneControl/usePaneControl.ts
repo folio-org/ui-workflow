@@ -8,7 +8,7 @@ export const usePaneControl = (path: any) => {
 
   const onClose = useCallback(() => {
     setShow(false);
-  }, [ show ]);
+  }, []);
 
   return { setShow, show, onClose };
 };

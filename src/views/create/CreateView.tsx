@@ -5,7 +5,7 @@ import { useStripes } from '@folio/stripes/core';
 
 import { CreateActionMenu, FilterMenu, FilterPane, ImportPane, WorkflowIcon } from '../../components';
 import { BACKEND_PATH, VIEW } from '../../constants';
-import { usePaneControl } from '../../hooks';
+import { useFilterConfigCreate, usePaneControl } from '../../hooks';
 import { t } from '../../utilities';
 
 /**
@@ -14,13 +14,14 @@ import { t } from '../../utilities';
 export const CreateView: React.FC = (props?: any) => {
   const control = usePaneControl(BACKEND_PATH[VIEW.CREATE]);
   const stripes = useStripes();
+  const filterConfig = useFilterConfigCreate();
 
   return <Paneset>
     <ErrorBoundary>
-      <FilterPane view={ VIEW.CREATE } />
+      <FilterPane filterConfig={filterConfig} view={ VIEW.CREATE } />
       <Pane
         appIcon={ <WorkflowIcon /> }
-        defaultWidth='fill'
+        defaultWidth="fill"
         firstMenu={ <FilterMenu /> }
         lastMenu={ <CreateActionMenu control={control} stripes={stripes} /> }
         paneTitle={ t('title.create') }

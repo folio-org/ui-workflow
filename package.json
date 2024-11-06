@@ -19,6 +19,8 @@
     "tsc:check-app": "tsc --noEmit --project \"./tsconfig.json\""
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.25.0",
+    "@folio/eslint-config-stripes": "^7.0.0",
     "@folio/stripes": "^9.0.0",
     "@folio/stripes-acq-components": "^5.1.0",
     "@folio/stripes-cli": "^3.0.0",
@@ -32,6 +34,7 @@
     "@folio/stripes-smart-components": "^9.1.0",
     "@folio/stripes-types": "^2.1.0",
     "@folio/stripes-util": "^6.0.0",
+    "@jest/globals": "^26.0.0",
     "@rehooks/local-storage": "^2.4.0",
     "@testing-library/dom": "^10.1.0",
     "@testing-library/jest-dom": "^6.2.0",
@@ -40,6 +43,13 @@
     "@types/jest": "^29.5.0",
     "@types/lodash": "^4.17.0",
     "@types/react-router-dom": "^5.2.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@typescript-eslint/typescript-estree": "^6.0.0",
+    "babel-eslint": "^10.0.0",
+    "babel-jest": "^26.0.0",
+    "eslint": "^7.32.0",
+    "eslint-import-resolver-webpack": "^0.13.0",
     "final-form": "^4.20.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.0.0",
@@ -62,8 +72,7 @@
     "rxjs": "^6.6.0",
     "ts-jest": "^29.1.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "peerDependencies": {
     "@folio/stripes": "^9.0.0",
     "react": "^18.2.0",
@@ -139,6 +148,5 @@
       }
     ]
   },
-  "resolutions": {
-  }
+  "resolutions": {}
 }

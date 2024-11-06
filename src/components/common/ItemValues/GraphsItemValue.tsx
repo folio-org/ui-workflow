@@ -1,8 +1,8 @@
 import React from 'react';
 import { Icon } from '@folio/stripes/components';
 
-import { GraphItemValue, GraphItemDownArrowIcon } from '../../../components';
 import { IItemValue } from '../../../interfaces';
+import { GraphItemValue, GraphItemDownArrowIcon } from '../..';
 import css from './GraphsItemValue.module.css';
 
 /**
@@ -29,5 +29,5 @@ export const GraphsItemValue: React.FC<IItemValue> = ({ empty, onSelect, selecte
     });
   }
 
-  return values.length == 0 ? null : <>{values}</>;
+  return values.length === 0 ? null : <>{values}</>;
 };

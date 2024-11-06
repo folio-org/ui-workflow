@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react';
 
 import { ITEM_COLUMNS_NAME, VIEW } from '../../../constants';
-import { useSearch } from './';
+import { useSearch } from '.';
 
 describe('useSearch', () => {
   describe('When initial render happened', () => {

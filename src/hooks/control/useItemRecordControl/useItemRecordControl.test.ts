@@ -1,10 +1,10 @@
 import { renderHook } from '@testing-library/react';
 
-import { useItemRecordControl } from './';
+import { useItemRecordControl } from '.';
 
 describe('useItemRecordControl', () => {
   describe('When initial render happened', () => {
-    const { result } = renderHook(() => useItemRecordControl("path"));
+    const { result } = renderHook(() => useItemRecordControl('path'));
 
     it('is expected to return defined', () => {
       expect(result.current).toBeDefined();

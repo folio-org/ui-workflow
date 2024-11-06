@@ -1,9 +1,9 @@
 /**
  * Provide properties for controlling a pane.
  *
- * onClose: Event handler.
- * setShow: Show setter.
- * show: Value.
+ * @param onClose Event handler.
+ * @param setShow Show setter.
+ * @param show Value.
  */
 export interface IPaneControl {
   onClose?: any;

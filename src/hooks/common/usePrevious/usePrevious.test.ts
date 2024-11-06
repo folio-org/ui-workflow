@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react';
 
-import { usePrevious } from './';
+import { usePrevious } from '.';
 
 describe('usePrevious', () => {
   describe('When initial render happened', () => {

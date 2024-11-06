@@ -1,10 +1,9 @@
 import { ISearchState } from '../../../interfaces';
 
 export const buildBrowseQuery = (filters: string[], filtersConfig: any, search: ISearchState) => {
-  let queryList: string[] = [];
+  const queryList: string[] = [];
   let active = false;
   let inactive = false;
-  let name: string|null = null;
 
   if ((search?.key?.length || 0) > 0 && (search?.value?.length || 0) > 0 && !!filtersConfig?.searchIndexes && !!filtersConfig?.searchSettings) {
     let foundKey = false;
@@ -25,9 +24,9 @@ export const buildBrowseQuery = (filters: string[], filtersConfig: any, search: 
 
   if (filters?.length > 0 && filtersConfig?.filters.length > 0) {
     filters.forEach((filter) => {
-      if (filter == 'active.Yes') {
+      if (filter === 'active.Yes') {
         active = true;
-      } else if (filter == 'active.No') {
+      } else if (filter === 'active.No') {
         inactive = true;
       }
     });
@@ -42,4 +41,4 @@ export const buildBrowseQuery = (filters: string[], filtersConfig: any, search: 
   }
 
   return queryList.join(' and ');
-}
+};

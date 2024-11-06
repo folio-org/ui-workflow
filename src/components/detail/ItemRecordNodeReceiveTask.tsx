@@ -1,8 +1,8 @@
 import React from 'react';
 import { Accordion, AccordionSet, Col, Row } from '@folio/stripes/components';
 
-import { ItemRecordNodeSet, StringItemValue } from '../../components';
 import { IItemRecordPane } from '../../interfaces';
+import { ItemRecordNodeSet, StringItemValue } from '..';
 
 /**
  * A sub-component for displaying Workflow Item Record Node ReceiveTask detail information.
@@ -17,7 +17,7 @@ export const ItemRecordNodeReceiveTask: React.FC<IItemRecordPane> = (props?: any
   return <ItemRecordNodeSet { ...props }>
     <Row>
       <Col xs={12}>
-        <StringItemValue label='workflows.item.node.message' value={ selected?.message } />
+        <StringItemValue label="workflows.item.node.message" value={ selected?.message } />
       </Col>
     </Row>
   </ItemRecordNodeSet>;

@@ -8,11 +8,11 @@ import { MainView, SettingsView } from './views';
 export const queryClient = new QueryClient();
 
 const WorkflowApp: React.FC<IApp> | React.FC<SettingsProps> = (props: any) => {
+  const { match: { path } } = props;
+
   if (props?.showSettings) {
     return <SettingsView { ...props } />;
   }
-
-  const { match: { path } } = props;
 
   return <MainView
     // @ts-ignore:next-line

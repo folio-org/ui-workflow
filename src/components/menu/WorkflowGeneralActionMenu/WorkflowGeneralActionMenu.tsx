@@ -15,13 +15,13 @@ export const WorkflowGeneralActionMenu: React.FC<IWorkflowGeneralActionMenu> = (
   const onDeleteClick = useCallback(() => {
     toggle.setToggle(false);
     deleteModal?.onShow();
-  }, [ deleteModal ]);
+  }, [ deleteModal, toggle ]);
 
-  return <Dropdown id='menu-actions-workflow-dropdown' label={ t('button.actions') } buttonProps={{ buttonStyle: 'primary', marginBottom0: true }}>
-    <DropdownMenu data-role='menu' aria-label={ t('create.action.menu') } onToggle={ toggle.onToggle } open>
+  return <Dropdown id="menu-actions-workflow-dropdown" label={ t('button.actions') } buttonProps={{ buttonStyle: 'primary', marginBottom0: true }}>
+    <DropdownMenu data-role="menu" aria-label={ t('create.action.menu') } onToggle={ toggle.onToggle } open>
       <Button
-        data-role='menuitem'
-        buttonStyle='dropdownItem'
+        data-role="menuitem"
+        buttonStyle="dropdownItem"
         onClick={onDeleteClick}
         disabled={ !stripes.hasPerm(USER_PERMS.WorkflowsItemDelete) }
       >

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Accordion, AccordionSet, Col, Row } from '@folio/stripes/components';
 
-import { ItemRecordNodeSet, StringItemValue } from '../../components';
 import { IItemRecordPane } from '../../interfaces';
+import { ItemRecordNodeSet, StringItemValue } from '..';
 
 /**
  * A sub-component for displaying Workflow Item Record Node FileTask detail information.
@@ -17,20 +17,20 @@ export const ItemRecordNodeFileTask: React.FC<IItemRecordPane> = (props?: any) =
   return <ItemRecordNodeSet { ...props }>
     <Row>
       <Col xs={6}>
-        <StringItemValue label='workflows.item.node.op' value={ selected?.op } />
+        <StringItemValue label="workflows.item.node.op" value={ selected?.op } />
       </Col>
       <Col xs={6}>
-        <StringItemValue label='workflows.item.node.line' value={ selected?.line } />
+        <StringItemValue label="workflows.item.node.line" value={ selected?.line } />
       </Col>
     </Row>
     <Row>
       <Col xs={12}>
-        <StringItemValue label='workflows.item.node.path' value={ selected?.path } />
+        <StringItemValue label="workflows.item.node.path" value={ selected?.path } />
       </Col>
     </Row>
     <Row>
       <Col xs={12}>
-        <StringItemValue label='workflows.item.node.target' value={ selected?.target } />
+        <StringItemValue label="workflows.item.node.target" value={ selected?.target } />
       </Col>
     </Row>
   </ItemRecordNodeSet>;

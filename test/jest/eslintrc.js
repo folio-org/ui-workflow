@@ -3,7 +3,7 @@ module.exports = {
   'parser': '@babel/eslint-parser',
   'overrides': [
     {
-      'files': ['src/**/tests/*', 'test/**/*'],
+      "files": ["src/**/*.test.js", "test/jest/**/*"]
     }
   ],
   'env': {

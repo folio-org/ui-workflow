@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react';
 
-import { useClickControl } from './';
+import { useClickControl } from '.';
 
 describe('useClickControl', () => {
   describe('When initial render happened', () => {

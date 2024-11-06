@@ -1,5 +1,4 @@
-import React from 'react';
-import { ChangeEvent } from 'react';
+import React, { ChangeEvent } from 'react';
 import { useLocalStorage, writeStorage } from '@rehooks/local-storage';
 
 import { ITEM_COLUMNS_NAME, SEARCH_WORKFLOWS_VALUE_KEY } from '../../../constants';
@@ -12,11 +11,11 @@ import { ISearchState } from '../../../interfaces';
  * initialIndex: The initial, or default, index position to use.
  */
 export const useSearch = (view: string, initialIndex: string) => {
-  const [ storedSearch ] = useLocalStorage<ISearchState>(SEARCH_WORKFLOWS_VALUE_KEY, { key: initialIndex, value: "" });
+  const [ storedSearch ] = useLocalStorage<ISearchState>(SEARCH_WORKFLOWS_VALUE_KEY, { key: initialIndex, value: '' });
   const [ appliedSearch, setAppliedSearch ] = React.useState<ISearchState>(storedSearch);
 
   const isDefaultState = (): boolean => {
-    return appliedSearch.value == "" && appliedSearch.key == initialIndex;
+    return appliedSearch.value === '' && appliedSearch.key === initialIndex;
   };
 
   const saveSearch = (state: ISearchState) => {
@@ -36,11 +35,11 @@ export const useSearch = (view: string, initialIndex: string) => {
   };
 
   const onClear = () => {
-    saveSearch({ key: appliedSearch.key, value: "" });
+    saveSearch({ key: appliedSearch.key, value: '' });
   };
 
   const onResetAll = () => {
-    const state = { key: initialIndex, value: "" };
+    const state = { key: initialIndex, value: '' };
 
     saveSearch(state);
     writeStorage(SEARCH_WORKFLOWS_VALUE_KEY, state);

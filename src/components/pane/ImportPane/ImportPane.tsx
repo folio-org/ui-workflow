@@ -12,10 +12,6 @@ import { t } from '../../../utilities';
  * A pane used for importing a view.
  */
 export const ImportPane: React.FC<IPane> = ({ control, list, stripes, view }) => {
-  if (!control?.show) {
-    return null;
-  }
-
   const [ busy, setBusy ] = useState(false);
   const [ isDropZoneActive, setIsDropZoneActive ] = useState(false);
   const callout = useContext(CalloutContext);
@@ -49,7 +45,7 @@ export const ImportPane: React.FC<IPane> = ({ control, list, stripes, view }) =>
               message: t('import.callout.failure.import', { name: file?.name, reason })
             });
           }
-        )
+        );
       } else {
         callout.sendCallout({
           type: 'error',
@@ -70,27 +66,31 @@ export const ImportPane: React.FC<IPane> = ({ control, list, stripes, view }) =>
 
       setIsDropZoneActive(false);
     }
-  }, [ busy, callout, isDropZoneActive ]);
+  }, [ busy, callout, list, uploadMultipart ]);
 
   const onDragEnter = useCallback(() => {
     if (!busy) {
       setIsDropZoneActive(true);
     }
-  }, [ busy, isDropZoneActive ]);
+  }, [ busy ]);
 
   const onDragLeave = useCallback(() => {
     if (!busy) {
       setIsDropZoneActive(false);
     }
-  }, [ busy, isDropZoneActive ]);
+  }, [ busy ]);
 
   const onError = useCallback((error: any) => {
     setIsDropZoneActive(false);
     setBusy(false);
     callout.sendCallout({ type: 'error', message: t('import.callout.failure.import', { name: 'filename', reason: 'some reason' }) });
-  }, [ busy, callout, isDropZoneActive ]);
+  }, [ callout ]);
 
-  return <Pane defaultWidth='fill' dismissible onClose={ control?.onClose } paneTitle={ t('import.workflow.title') } >
+  if (!control?.show) {
+    return null;
+  }
+
+  return <Pane defaultWidth="fill" dismissible onClose={ control?.onClose } paneTitle={ t('import.workflow.title') }>
     <ErrorBoundary>
       <FileUploader
         title={ t('import.workflow.drop') }

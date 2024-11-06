@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react';
 
-import { useWorkflowListTable } from './';
+import { useWorkflowListTable } from '.';
 
 describe('useWorkflowListTable', () => {
   describe('When initial render happened', () => {
