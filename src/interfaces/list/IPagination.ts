@@ -3,12 +3,12 @@ import { ISort } from './ISort';
 /**
  * Provide properties for a list pagination.
  *
- * sort: The sorting data.
- * offset: The pagination offset.
- * pageNumber: The current page.
- * pageSize: The number of rows for the page.
- * paged: TRUE if paging.
- * unpaged: TRUE if not paged.
+ * @param sort The sorting data.
+ * @param offset The pagination offset.
+ * @param pageNumber The current page.
+ * @param pageSize The number of rows for the page.
+ * @param paged TRUE if paging.
+ * @param unpaged TRUE if not paged.
  */
 export interface IPagination {
   sort: ISort;
