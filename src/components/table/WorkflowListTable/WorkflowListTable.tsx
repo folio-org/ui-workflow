@@ -5,7 +5,7 @@ import { useLocalStorage, writeStorage } from '@rehooks/local-storage';
 import { Loading, LoadingPane, MultiColumnList, Row } from '@folio/stripes/components';
 import { PrevNextPagination, usePagination } from '@folio/stripes-acq-components';
 
-import { ITEMS_VISIBLE_COLUMNS, ITEMS_COLUMN_WIDTHS, CURRENT_PAGE_OFFSET_KEY, UI_PATH, VIEW } from '../../../constants';
+import { CURRENT_PAGE_OFFSET_KEY, ITEMS_VISIBLE_COLUMNS, ITEMS_COLUMN_WIDTHS, PAGINATION_AMOUNT, UI_PATH, VIEW } from '../../../constants';
 import { usePrevious, useWorkflowListTable } from '../../../hooks';
 import { IItemRecord, IListProperties } from '../../../interfaces';
 import { listTableMapping, listTableResultFormatter } from './helpers';
@@ -13,7 +13,7 @@ import { listTableMapping, listTableResultFormatter } from './helpers';
 /**
  * A table consisting of the Workflow Item Records.
  */
-export const WorkflowListTable: React.FC<IListProperties> = ({ filters, limit, list, offset, path }) => {
+export const WorkflowListTable: React.FC<IListProperties> = ({ filters, limit = PAGINATION_AMOUNT, list, offset = 0, path }) => {
   const navigate = useHistory();
   const pagination = usePagination({ limit, offset });
   const prevFilters = usePrevious(filters);
