@@ -1,4 +1,4 @@
-import { ISearchState } from '../';
+import { ISearchState } from '..';
 
 /**
  * Provide properties for a list request packet.

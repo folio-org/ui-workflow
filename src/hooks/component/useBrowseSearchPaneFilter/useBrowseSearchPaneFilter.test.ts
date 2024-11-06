@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react';
 
-import { useBrowseSearchPaneFilter } from './';
+import { useBrowseSearchPaneFilter } from '.';
 
 const mockedNoop = {
   appliedSearch: {},
@@ -11,7 +11,7 @@ const mockedNoop = {
   onSubmit: () => {},
   isDefaultState: () => { return true; },
   index: 0,
-  value: "",
+  value: '',
 };
 
 describe('useBrowseSearchPaneFilter', () => {

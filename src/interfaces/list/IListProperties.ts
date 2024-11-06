@@ -1,6 +1,7 @@
 /**
  * Provide properties for a list, such as a table list.
  *
+ * filterConfig: The appropriate use filter config hook.
  * filters: A list of filters.
  * limit: The list size limit.
  * list: The list hook properties like data, error, isLoading, and refetch.
@@ -9,6 +10,7 @@
  * view: The active view being used from the VIEW constant.
  */
 export interface IListProperties {
+  filterConfig?: any;
   filters?: string[];
   limit?: number;
   list?: any;

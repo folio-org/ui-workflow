@@ -13,23 +13,23 @@ import {
   SEARCH_WORKFLOWS_VALUE_KEY,
   VIEW,
 } from '../../constants';
-import { getFilters, useFilterConfig, useWorkflowList } from '../../hooks';
-import { BrowseView, CreateView, DetailView } from '../../views';
+import { getFilters, useFilterConfigBrowse, useWorkflowList } from '../../hooks';
+import { BrowseView, CreateView, DetailView } from '..';
 
 export const MainView: React.FC = (props: any) => {
   const [ storedCurrentPageOffset ] = useLocalStorage<number>(CURRENT_PAGE_OFFSET_KEY, 0);
   const [ readFilter ] = useLocalStorage(FILTER_APPLIED_KEY[VIEW.BROWSE], DEFAULT_FILTERS[VIEW.BROWSE]);
   const [ readSearch ] = useLocalStorage(SEARCH_WORKFLOWS_VALUE_KEY, SEARCH_WORKFLOWS_DEFAULT_KEY);
   const limit = PAGINATION_AMOUNT;
-  const offset = (typeof storedCurrentPageOffset == 'number') ? storedCurrentPageOffset : 0;
+  const offset = (typeof storedCurrentPageOffset === 'number') ? storedCurrentPageOffset : 0;
   const filters = getFilters(readFilter);
-  const filtersConfig = useFilterConfig(VIEW.BROWSE);
-  const search = (typeof readSearch == 'object') ? readSearch : { key: SEARCH_WORKFLOWS_DEFAULT_KEY, value: '' };
+  const filtersConfig = useFilterConfigBrowse();
+  const search = (typeof readSearch === 'object') ? readSearch : { key: SEARCH_WORKFLOWS_DEFAULT_KEY, value: '' };
   const list = useWorkflowList(BACKEND_PATH[VIEW.BROWSE], { filters, filtersConfig, search, limit, offset });
 
-  return <QueryClientProvider client={ props?.client} >
+  return <QueryClientProvider client={ props?.client }>
     <Switch>
-      <Route path={ props?.path } render={ (routeProps: any) => 
+      <Route path={ props?.path } render={ (routeProps: any) =>
         <BrowseView
           filters={filters}
           limit={limit}

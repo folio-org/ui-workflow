@@ -5,7 +5,7 @@ import { CalloutContext } from '@folio/stripes/core';
 import { useClickControl, useDeleteRequest, useModal } from '../../../hooks';
 import { IItemRecordPane } from '../../../interfaces';
 import { t } from '../../../utilities';
-import { BooleanItemValue, BooleanMapItemValue, NumberItemValue, StringItemValue, WorkflowGeneralActionMenu } from '../../';
+import { BooleanItemValue, BooleanMapItemValue, NumberItemValue, StringItemValue, WorkflowGeneralActionMenu } from '../..';
 
 /**
  * A pane for displaying the Workflow Item Record general information.
@@ -16,12 +16,14 @@ export const ItemRecordGeneralPane: React.FC<IItemRecordPane> = ({ control, stri
   const callout = useContext(CalloutContext);
   const deleteRequest = useDeleteRequest();
 
+  let deleteControl: any;
+
   const deleteModal = useModal(
     () => deleteControl.setBusy(false),
     () => { if (!!deleteControl.busy) deleteControl.onDone(); }
   );
 
-  const deleteControl = useClickControl(
+  deleteControl = useClickControl(
     (onDone: any) => {
       if (!workflow?.data?.id) return;
 
@@ -48,13 +50,13 @@ export const ItemRecordGeneralPane: React.FC<IItemRecordPane> = ({ control, stri
         }
       );
     },
-    () => { if (!!deleteModal.show) deleteModal.onHide() }
+    () => { if (!!deleteModal.show) deleteModal.onHide(); }
   );
 
   const actionMenu = <WorkflowGeneralActionMenu deleteModal={deleteModal} stripes={stripes} />;
 
   const deleteModalFooter = <ModalFooter>
-    <Button buttonStyle='danger' onClick={ deleteControl.onClick }>{ t('button.workflows.item.delete.confirm') }</Button>
+    <Button buttonStyle="danger" onClick={ deleteControl?.onClick }>{ t('button.workflows.item.delete.confirm') }</Button>
     <Button onClick={ deleteModal.onHide }>{ t('button.workflows.item.delete.cancel') }</Button>
   </ModalFooter>;
 
@@ -62,7 +64,7 @@ export const ItemRecordGeneralPane: React.FC<IItemRecordPane> = ({ control, stri
     ? <LoadingPane />
     : null;
 
-  return <Pane id={id} defaultWidth='30%' dismissible onClose={closeWorkflowPane} paneTitle={ t('title.itemRecordGeneralPane') } lastMenu={actionMenu}>
+  return <Pane id={id} defaultWidth="30%" dismissible onClose={closeWorkflowPane} paneTitle={ t('title.itemRecordGeneralPane') } lastMenu={actionMenu}>
     <ErrorBoundary>
       {loadingPane}
       <Modal
@@ -84,36 +86,36 @@ export const ItemRecordGeneralPane: React.FC<IItemRecordPane> = ({ control, stri
         <Accordion label={ t('workflows.item.label') } id={ selected?.id }>
           <Row>
             <Col xs={12}>
-              <StringItemValue label='workflows.label.name' value={ selected?.name } />
+              <StringItemValue label="workflows.label.name" value={ selected?.name } />
             </Col>
           </Row>
           <Row>
             <Col xs={12}>
-              <StringItemValue label='workflows.label.description' value={ selected?.description } />
+              <StringItemValue label="workflows.label.description" value={ selected?.description } />
             </Col>
           </Row>
           <Row>
             <Col xs={6}>
-              <StringItemValue label='workflows.label.id' value={ selected?.id } />
+              <StringItemValue label="workflows.label.id" value={ selected?.id } />
             </Col>
             <Col xs={6}>
-              <BooleanItemValue label='workflows.label.active' value={ selected?.active } />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6}>
-              <StringItemValue label='workflows.item.deploymentId' value={ selected?.deploymentId } />
-            </Col>
-            <Col xs={6}>
-              <NumberItemValue label='workflows.item.historyTimeToLive' value={ selected?.historyTimeToLive } />
+              <BooleanItemValue label="workflows.label.active" value={ selected?.active } />
             </Col>
           </Row>
           <Row>
             <Col xs={6}>
-              <BooleanMapItemValue label='workflows.item.setup' value={ selected?.setup } />
+              <StringItemValue label="workflows.item.deploymentId" value={ selected?.deploymentId } />
+            </Col>
+            <Col xs={6}>
+              <NumberItemValue label="workflows.item.historyTimeToLive" value={ selected?.historyTimeToLive } />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={6}>
+              <BooleanMapItemValue label="workflows.item.setup" value={ selected?.setup } />
             </Col>
             <Col xs={3}>
-              <StringItemValue label='workflows.label.version' value={ selected?.versionTag } />
+              <StringItemValue label="workflows.label.version" value={ selected?.versionTag } />
             </Col>
           </Row>
         </Accordion>

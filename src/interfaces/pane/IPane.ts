@@ -1,4 +1,4 @@
-import { IPaneControl } from '../';
+import { IPaneControl } from '..';
 
 /**
  * Provide properties for using a pane.

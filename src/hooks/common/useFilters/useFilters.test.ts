@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react';
 
 import { VIEW } from '../../../constants';
-import { useFilters } from './';
+import { useFilters } from '.';
 
 describe('useFilters', () => {
   describe('When initial render happened', () => {

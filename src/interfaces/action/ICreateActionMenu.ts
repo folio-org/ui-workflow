@@ -1,4 +1,4 @@
-import { IPaneControl } from '../';
+import { IPaneControl } from '..';
 
 /**
  * Provide properties for the create pane action menu.

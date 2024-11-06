@@ -1,4 +1,4 @@
-import { IItemRecordControl } from '../';
+import { IItemRecordControl } from '..';
 
 /**
  * Provide properties for an Item Value.

@@ -1,8 +1,9 @@
+/* eslint-disable padded-blocks */
 import React from 'react';
 import { Card } from '@folio/stripes/components';
 
-import { GraphItemIcon } from '../../../components';
 import { IItemValue } from '../../../interfaces';
+import { GraphItemIcon } from '../..';
 import css from './GraphItemValue.module.css';
 
 /**
@@ -11,18 +12,17 @@ import css from './GraphItemValue.module.css';
  * This graph of a Node shall process the onSelect when clicked.
  */
 export const GraphItemValue: React.FC<IItemValue> = ({ empty, onSelect, selected, value }) => {
-  if (typeof value !== 'object' && empty === true) {
-    return null;
-  }
-
-  // cardClass defined by selected Node
-  const cardClass = (!!selected?.selectedNode?.id && value?.id === selected?.selectedNode?.id) 
-    ? css?.selected 
+  const cardClass = (!!selected?.selectedNode?.id && value?.id === selected?.selectedNode?.id)
+    ? css?.selected
     : css?.nodeCard;
 
   const onClick = (e: any) => {
     if (!!onSelect) onSelect(e, value);
   };
+
+  if (typeof value !== 'object' && empty === true) {
+    return null;
+  }
 
   return <Card
     headerClass={ css?.nodeHeader }

@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react';
 
 import { VIEW } from '../../../constants';
-import { useModal } from './';
+import { useModal } from '.';
 
 describe('useModal', () => {
   describe('When initial render happened', () => {

@@ -12,9 +12,9 @@ export const useWorkflow = (path: string, workflowId: string) => {
   const url = `${path}/${workflowId}`;
 
   const { data, error, isLoading, refetch } = useQuery({
-    queryKey: [ url ],
+    queryKey: [url],
     queryFn: () => {
-      if (url == "") return null;
+      if (url === '') return null;
 
       return ky.get(url).then((res) => { return res.json(); });
     },

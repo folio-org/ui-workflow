@@ -1,4 +1,4 @@
-import { IItemRecordControl, IPane } from '../';
+import { IItemRecordControl, IPane } from '..';
 
 /**
  * Provide properties managed by the Item Record pane.

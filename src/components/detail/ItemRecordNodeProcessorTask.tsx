@@ -1,8 +1,8 @@
 import React from 'react';
 import { Accordion, AccordionSet, Col, Row } from '@folio/stripes/components';
 
-import { ItemRecordNodeSet, StringItemValue } from '../../components';
 import { IItemRecordPane } from '../../interfaces';
+import { ItemRecordNodeSet, StringItemValue } from '..';
 
 /**
  * A sub-component for displaying Workflow Item Record Node ProcessorTask detail information.
@@ -17,7 +17,7 @@ export const ItemRecordNodeProcessorTask: React.FC<IItemRecordPane> = (props?: a
   return <ItemRecordNodeSet { ...props }>
     <Row>
       <Col xs={12}>
-        <StringItemValue label='workflows.item.node.processor' value={ selected?.processor } />
+        <StringItemValue label="workflows.item.node.processor" value={ selected?.processor } />
       </Col>
     </Row>
   </ItemRecordNodeSet>;

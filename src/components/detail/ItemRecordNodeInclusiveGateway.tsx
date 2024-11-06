@@ -1,8 +1,8 @@
 import React from 'react';
 import { Accordion, AccordionSet, Col, Row } from '@folio/stripes/components';
 
-import { ItemRecordNodeSet, StringItemValue } from '../../components';
 import { IItemRecordPane } from '../../interfaces';
+import { ItemRecordNodeSet, StringItemValue } from '..';
 
 /**
  * A sub-component for displaying Workflow Item Record Node InclusiveGateway detail information.

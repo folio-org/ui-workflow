@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react';
 
-import { useToggleControl } from './';
+import { useToggleControl } from '.';
 
 describe('useToggleControl', () => {
   describe('When initial render happened', () => {

@@ -1,4 +1,4 @@
-import { IItemRecordControl } from '../../interfaces';
+import { IItemRecordControl } from '..';
 
 /**
  * Provide properties for displaying an Item Record.

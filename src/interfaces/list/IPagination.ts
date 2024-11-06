@@ -1,4 +1,4 @@
-import { ISort } from './ISort'
+import { ISort } from './ISort';
 
 /**
  * Provide properties for a list pagination.
