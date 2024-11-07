@@ -1,5 +1,4 @@
 import { renderHook } from '@testing-library/react';
-import { SearchField } from '@folio/stripes/components';
 
 import { ITEM_COLUMNS_NAME, VIEW } from '../../../constants';
 import { useSearch } from '.';
