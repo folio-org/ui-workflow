@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import { Response, Server } from 'miragejs';
 
 import { OKAPI_WORKFLOW_IMPORT } from '../../../constants';
