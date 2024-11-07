@@ -26,8 +26,8 @@ module.exports = {
     '^.+\\.(css|svg)$': 'identity-obj-proxy',
   },
   moduleDirectories: [ 'node_modules', '<rootDir>' ],
-  testMatch: [ '<rootDir>/src/**/?(*.)test.{ts,tsx}' ],
+  testMatch: ['<rootDir>/src/**/?(*.)test.{ts,tsx}'],
   testPathIgnorePatterns: ['/node_modules'],
   setupFiles: ['./test/jest/setupTests.ts'],
-  setupFilesAfterEnv: [ '<rootDir>/test/jest/jest.setup.ts' ],
+  setupFilesAfterEnv: ['<rootDir>/test/jest/jest.setup.ts'],
 };
