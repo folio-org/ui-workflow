@@ -1,6 +1,5 @@
 import React from 'react';
 import { renderHook, act } from '@testing-library/react';
-import { beforeEach } from '@jest/globals';
 
 import { useLocalStorageToggle } from '.';
 
