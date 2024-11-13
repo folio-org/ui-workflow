@@ -10,7 +10,7 @@ import { t } from '../../../utilities';
 export const StringItemValue: React.FC<IItemValue> = ({ empty, label, value }) => {
   const tag = typeof value === 'string' ? value : undefined;
 
-  if (typeof value !== 'string' && empty === true) {
+  if (tag === undefined || empty === true) {
     return null;
   }
 
