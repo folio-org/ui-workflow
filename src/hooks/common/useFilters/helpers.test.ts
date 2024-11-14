@@ -1,6 +1,6 @@
 import { FilterGroupsState } from '@folio/stripes/components';
 
-import { getFilters } from './';
+import { getFilters } from '.';
 
 describe('getFilters', () => {
   const emptyFilters: FilterGroupsState = {};

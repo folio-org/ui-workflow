@@ -8,34 +8,34 @@ import { IItemRecordControl } from '../../interfaces';
 import { ItemRecordDetailPane, ItemRecordGeneralPane, ItemRecordGraphPane } from '../../components';
 import { t } from '../../utilities';
 
+const layouts = [
+  {
+    'ItemRecordGeneralPane': '30%',
+    'ItemRecordGraphPane': '70%',
+  },
+  {
+    'ItemRecordGeneralPane': '30%',
+    'ItemRecordGraphPane': '40%',
+    'ItemRecordDetailPane': '30%',
+  }
+];
+
 /**
  * A main view for displaying "detail" information for a Workflow.
  */
 export const DetailView: React.FC = (props?: any) => {
-  if (!props?.path || !props?.match?.params?.workflowId) {
-    return null;
-  }
-
-  const workflow = useWorkflow(BACKEND_PATH['workflow'], props.match.params.workflowId);
+  const workflow = useWorkflow(BACKEND_PATH.workflow, props?.match?.params?.workflowId);
   const paneProps = {
-    control: useItemRecordControl(props.path),
+    control: useItemRecordControl(props?.path),
     stripes: useStripes(),
     list: props?.list,
     view: VIEW.DETAIL,
     workflow,
   };
 
-  const layouts = [
-    {
-      'ItemRecordGeneralPane': '30%',
-      'ItemRecordGraphPane': '70%',
-    },
-    {
-      'ItemRecordGeneralPane': '30%',
-      'ItemRecordGraphPane': '40%',
-      'ItemRecordDetailPane': '30%',
-    }
-  ];
+  if (!props?.path || !props?.match?.params?.workflowId) {
+    return null;
+  }
 
   return <Paneset isRoot initialLayouts={layouts}>
     <ItemRecordGeneralPane { ... paneProps } id="ItemRecordGeneralPane" />

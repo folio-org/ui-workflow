@@ -5,20 +5,23 @@ import { noop } from 'lodash';
 
 import { FilterMenu, FilterPane, WorkflowListTable, WorkflowIcon } from '../../components';
 import { VIEW } from '../../constants';
+import { useFilterConfigBrowse } from '../../hooks';
 import { t } from '../../utilities';
 
 /**
  * A main view for displaying "browse" information.
  */
 export const BrowseView: React.FC = (props?: any) => {
+  const filterConfig = useFilterConfigBrowse();
+
   return <Paneset isRoot>
     <ErrorBoundary>
-      <FilterPane list={ props?.list } view={ VIEW.BROWSE } />
+      <FilterPane filterConfig={filterConfig} list={ props?.list } view={ VIEW.BROWSE } />
       <Pane
         appIcon={ <WorkflowIcon /> }
-        defaultWidth='75%'
+        defaultWidth="75%"
         firstMenu={ <FilterMenu /> }
-        lastMenu={ <Button bottomMargin0 buttonStyle='primary' onClick={noop}>{ t('button.actions') }</Button> }
+        lastMenu={ <Button bottomMargin0 buttonStyle="primary" onClick={noop}>{ t('button.actions') }</Button> }
         paneTitle={ t('title.workflowList') }
       >
         <WorkflowListTable

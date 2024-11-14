@@ -19,26 +19,29 @@ import { t } from '../../../utilities';
  * Each value in columns is mapped to the `workflows.label.${columns[]}` and so the language file must have each value defined.
  */
 export const TableListItemValue: React.FC<IItemValue> = ({ column, columns, columnsWidths, empty, label, parentId, value }) => {
-  if (!columns || typeof columns !== 'object' || (columns?.length || 0) == 0) {
+  const values: Record<string, any>[] = [];
+  const columnId: string = !!column ? column : 'values';
+  const initialStatus: Record<string, any> = {};
+  const columnMapping: Record<string, any> = {};
+
+  if (!columns || typeof columns !== 'object' || (columns?.length || 0) === 0) {
     return null;
   }
-
-  const values: Record<string, any>[] = [];
 
   if (typeof value === 'object') {
     Object.entries(value).forEach(([k, v]) => {
       if (!!k && !!v && typeof v === 'object') {
-        let val: Record<string, any> = {};
+        const val: Record<string, any> = {};
 
         columns.forEach((c: string) => {
           // The v[c] cannot be directly used because of TS7053, so loop through and find the Objec.
           Object.entries(v).forEach(([vk, vv]) => {
-            if (c == vk) {
+            if (c === vk) {
               const vvType = typeof vv;
 
-              if (vvType == 'string') {
+              if (vvType === 'string') {
                 val[vk] = vv;
-              } else if (vvType == 'boolean') {
+              } else if (vvType === 'boolean') {
                 val[vk] = vv ? t('workflows.value.boolean.true') : t('workflows.value.boolean.false');
               }
             }
@@ -50,22 +53,17 @@ export const TableListItemValue: React.FC<IItemValue> = ({ column, columns, colu
     });
   }
 
-  if (values.length == 0 && empty == true) {
+  if (values.length === 0 && empty === true) {
     return null;
   }
 
   // Work-around issue with MultiColumnList where the table headers are not displayed when the list is empty.
   // Only the "The list contains no items" is displayed (without a header/label) and that is confusing.
-  if (values.length == 0) {
-    let val: Record<string, any> = {};
-
-    columns.forEach((c: string) => val[c] = NO_VALUE);
+  if (values.length === 0) {
+    const val: Record<string, any> = {};
+    columns.forEach((c: string) => { val[c] = NO_VALUE; });
     values.push(val);
   }
-
-  const columnId: string = !!column ? column : 'values';
-  const initialStatus: Record<string, any> = {};
-  let columnMapping: Record<string, any> = {};
 
   columns.forEach((c: string) => {
     columnMapping[c] = t(`workflows.label.${c}`);

@@ -17,73 +17,72 @@ import {
   scriptTaskIcon,
   startEventIcon,
   subTaskIcon
-  } from '../../../../icons/GraphItem';
+} from '../../../../icons/GraphItem';
 import css from './GraphItemIcon.module.css';
 
 export const GraphItemIcon: React.FC<{ type: string }> = ({ type }) => {
   let icon = appIcon;
 
-  switch(type) {
-    case "CompressFileTask":
+  switch (type) {
+    case 'CompressFileTask':
       icon = compressFileTaskIcon;
       break;
 
-    case "Condition":
+    case 'Condition':
       icon = conditionTaskIcon;
       break;
 
-    case "DatabaseConnectionTask":
+    case 'DatabaseConnectionTask':
       icon = databaseConnectionTaskIcon;
       break;
 
-    case "DatabaseDisconnectTask":
+    case 'DatabaseDisconnectTask':
       icon = databaseDisconnectionTaskIcon;
       break;
 
-    case "DatabaseQueryTask":
+    case 'DatabaseQueryTask':
       icon = databaseQueryTaskIcon;
       break;
 
-    case "EmailTask":
+    case 'EmailTask':
       icon = emailTaskIcon;
       break;
 
-    case "EndEvent":
+    case 'EndEvent':
       icon = endEventIcon;
       break;
 
-    case "FileTask":
+    case 'FileTask':
       icon = fileTaskIcon;
       break;
 
-    case "InputTask":
+    case 'InputTask':
       icon = inputTaskIcon;
       break;
 
-    case "ParallelGateway":
+    case 'ParallelGateway':
       icon = parallelTaskIcon;
       break;
 
-    case "RequestTask":
+    case 'RequestTask':
       icon = requestTaskIcon;
       break;
 
-    case "ScriptTask":
+    case 'ScriptTask':
       icon = scriptTaskIcon;
       break;
 
-    case "StartEvent":
-      icon = startEventIcon
-        break;
+    case 'StartEvent':
+      icon = startEventIcon;
+      break;
 
-    case "Subprocess":
-      icon = subTaskIcon
-        break;
+    case 'Subprocess':
+      icon = subTaskIcon;
+      break;
 
     default:
       icon = appIcon;
       break;
-
   }
 
   return <div className={css?.graphItemtIconTypeDiv}>

@@ -16,7 +16,7 @@ export const useClickControl = (clickCallback?: any, doneCallback?: any) => {
     if (busy) {
       setBusy(false);
     }
-  }, [ busy ]);
+  }, [ busy, doneCallback ]);
 
   const onClick = useCallback(() => {
     if (!busy) {
@@ -26,7 +26,7 @@ export const useClickControl = (clickCallback?: any, doneCallback?: any) => {
         clickCallback(onDone);
       }
     }
-  }, [ busy ]);
+  }, [ busy, clickCallback, onDone ]);
 
   return { busy, onClick, onDone, setBusy };
 };

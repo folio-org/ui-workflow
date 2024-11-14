@@ -3,7 +3,7 @@ import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { BACKEND_PATH, VIEW } from '../../../constants';
-import { useWorkflow } from './';
+import { useWorkflow } from '.';
 
 const createWrapper = () => {
   const queryClient = new QueryClient();
@@ -12,7 +12,7 @@ const createWrapper = () => {
 
 describe('useWorkflow', () => {
   describe('When initial render happened', () => {
-    const { result } = renderHook(() => useWorkflow(BACKEND_PATH[VIEW.WORKFLOW], "uuid"), { wrapper: createWrapper() });
+    const { result } = renderHook(() => useWorkflow(BACKEND_PATH[VIEW.WORKFLOW], 'uuid'), { wrapper: createWrapper() });
 
     it('is expected to return defined', () => {
       expect(result.current).toBeDefined();

@@ -15,12 +15,12 @@ export const useFilters = (view: string) => {
 
   const isDefaultState = useCallback((): boolean => {
     return isEqual(defaultFilterConfig, appliedFilters);
-  }, [ appliedFilters ]);
+  }, [ defaultFilterConfig, appliedFilters ]);
 
   const saveFilters = useCallback((filters: FilterGroupsState) => {
     setAppliedFilters(filters);
     writeStorage(FILTER_APPLIED_KEY[view], filters);
-  }, [ appliedFilters ]);
+  }, [ view ]);
 
   const onChangeFilter = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const { checked, name } = e.target;
@@ -33,11 +33,11 @@ export const useFilters = (view: string) => {
     }
 
     saveFilters(filters);
-  }, [ appliedFilters ]);
+  }, [ appliedFilters, saveFilters ]);
 
   const onResetAll = useCallback(() => {
     saveFilters(defaultFilterConfig);
-  }, [ appliedFilters ]);
+  }, [ defaultFilterConfig, saveFilters ]);
 
   const onClearGroup = useCallback((groupName: string) => {
     const filters = { ...appliedFilters };
@@ -49,7 +49,7 @@ export const useFilters = (view: string) => {
     }
 
     saveFilters(filters);
-  }, [ appliedFilters ]);
+  }, [ appliedFilters, saveFilters ]);
 
   return {
     onChangeFilter,

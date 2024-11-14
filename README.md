@@ -35,8 +35,11 @@ stripes serve --okapi http://my-okapi.example.com:9130 --tenant my-tenant-id
 
 Run the included UI tests with the following command:
 ```
-stripes test karma
+yarn test
 ```
+
+This will generate coverage reports at `artifacts/coverage-jest/`.
+A user may view the resulting coverage reports by pointing their browser to `artifacts/coverage-jest/lcov-report/index.html`.
 
 ### Issue tracker
 

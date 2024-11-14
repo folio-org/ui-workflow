@@ -1,4 +1,4 @@
-import { ITEM_COLUMNS_NAME } from './';
+import { ITEM_COLUMNS_NAME } from '.';
 
 export const SEARCH_WORKFLOWS_DEFAULT_KEY = ITEM_COLUMNS_NAME.NAME;
 export const SEARCH_WORKFLOWS_VALUE_KEY = '@folio/workflow/workflows/searchValue';

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Accordion, AccordionSet, Col, Row } from '@folio/stripes/components';
 
-import { ItemRecordNodeSet, StringItemValue } from '../../components';
 import { IItemRecordPane } from '../../interfaces';
+import { ItemRecordNodeSet, StringItemValue } from '..';
 
 /**
  * A sub-component for displaying Workflow Item Record Node Subprocess detail information.
@@ -17,10 +17,10 @@ export const ItemRecordNodeSubprocess: React.FC<IItemRecordPane> = (props?: any)
   return <ItemRecordNodeSet { ...props }>
     <Row>
       <Col xs={6}>
-        <StringItemValue label='workflows.item.node.type' value={ selected?.type } />
+        <StringItemValue label="workflows.item.node.type" value={ selected?.type } />
       </Col>
       <Col xs={6}>
-        <StringItemValue label='workflows.item.node.loopRef' value={ selected?.loopRef } />
+        <StringItemValue label="workflows.item.node.loopRef" value={ selected?.loopRef } />
       </Col>
     </Row>
   </ItemRecordNodeSet>;

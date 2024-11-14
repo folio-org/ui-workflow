@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react';
 
-import { useDeleteRequest } from './';
+import { useDeleteRequest } from '.';
 
 describe('useDeleteRequest', () => {
   describe('When initial render happened', () => {

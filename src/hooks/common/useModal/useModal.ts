@@ -15,7 +15,7 @@ export const useModal = (showCallback?: any, hideCallback?: any) => {
     if (!!showCallback) {
       showCallback();
     }
-  }, [ show ]);
+  }, [ showCallback ]);
 
   const onHide = useCallback(() => {
     setShow(false);
@@ -23,7 +23,7 @@ export const useModal = (showCallback?: any, hideCallback?: any) => {
     if (!!hideCallback) {
       hideCallback();
     }
-  }, [ show ]);
+  }, [ hideCallback ]);
 
   return { onHide, onShow, show };
 };

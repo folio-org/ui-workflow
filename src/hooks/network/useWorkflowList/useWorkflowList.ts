@@ -16,9 +16,9 @@ export const useWorkflowList = (path: any, request: IListRequest) => {
   const url = buildListUrl(path, request);
 
   const { data, error, isLoading, refetch } = useQuery({
-    queryKey: [ url ],
+    queryKey: [url],
     queryFn: () => {
-      if (url == "") return null;
+      if (url === '') return null;
 
       return ky.get(url).then((res) => { return res.json(); });
     },

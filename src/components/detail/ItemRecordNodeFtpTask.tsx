@@ -1,8 +1,8 @@
 import React from 'react';
 import { Accordion, AccordionSet, Col, Row } from '@folio/stripes/components';
 
-import { PasswordItemValue, ItemRecordNodeSet, StringItemValue } from '../../components';
 import { IItemRecordPane } from '../../interfaces';
+import { PasswordItemValue, ItemRecordNodeSet, StringItemValue } from '..';
 
 /**
  * A sub-component for displaying Workflow Item Record Node FileTask detail information.
@@ -17,42 +17,42 @@ export const ItemRecordNodeFtpTask: React.FC<IItemRecordPane> = (props?: any) =>
   return <ItemRecordNodeSet { ...props }>
     <Row>
       <Col xs={12}>
-        <StringItemValue label='workflows.item.node.originPath' value={ selected?.originPath } />
+        <StringItemValue label="workflows.item.node.originPath" value={ selected?.originPath } />
       </Col>
     </Row>
     <Row>
       <Col xs={12}>
-        <StringItemValue label='workflows.item.node.destinationPath' value={ selected?.destinationPath } />
+        <StringItemValue label="workflows.item.node.destinationPath" value={ selected?.destinationPath } />
       </Col>
     </Row>
     <Row>
       <Col xs={12}>
-        <StringItemValue label='workflows.item.node.op' value={ selected?.op } />
+        <StringItemValue label="workflows.item.node.op" value={ selected?.op } />
       </Col>
     </Row>
     <Row>
       <Col xs={12}>
-        <StringItemValue label='workflows.item.node.scheme' value={ selected?.scheme } />
+        <StringItemValue label="workflows.item.node.scheme" value={ selected?.scheme } />
       </Col>
     </Row>
     <Row>
       <Col xs={12}>
-        <StringItemValue label='workflows.item.node.host' value={ selected?.host } />
+        <StringItemValue label="workflows.item.node.host" value={ selected?.host } />
       </Col>
     </Row>
     <Row>
       <Col xs={12}>
-        <StringItemValue label='workflows.item.node.port' value={ selected?.port } />
+        <StringItemValue label="workflows.item.node.port" value={ selected?.port } />
       </Col>
     </Row>
     <Row>
       <Col xs={12}>
-        <StringItemValue label='workflows.item.node.username' value={ selected?.username } />
+        <StringItemValue label="workflows.item.node.username" value={ selected?.username } />
       </Col>
     </Row>
     <Row>
       <Col xs={12}>
-        <PasswordItemValue label='workflows.item.node.password' value={ !!selected?.password } />
+        <PasswordItemValue label="workflows.item.node.password" value={ !!selected?.password } />
       </Col>
     </Row>
   </ItemRecordNodeSet>;

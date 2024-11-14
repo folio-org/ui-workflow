@@ -16,11 +16,9 @@ export const FilterMenu: FunctionComponent = (props: any) => {
     return null;
   }
 
-  let filterCount = 0;
-
   return (
     <PaneMenu>
-      <ExpandFilterPaneButton filterCount={filterCount} onClick={ () => writeToggleFilterStorage(true) } />
+      <ExpandFilterPaneButton filterCount={0} onClick={ () => writeToggleFilterStorage(true) } />
     </PaneMenu>
   );
 };

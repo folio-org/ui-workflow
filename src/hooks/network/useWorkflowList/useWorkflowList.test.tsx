@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { BACKEND_PATH, VIEW } from '../../../constants';
-import { useFilterConfig, useWorkflowList } from '../../';
+import { useFilterConfigBrowse, useWorkflowList } from '../..';
 
 const createWrapper = () => {
   const queryClient = new QueryClient();
@@ -11,7 +11,7 @@ const createWrapper = () => {
 
 describe('useWorkflowList', () => {
   describe('When initial render happened', () => {
-    const filtersConfig = useFilterConfig(VIEW.BROWSE);
+    const filtersConfig = useFilterConfigBrowse();
 
     const { result } = renderHook(() => useWorkflowList(BACKEND_PATH[VIEW.BROWSE], { filtersConfig }), { wrapper: createWrapper() });
 

@@ -10,7 +10,7 @@ export const requestGetErrorReason = async (error: any) => {
     try {
       const errorJson = await error.response.json();
       if (errorJson?.errors?.length > 0) {
-        reason = errorJson.errors[0]?.code + ' ' + errorJson.errors[0]?.message;
+        reason = `${errorJson.errors[0]?.code} ${errorJson.errors[0]?.message}`;
       }
     } catch (error: any) {
       // If error.response.json() fails, then do nothing.

@@ -8,11 +8,11 @@ import { t } from '../../../utilities';
  * Provide an Item value for displaying a string.
  */
 export const StringItemValue: React.FC<IItemValue> = ({ empty, label, value }) => {
-  if (typeof value !== 'string' && empty === true) {
+  const tag = typeof value === 'string' ? value : undefined;
+
+  if (tag === undefined && empty === true) {
     return null;
   }
-
-  const tag = typeof value === 'string' ? value : undefined;
 
   return <KeyValue label={ t(label) }>{tag}</KeyValue>;
 };

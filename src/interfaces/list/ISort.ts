@@ -1,9 +1,9 @@
 /**
  * Provide properties for a list sort.
  *
- * empty: TRUE if empty.
- * sorted: TRUE if sorted.
- * unsorted: TRUE if not sorted.
+ * @param empty TRUE if empty.
+ * @param sorted TRUE if sorted.
+ * @param unsorted TRUE if not sorted.
  */
 export interface ISort {
   empty: boolean;

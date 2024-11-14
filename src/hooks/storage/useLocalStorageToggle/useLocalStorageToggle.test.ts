@@ -1,8 +1,7 @@
 import React from 'react';
-import { renderHook, act } from '@testing-library/react'
-import { beforeEach } from '@jest/globals';
+import { renderHook, act } from '@testing-library/react';
 
-import { useLocalStorageToggle } from './';
+import { useLocalStorageToggle } from '.';
 
 describe('useLocalStorageToggle', () => {
   const key = 'testKey';

@@ -1,8 +1,8 @@
 /**
  * Provide properties for managing search state.
  *
- * key: The state key.
- * value: The state value.
+ * @param key The state key.
+ * @param value The state value.
  */
 export interface ISearchState {
   key?: string;

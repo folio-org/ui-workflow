@@ -1,0 +1,7 @@
+#  Ignore files with parsing problems (This needs to be fixed and have these removed).
+src/utilities/common/request/requestGetErrorReason.ts
+src/hooks/storage/useLocalStorageToggle/useLocalStorageToggle.ts
+src/hooks/network/useUpload/useUploadMultipart.ts
+src/hooks/network/useRequest/useDeleteRequest.ts
+src/global.d.ts
+src/constants/Lists.ts
