@@ -109,8 +109,8 @@
     "permissionSets": [
       {
         "permissionName": "module.workflow.enabled",
-        "displayName": "UI: ui-workflow module is enabled",
-        "visible": false
+        "displayName": "Workflow: Module is enabled",
+        "visible": true
       },
       {
         "permissionName": "settings.workflow.enabled",
@@ -132,6 +132,7 @@
         "permissionName": "ui-workflow.all",
         "displayName": "Workflow (Admin): All permissions",
         "subPermissions": [
+          "module.workflow.enabled",
           "workflow.actions.all",
           "workflow.events.all",
           "workflow.nodes.all",
