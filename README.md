@@ -10,7 +10,7 @@ This UI Workflow Module, `ui-workflow`, is a Stripes UI Module providing a way t
 
 ## Prerequisites
 
-In order to view and log into the platform being served up, a suitable Okapi backend will need to be running. The [testing-backend](https://app.vagrantup.com/folio/boxes/testing-backend) Vagrant box should work if your app does not yet have its own backend module.
+In order to view and log into the platform being served up, a suitable Okapi backend will need to be running.
 
 This requires `mod-workflow` and conditionally requires `mod-camunda`.
 
