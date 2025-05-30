@@ -43,5 +43,5 @@ A user may view the resulting coverage reports by pointing their browser to `art
 
 ### Issue tracker
 
-See project [FOLIO](https://issues.folio.org/browse/FOLIO)
+See project [UIWRKFLOW](https://folio-org.atlassian.net/browse/UIWRKFLOW)
 at the [FOLIO issue tracker](https://dev.folio.org/guidelines/issue-tracker/).
