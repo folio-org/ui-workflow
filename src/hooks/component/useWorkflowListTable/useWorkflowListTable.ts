@@ -9,11 +9,11 @@ import { CURRENT_PAGE_OFFSET_KEY } from '../../../constants';
  * data: The table content data.
  * pagination: The table pagination data.
  */
-export const useWorkflowListTable = (data: any, pagination: any) => {
+export const useWorkflowListTable = (data: any[] | undefined, pagination: any) => {
   const [ page, setPage ] = useState(0);
   const [ totalPages, setTotalPages ] = useState(0);
   const [ totalRecords, setTotalRecords ] = useState(0);
-  const [ contentData, setContentData ] = useState(data);
+  const [ contentData, setContentData ] = useState(!data ? [] : data);
   const [ showDetailPane, setShowDetailPane ] = useState(true);
 
   const onNeedMoreData = useCallback((thePagination: any) => {
