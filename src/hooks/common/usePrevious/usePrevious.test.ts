@@ -7,7 +7,7 @@ describe('usePrevious', () => {
     const { result } = renderHook(() => usePrevious(1));
 
     it('is expected to return undefined', () => {
-      expect(result.current).toBeUndefined();
+      expect(result.current).toBeNull();
     });
   });
 
