@@ -118,6 +118,19 @@ export const ItemRecordGeneralPane: React.FC<IItemRecordPane> = ({ control, stri
               <StringItemValue label="workflows.label.version" value={ selected?.versionTag } />
             </Col>
           </Row>
+          <Row>
+            <Col xs={6}>
+              <StringItemValue label="workflows.label.createdOn" value={ selected?.createdOn } />
+            </Col>
+            <Col xs={6}>
+              <StringItemValue label="workflows.label.updatedOn" value={ selected?.updatedOn } />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <StringItemValue label="workflows.item.checksum" value={ selected?.checksum } />
+            </Col>
+          </Row>
         </Accordion>
       </AccordionSet>
     </ErrorBoundary>
