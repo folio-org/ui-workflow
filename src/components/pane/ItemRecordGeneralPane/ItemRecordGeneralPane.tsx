@@ -5,7 +5,7 @@ import { CalloutContext } from '@folio/stripes/core';
 import { useClickControl, useDeleteRequest, useModal } from '../../../hooks';
 import { IItemRecordPane } from '../../../interfaces';
 import { t } from '../../../utilities';
-import { BooleanItemValue, BooleanMapItemValue, NumberItemValue, StringItemValue, WorkflowGeneralActionMenu } from '../..';
+import { BooleanItemValue, BooleanMapItemValue, NumberItemValue, StringItemValue, WorkflowGeneralActionMenu, ZonedDateTimeItemValue } from '../..';
 
 /**
  * A pane for displaying the Workflow Item Record general information.
@@ -120,15 +120,15 @@ export const ItemRecordGeneralPane: React.FC<IItemRecordPane> = ({ control, stri
           </Row>
           <Row>
             <Col xs={6}>
-              <StringItemValue label="workflows.label.createdOn" value={ selected?.createdOn } />
+              <ZonedDateTimeItemValue label="workflows.label.createdOn" value={ selected?.createdOn } />
             </Col>
             <Col xs={6}>
-              <StringItemValue label="workflows.label.updatedOn" value={ selected?.updatedOn } />
+              <ZonedDateTimeItemValue label="workflows.label.updatedOn" value={ selected?.updatedOn } />
             </Col>
           </Row>
           <Row>
             <Col xs={12}>
-              <StringItemValue label="workflows.item.checksum" value={ selected?.checksum } />
+              <StringItemValue label="workflows.label.checksum" value={ selected?.checksum } />
             </Col>
           </Row>
         </Accordion>

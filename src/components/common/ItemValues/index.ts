@@ -10,3 +10,4 @@ export * from './StringItemValue';
 export * from './StringListItemValue';
 export * from './TableListItemValue';
 export * from './UriItemValue';
+export * from './ZonedDateTimeItemValue';
