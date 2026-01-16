@@ -110,7 +110,7 @@
       {
         "permissionName": "module.workflow.enabled",
         "displayName": "UI: ui-workflow module is enabled",
-        "visible": false
+        "visible": true
       },
       {
         "permissionName": "settings.workflow.enabled",
@@ -118,7 +118,7 @@
         "subPermissions": [
           "settings.enabled"
         ],
-        "visible": false
+        "visible": true
       },
       {
         "permissionName": "settings.workflow.configure",
