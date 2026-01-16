@@ -17,7 +17,7 @@ export const WorkflowListTable: React.FC<IListProperties> = ({ filters, limit = 
   const navigate = useHistory();
   const pagination = usePagination({ limit, offset });
   const prevFilters = usePrevious(filters);
-  const table = useWorkflowListTable(pagination, list?.data);
+  const table = useWorkflowListTable(list?.data, pagination);
 
   useEffect(() => {
     if (prevFilters && !isEqual(prevFilters, filters)) {
