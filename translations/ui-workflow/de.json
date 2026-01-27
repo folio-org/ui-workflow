@@ -89,7 +89,7 @@
     "workflows.item.node.deserializeAs.RequestTask": "Request task",
     "workflows.item.node.deserializeAs.ScriptTask": "Script task",
     "workflows.item.node.deserializeAs.StartEvent": "Start event",
-    "workflows.item.node.deserializeAs.Subprocess": "Subprocess",
+    "workflows.item.node.deserializeAs.Subprocess": "Unterprozess",
     "workflows.item.node.designation": "Designation",
     "workflows.item.node.destination": "Destination",
     "workflows.item.node.direction": "Direction",
