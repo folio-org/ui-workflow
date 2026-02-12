@@ -151,7 +151,7 @@
     "workflows.label.inactive": "Inactive",
     "workflows.label.name": "Name",
     "workflows.label.type": "Type",
-    "workflows.label.version": "Version",
+    "workflows.label.version": "เวอร์ชั่น",
     "workflows.value.active": "Active",
     "workflows.value.boolean.false": "False",
     "workflows.value.boolean.true": "True",
