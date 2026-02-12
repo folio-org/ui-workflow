@@ -135,7 +135,7 @@
     "workflows.item.node.resultVariable": "Result variable",
     "workflows.item.node.scriptFormat": "スクリプト形式",
     "workflows.item.node.scriptType": "スクリプトタイプ",
-    "workflows.item.node.source": "Source",
+    "workflows.item.node.source": "ソース",
     "workflows.item.node.spin": "Spin",
     "workflows.item.node.target": "ターゲット",
     "workflows.item.node.type": "タイプ",
