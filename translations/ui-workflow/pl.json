@@ -34,7 +34,7 @@
     "title.filterPane.search": "Szukaj",
     "title.itemRecordDetailPane": "Szczegóły",
     "title.itemRecordDetailPane.node": "Węzeł • {name}",
-    "title.itemRecordGeneralPane": "Ogólny",
+    "title.itemRecordGeneralPane": "Ogólne",
     "title.itemRecordGraphPane": "Wykres",
     "workflows.item.callout.failure.delete": "Nie udało się usunąć przepływu pracy {name} ({id}), powód: {reason}",
     "workflows.item.callout.success.delete": "Przepływ pracy {name} ({id}) został usunięty",
