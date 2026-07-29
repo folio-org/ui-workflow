@@ -9,10 +9,17 @@
  * @return TRUE on true value and FALSE otherwise.
  */
 export const isFolioTruthy = (value: any): boolean => {
-  const strValue = typeof value === 'string' ? value.toLowerCase() : null;
+  const strValue = typeof value === 'string' ? value.toLowerCase().trim() : null;
 
-  if (strValue === null || value === false) return false;
-  if (typeof value === 'number' && value !== 0) return true;
+  if (typeof value === 'boolean') {
+    return value;
+  }
 
-  return value === true || strValue === 'true' || strValue === 't' || strValue === 'yes';
+  if (typeof value === 'number') {
+    return value !== 0;
+  }
+
+  if (value === null || typeof value !== 'string') return false;
+
+  return strValue === 'true' || strValue === 't' || strValue === 'yes';
 };
