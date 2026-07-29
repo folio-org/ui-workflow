@@ -16,6 +16,7 @@ import {
   ItemRecordNodeEventSubprocess,
   ItemRecordNodeExclusiveGateway,
   ItemRecordNodeFileTask,
+  ItemRecordNodeFolioRequestTask,
   ItemRecordNodeFtpTask,
   ItemRecordNodeInclusiveGateway,
   ItemRecordNodeInputTask,
@@ -55,6 +56,7 @@ export const ItemRecordDetailView: React.FC<IItemRecordPane> = (props?: any) => 
     <ItemRecordNodeEventSubprocess { ...props } />
     <ItemRecordNodeExclusiveGateway { ...props } />
     <ItemRecordNodeFileTask { ...props } />
+    <ItemRecordNodeFolioRequestTask { ...props } />
     <ItemRecordNodeFtpTask { ...props } />
     <ItemRecordNodeInclusiveGateway { ...props } />
     <ItemRecordNodeInputTask { ...props } />

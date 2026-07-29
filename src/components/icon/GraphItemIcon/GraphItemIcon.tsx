@@ -64,6 +64,7 @@ export const GraphItemIcon: React.FC<{ type: string }> = ({ type }) => {
       icon = parallelTaskIcon;
       break;
 
+    case 'FolioRequestTask':
     case 'RequestTask':
       icon = requestTaskIcon;
       break;
