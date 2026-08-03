@@ -7,6 +7,7 @@ import databaseQueryTaskIcon from './databaseQueryTaskIcon.png';
 import emailTaskIcon from './emailTaskIcon.png';
 import endEventIcon from './endEventIcon.png';
 import fileTaskIcon from './fileTaskIcon.png';
+import folioRequestTaskIcon from './folioRequestTaskIcon.png';
 import inputTaskIcon from './inputTaskIcon.png';
 import parallelTaskIcon from './parallelTaskIcon.png';
 import requestTaskIcon from './requestTaskIcon.png';
@@ -24,6 +25,7 @@ export {
   emailTaskIcon,
   endEventIcon,
   fileTaskIcon,
+  folioRequestTaskIcon,
   inputTaskIcon,
   parallelTaskIcon,
   requestTaskIcon,
