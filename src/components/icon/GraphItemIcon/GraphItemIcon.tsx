@@ -11,6 +11,7 @@ import {
   emailTaskIcon,
   endEventIcon,
   fileTaskIcon,
+  folioRequestTaskIcon,
   inputTaskIcon,
   parallelTaskIcon,
   requestTaskIcon,
@@ -56,6 +57,10 @@ export const GraphItemIcon: React.FC<{ type: string }> = ({ type }) => {
       icon = fileTaskIcon;
       break;
 
+    case 'FolioRequestTask':
+      icon = folioRequestTaskIcon;
+      break;
+
     case 'InputTask':
       icon = inputTaskIcon;
       break;
@@ -64,6 +69,7 @@ export const GraphItemIcon: React.FC<{ type: string }> = ({ type }) => {
       icon = parallelTaskIcon;
       break;
 
+    case 'FolioRequestTask':
     case 'RequestTask':
       icon = requestTaskIcon;
       break;

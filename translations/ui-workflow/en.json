@@ -80,6 +80,7 @@
   "workflows.item.node.deserializeAs.EventSubprocess": "Event subprocess",
   "workflows.item.node.deserializeAs.ExclusiveGateway": "Exclusive gateway",
   "workflows.item.node.deserializeAs.FileTask": "File task",
+  "workflows.item.node.deserializeAs.FolioRequestTask": "FOLIO Request task",
   "workflows.item.node.deserializeAs.FtpTask": "Ftp task",
   "workflows.item.node.deserializeAs.InclusiveGateway": "Inclusive gateway",
   "workflows.item.node.deserializeAs.InputTask": "Input task",

@@ -13,6 +13,7 @@ export * from './ItemRecordNodeEndEvent';
 export * from './ItemRecordNodeEventSubprocess';
 export * from './ItemRecordNodeExclusiveGateway';
 export * from './ItemRecordNodeFileTask';
+export * from './ItemRecordNodeFolioRequestTask';
 export * from './ItemRecordNodeFtpTask';
 export * from './ItemRecordNodeInclusiveGateway';
 export * from './ItemRecordNodeInputTask';
